@@ -1,0 +1,299 @@
+@font-face {
+    font-family: "1 font family selected";
+    src: url(fonts/Edu_TAS_Beginner/EduTASBeginner-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: "montserrat" ;
+    src: url(fonts/Montserrat/Montserrat-VariableFont_wght.ttf);
+}
+
+
+
+body, html {
+    margin: 0;
+    padding: 0 0 0 0;
+    
+}
+
+
+.campo-1{
+    transition: 2s;
+    display: flex; 
+    flex-direction: row-reverse; 
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+    margin-top: auto;
+    background: linear-gradient(rgba(149, 146, 146, 0),rgb(255, 255, 255));
+    border: 2px solid black;
+    box-shadow: 0px 0px 30px 0px rgb(0, 0, 0);
+    
+}
+
+
+
+.image{
+    width: 60%;
+    height: 100%;
+    background-color: rgba(0, 30, 255, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("https://www.wallpaperflare.com/static/876/110/496/form-shape-shadow-light-wallpaper.jpg");  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+.formulario{
+    width: 40%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0);
+    padding: 10% 5% 10% 5%;
+}
+
+.formulario h1{
+    color: #000000;
+    font-family: "montserrat";
+    font-weight: 400;
+    margin-top: 25%;
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+.olv-con{
+    color: #2d8f2f;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: "montserrat";
+    
+}
+
+.formulario p{
+    margin-top: 5%;
+    text-align: center;
+    font-size: 14px;
+    color: #000000;
+    text-decoration: none;
+    font-family: "montserrat";
+}
+
+.btn-primary{
+    margin-top: 5%;
+    border: none !important;
+    background-color: #2d8f2f !important;
+    font-family: "montserrat";
+    transition: transform 0.1s ease, box-shadow 0.1s ease; 
+}
+.btn-primary:hover {
+    transform: scale(1.05);
+}
+@media (max-width:1000px){
+    .image{
+        width: 50%;
+    }
+    .formulario{
+        width: 50%;
+        padding: 10% 5% 10% 5%;
+
+    }
+}
+
+@media (max-width:600px){
+    .image{
+        display: none;
+    }
+    .formulario{
+        margin: auto;
+        width: 70%;
+    }
+}
+
+/*registrar*/
+
+
+.campo-2{
+    width: 30%;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(rgba(255, 255, 255, 0.744),rgba(255, 255, 255, 0.744));
+    border: 2px solid black;
+    box-shadow: 0px 0px 30px 0px rgb(0, 0, 0);
+    border-radius: 15px;
+    padding: 5%;
+    
+}
+
+
+.image2{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background-image: url("https://www.wallpaperflare.com/static/876/110/496/form-shape-shadow-light-wallpaper.jpg");  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+}
+
+.formulario2{
+    margin: auto;
+    background-color: rgba(255, 0, 0, 0);
+}
+
+.formulario2 h1{
+    color: #000000;
+    font-family: "montserrat";
+    font-weight: 400;
+    text-align: center;
+
+}
+
+.olv-con{
+    color: #2d8f2f;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: "montserrat";
+    
+}
+
+.formulario2 p{
+    text-align: center;
+    font-size: 14px;
+    color: #000000;
+    text-decoration: none;
+    font-family: "montserrat";
+}
+
+.btn-primary{
+    
+    border: none !important;
+    background-color: #2d8f2f !important;
+    font-family: "montserrat";
+    transition: transform 0.1s ease, box-shadow 0.1s ease; 
+}
+.btn-primary:hover {
+    transform: scale(1.05);
+}
+
+.formulario2 input{
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.input:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+}
+
+
+@media (max-width:900px){
+    .campo-2{
+        width: 60%;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60%;
+        padding: 7%;
+    }
+}
+
+
+.container{
+    margin-top: 5%;
+    background-color: rgba(240, 248, 255, 0.231);
+    width: 100%;
+    padding: 20px 100px 50px 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px;
+    border-radius: 15px;
+}
+.container .card{
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    background-color: #03030390;
+}
+
+.container .card p{
+    color: white;
+}
+.container .card a{
+    text-align: center;
+}
+
+.custom-anchor {
+    width: 800px; 
+    height: auto; 
+    max-height: 800px; 
+    overflow-y: auto; 
+}
+
+
+.custom-anchor .dropdown-item {
+    padding: 10px 20px; 
+    font-size: 16px; 
+}
+
+.custom-anchor a{
+    border-left: 5px solid rgba(0, 0, 0, 0);
+}
+
+.custom-anchor .dropdown-item:hover{
+    border-left: 5px solid rgb(255, 255, 255);
+    transition: 0.8s;
+    
+}
+.color-bg{
+    background-color: #000000;
+}
+
+
+.carousel-background {
+    height: 80vh; 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    transition: transform 0.8s ease, filter 0.2s ease; 
+}
+/**si quieres el efecto de hover en las imagenes del carousel quitar el comentario :)*/
+/*
+.carousel-background:hover {
+    transform: scale(1.05); 
+    filter: brightness(0.9s); 
+}
+*/
+.carousel-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.position{
+    width: 500px;
+    margin: auto;
+}
+.close{
+    margin-right: 20px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.categorias{
+    margin: auto;
+    color: #ffffff;
+    text-decoration: none;
+}
