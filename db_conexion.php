@@ -18,7 +18,7 @@
 
 	/* Definir las variables para la conexion al PDO */
 	define('DB_HOST', 'localhost');
-	define('DB_NAME', 'db_crud_pdo');
+	define('DB_NAME', 'db_proyect_appweb');
 	define('DB_USER', 'root');
 	define('DB_PASSWORD', '');
 
