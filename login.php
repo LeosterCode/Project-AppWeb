@@ -17,7 +17,7 @@
                 <label class="label-password">Password</label>
                 <a href="#"><p class="olv">¿Olvidaste tu contraseña?</p></a>
                 <button class="boton-login">Login</button>
-                <p class="reg">¿Aún no estás registrado? <a class="buttons" href="registrar.html">Registarte</a></p>
+                <p class="reg">¿Aún no estás registrado? <a class="buttons" href="registrar.php">Registarte</a></p>
             </form>
         </div>
     </div>
