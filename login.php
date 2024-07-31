@@ -20,7 +20,7 @@
                 <p class="reg">¿Aún no estás registrado? <a class="buttons" href="registrar.html">Registarte</a></p>
             </form>
         </div>
-        <div class="img-login"></div>
+
     </div>
 </body>
 </html>
