@@ -8,175 +8,1255 @@
     src: url(fonts/Montserrat/Montserrat-VariableFont_wght.ttf);
 }
 
-body, html {
-    margin: 0;
-    padding: 0 0 0 0;
-}
 
 
-.campo-1{
-    transition: 2s;
-    display: flex; 
-    flex-direction: row-reverse; 
-    width: 100%;
+/*----------styles de index----------*/
+
+.body-index{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
-    margin: auto;
-    margin-top: auto;
-    background: linear-gradient(rgba(149, 146, 146, 0),rgb(255, 255, 255));
-    border: 2px solid black;
-    box-shadow: 0px 0px 30px 0px rgb(0, 0, 0);
-    
+    margin: 0;
+    background: url("image/index.jpg");
+    background-size: cover;
+    font-family:  "montserrat" ;
+    font-weight: 300;
 }
 
-
-
-.image{
+.container-informacion{
+    width: 80%;
+    height: 80%;
+    background-color: rgba(0, 83, 81, 0.231);
+    border-radius: 15px;
+    display: flex;
+    box-shadow: 0px 0px 30px 0px rgba(12, 92, 0, 0.404);
+}
+.informacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 60%;
     height: 100%;
-    background-color: rgb(0, 30, 255);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-image: url("https://i.redd.it/4vztk5m7p9651.jpg");  
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-color: rgba(45, 45, 45, 0.352);  
+    border-radius: 15px; 
+}
+.informacion p{
+    color: #ffffff;    
+}
 
+.informacion h1{
+    color: #ffffff;    
+}
+
+.img-index{
+    width: 40%;
+    height: 100%;
+    background: url("image/img-index.jpg");
+    background-size: cover;
+    border-radius: 15px;
+
+}
+
+.text{
+    width: 70%;
+    height: 250px;
+    background-color: #00000000;
+}
+
+.text a{
+    background-color: #fefefe;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.text a:hover{
+    background-color: #000000;
+    color: #fefefe;
+    transition: 0.5s;
+}
+
+
+
+
+/*----------styles de login---------*/
+.body-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: url("image/fondo-login.jpg");
+    background-size: cover;
+    font-family:  "montserrat" ;
+    font-weight: 300;
+}
+
+
+.container-login {
+    width: 35%;
+    height: 80%;
+    background-color: rgba(0, 83, 81, 0.231);
+    border-radius: 15px;
+    display: flex;
+    box-shadow: 0px 0px 30px 0px rgb(255, 253, 253);
+    justify-content: center;
+    align-items: center;
 }
 
 .formulario{
-    width: 40%;
-    height: 100%;
-    background-color: rgba(255, 0, 0, 0);
-    padding: 5%;
+    width: 80%;
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.formulario h1{
-    color: #000000;
-    font-family: "montserrat";
+.titulo-login{
+    position: absolute;
+    margin-bottom: 250px;
+    font-size: 50px;
+    color: #fefefe;
     font-weight: 400;
-    margin-top: 25%;
-    text-align: center;
-    margin-bottom: 10%;
+    animation: animacion-input-login 2s ease-out;
 }
 
-.olv-con{
-    color: #2d8f2f;
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+.input-nombre {
+    margin-top: 50px;
+    width: 100%;
+    height: 60px;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 15px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    animation: animacion-input-login 2s ease-out;
+}
+
+.label-nombre {
+    position: absolute;
+    top: 46%;
+    left: 37%;
+    transform: translateY(-49%);
+    color: #FFF;
+    font-size: 19px;
+    pointer-events: none;
+    transition: .3s;
+    background: rgba(0, 0, 0, 0);
+    padding: 0 5px;
+    animation: animacion-input-login 2s ease-out;
+}
+
+.input-nombre:focus {
+    border: 2px solid #ffffff;
+}
+
+.input-nombre:focus ~ .label-nombre,
+.input-nombre:valid ~ .label-nombre {
+    top: 42%;
+    font-size: 17px;
+    background: #19182500;
+    padding: 0 5px;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+.input-password {
+    margin-top: 44px;
+    width: 100%;
+    height: 60px;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 15px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    animation: animacion-input-login 2s ease-out;
+}
+
+.label-password {
+    position: absolute;
+    top: 59%;
+    left: 37%;
+    transform: translateY(-49%);
+    color: #FFF;
+    font-size: 19px;
+    pointer-events: none;
+    transition: .3s;
+    background: rgba(0, 0, 0, 0);
+    padding: 0 5px;
+    animation: animacion-input-login 2s ease-out;
+}
+
+.input-password:focus {
+    border: 2px solid #fefefe;
+}
+
+.input-password:focus ~ .label-password,
+.input-password:valid ~ .label-password {
+    top: 54%;
+    font-size: 17px;
+    background: #19182500;
+    padding: 0 5px;
+}
+
+.olv{
+    position: absolute;
     text-decoration: none;
+    left: 44%;
+    top: 65%;
+    color: #fefefe;
     font-size: 14px;
-    font-family: "montserrat";
-    
+    animation: animacion-input-1 0.9s ease-out ;
 }
 
-.formulario p{
-    margin-top: 5%;
-    text-align: center;
-    font-size: 14px;
-    color: #000000;
+.reg{
+    position: absolute;
     text-decoration: none;
-    font-family: "montserrat";
+    left: 41%;
+    top: 75%;
+    color: #fefefe;
+    animation: animacion-input-1 0.9s ease-out ;
 }
 
-.btn-primary{
-    margin-top: 5%;
-    border: none !important;
-    background-color: #2d8f2f !important;
-    font-family: "montserrat";
-    transition: transform 0.1s ease, box-shadow 0.1s ease; 
-}
-.btn-primary:hover {
-    transform: scale(1.05);
-}
-
-.formulario input{
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
-}
-
-.input:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
-}
-
-/*registrar*/
-
-
-.campo-2{
-    margin: auto;
-    width: 30%;
-    height: 500px;
-    margin-top: 10%;
-    background: linear-gradient(rgba(255, 255, 255, 0.744),rgba(255, 255, 255, 0.744));
-    border: 2px solid black;
-    box-shadow: 0px 0px 30px 0px rgb(0, 0, 0);
+.boton-login{
+    position: absolute;
+    left: 43%;
+    top: 70%;
+    width: 15%;
+    border: none;
     border-radius: 15px;
+    height: 25px;
+    cursor: pointer;
+    animation: animacion-input-1 0.9s ease-out ;
     
 }
 
+@media (max-width: 900px){
+    .container-login{
+        width: 70%;
+        height: 60%;
+        background-color: rgba(6, 0, 0, 0.285);
+        border-radius: 15px;
+        box-shadow: 0px 0px 30px 0px rgb(0, 0, 0);
+    }
 
-.image2{
+    .img-login{
+        display: none;
+    }
+    .formulario{
+        width: 100%;
+        padding: 0 5% 0 5%;
+    }
+    .label-password {
+        position: absolute;
+        top: 59%;
+        left: 22%;
+        transform: translateY(-49%);
+        color: #FFF;
+        font-size: 19px;
+        pointer-events: none;
+        transition: .3s;
+        background: rgba(0, 0, 0, 0);
+        padding: 0 5px;
+    }
+
+    .label-nombre {
+        position: absolute;
+        top: 46%;
+        left: 22%;
+        transform: translateY(-49%);
+        color: #FFF;
+        font-size: 19px;
+        pointer-events: none;
+        transition: .3s;
+        background: rgba(0, 0, 0, 0);
+        padding: 0 5px;
+    }
+    .boton-login{
+        position: absolute;
+        left: 42%;
+        top: 70%;
+        width: 15%;
+        border: none;
+        border-radius: 15px;
+        
+    }
+    
+    .olv{
+        position: absolute;
+        text-decoration: none;
+        left: 22%;
+        top: 65%;
+        width: 50%;
+        color: #fefefe;
+    }
+
+}
+
+.img-login {
+    left: 47%;
     width: 100%;
     height: 100%;
-    background-color: rgb(0, 30, 255);
-    align-items: center;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background: url("https://img.freepik.com/premium-photo/abstract-dark-green-surface-leaves-natural-floral-background-generate-ai_872074-2745.jpg?size=626&ext=jpg&ga=GA1.1.182641494");
+    background-size: cover;
+    animation: animacion-img-login 0.8s ease-out;
+}
+
+.buttons {
+    color: rgb(0, 228, 253);
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+
+
+/*--------------styles de registrar--------------*/
+
+.body-registrar{
+    display: flex;
     justify-content: center;
-    background-image: url("https://i.redd.it/4vztk5m7p9651.jpg");  
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #000000;
+    background: url("image/fondo-login.jpg");
+    background-size: cover; 
+    font-family: "montserrat";
+    font-weight: 300;
+
+}
+
+.container-registrar{
+    width: 35%;
+    height: 80%;
+    background-color: rgba(0, 83, 81, 0.231);
+    border-radius: 15px;
+    display: flex;
+    box-shadow: 0px 0px 30px 0px rgb(255, 253, 253);
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+
+.titulo-registrar{
+    position: absolute;
+    margin-bottom: 600px;
+    font-size: 50px;
+    color: #fefefe;
+    font-family: "montserrat";
+    font-weight: 400;
+    visibility: hidden;
+    animation: animacion-input 2s ease-out ;
+    animation-delay: 0.8s;
+    animation-fill-mode: forwards;
+}
+
+.rega{
+    position: absolute;
+    text-decoration: none;
+    left: 43%;
+    top: 85%;
+    color: #fefefe;
+    animation: animacion-input-1 0.9s ease-out ;
+}
+
+
+.formulario-registrar{
+    width: 80%;
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.boton-registrar{
+    position: absolute;
+    left: 42%;
+    top: 83%;
+    width: 15%;
+    height: 25px;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    animation: animacion-input-1 0.9s ease-out ;
+}
+
+.input-matricula-registrar {
+    margin-top: 30px;
+    width: 100%;
+    height: 45px;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 15px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    animation: animacion-input 2s ease-out;
+    animation-delay: 0.7s;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+}
+
+.label-matricula-registrar {
+    position: absolute;
+    top: 24.5%;
+    left: 37%;
+    transform: translateY(-49%);
+    color: #FFF;
+    font-size: 19px;
+    pointer-events: none;
+    transition: .3s;
+    background: rgba(0, 0, 0, 0);
+    padding: 0 5px;
+    animation: animacion-input 2s ease-out;
+    animation-delay: 0.7s;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+}
+
+.input-matricula-registrar:focus {
+    border: 2px solid #ffffff;
+}
+
+.input-matricula-registrar:focus ~ .label-matricula-registrar,
+.input-matricula-registrar:valid ~ .label-matricula-registrar {
+    top: 20%;
+    font-size: 17px;
+    background: #19182500;
+    padding: 0 5px;
+}
+
+
+.input-nombre-registrar {
+    margin-top: 30px;
+    width: 100%;
+    height: 45px;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 15px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    animation: animacion-input 2s ease-out;
+    animation-delay: 0.6s;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+}
+
+.label-nombre-registrar {
+    position: absolute;
+    top: 33.5%;
+    left: 37%;
+    transform: translateY(-49%);
+    color: #FFF;
+    font-size: 19px;
+    pointer-events: none;
+    transition: .3s;
+    background: rgba(0, 0, 0, 0);
+    padding: 0 5px;
+    animation: animacion-input 2s ease-out;
+    animation-delay: 0.6s;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+}
+
+.input-nombre-registrar:focus {
+    border: 2px solid #ffffff;
+}
+
+.input-nombre-registrar:focus ~ .label-nombre-registrar,
+.input-nombre-registrar:valid ~ .label-nombre-registrar {
+    top: 29.5%;
+    font-size: 17px;
+    background: #19182500;
+    padding: 0 5px;
+}
+
+.input-email-registrar {
+    margin-top: 30px;
+    width: 100%;
+    height: 45px;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 15px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    animation: animacion-input 2s ease-out;
+    animation-delay: 0.5s;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+}
+
+.label-email-registrar{
+    position: absolute;
+    top: 42.5%;
+    left: 37%;
+    transform: translateY(-49%);
+    color: #FFF;
+    font-size: 19px;
+    pointer-events: none;
+    transition: .3s;
+    background: rgba(0, 0, 0, 0);
+    padding: 0 5px;
+    animation: animacion-input 2s ease-out;
+    animation-delay: 0.5s;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+}
+
+.input-email-registrar:focus {
+    border: 2px solid #ffffff;
+}
+
+.input-email-registrar:focus ~ .label-email-registrar,
+.input-email-registrar:valid ~ .label-email-registrar {
+    top: 39%;
+    font-size: 17px;
+    background: #19182500;
+    padding: 0 5px;
+}
+
+
+.input-numero-registrar {
+    margin-top: 30px;
+    width: 100%;
+    height: 45px;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 15px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    animation: animacion-input 2s ease-out;
+    animation-delay: 0.4s;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+}
+
+.label-numero-registrar {
+    position: absolute;
+    top: 52%;
+    left: 37%;
+    transform: translateY(-49%);
+    color: #FFF;
+    font-size: 19px;
+    pointer-events: none;
+    transition: .3s;
+    background: rgba(0, 0, 0, 0);
+    padding: 0 5px;
+    animation: animacion-input 2s ease-out;
+    animation-delay: 0.4s;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+}
+
+.input-numero-registrar:focus {
+    border: 2px solid #ffffff;
+}
+
+.input-numero-registrar:focus ~ .label-numero-registrar,
+.input-numero-registrar:valid ~ .label-numero-registrar {
+    top: 48%;
+    font-size: 17px;
+    background: #19182500;
+    padding: 0 5px;
+}
+
+.input-carrera-registrar{
+    margin-top: 30px;
+    width: 100%;
+    height: 45px;
+    border-radius: 6px;
+    font-size: 18px;
+    padding-left: 15px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    animation: animacion-input 2s ease-out;
+    animation-delay: 0.3s;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+    text-decoration: none;
+}
+
+.input-carrera-registrar option{
+    background-color: rgba(14, 61, 0, 0.1);
+    color: #000000;
+    font-weight: normal;
+}
+
+
+.label-carrera-registrar {
+    position: absolute;
+    top: 60.5%;
+    left: 37%;
+    transform: translateY(-49%);
+    color: #FFF;
+    font-size: 19px;
+    pointer-events: none;
+    transition: .3s;
+    background: rgba(0, 0, 0, 0);
+    padding: 0 5px;
+    animation: animacion-input 2s ease-out;
+    animation-delay: 0.3s;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+}
+
+
+.input-carrera-registrar:focus {
+    border: 2px solid #ffffff;
+}
+
+.input-carrera-registrar:focus ~ .label-carrera-registrar,
+.input-carrera-registrar:valid ~ .label-carrera-registrar {
+    top: 57%;
+    font-size: 17px;
+    background: #19182500;
+    padding: 0 5px;
+}
+
+
+.input-edificio-registrar {
+    margin-top: 30px;
+    width: 100%;
+    height: 45px;
+    padding-left: 15px;
+    border-radius: 6px;
+    font-size: 18px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    animation: animacion-input 2s ease-out;
+    animation-delay: 0.2s;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+}
+
+.input-edificio-registrar option{
+    background-color: rgba(14, 61, 0, 0.1);
+    color: #000000;
+    font-weight: normal;
+}
+
+
+.label-edificio-registrar {
+    position: absolute;
+    top: 69.5%;
+    left: 37%;
+    transform: translateY(-49%);
+    color: #FFF;
+    font-size: 19px;
+    pointer-events: none;
+    transition: .3s;
+    background: rgba(0, 0, 0, 0);
+    padding: 0 5px;
+    animation: animacion-input 2s ease-out;
+    animation-delay: 0.2s;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+}
+
+.input-edificio-registrar:focus {
+    border: 2px solid #ffffff;
+}
+
+.input-edificio-registrar:focus ~ .label-edificio-registrar,
+.input-edificio-registrar:valid ~ .label-edificio-registrar {
+    top: 66%;
+    font-size: 17px;
+    background: #19182500;
+    padding: 0 5px;
+}
+
+.input-password-registrar {
+    margin-top: 30px;
+    width: 100%;
+    height: 45px;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 15px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    animation: animacion-input 2s ease-out;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+}
+
+.label-password-registrar{
+    position: absolute;
+    top: 78.5%;
+    left: 37%;
+    transform: translateY(-49%);
+    color: #FFF;
+    font-size: 19px;
+    pointer-events: none;
+    transition: .3s;
+    background: rgba(0, 0, 0, 0);
+    padding: 0 5px;
+    animation: animacion-input 2s ease-out;
+    visibility: hidden;
+    animation-fill-mode: forwards;
+}
+
+.input-password-registrar:focus {
+    border: 2px solid #ffffff;
+}
+
+.input-password-registrar:focus ~ .label-password-registrar,
+.input-password-registrar:valid ~ .label-password-registrar {
+    top: 75%;
+    font-size: 17px;
+    background: #19182500;
+    padding: 0 5px;
+}
+
+
+
+/*--------------animaciones---------*/
+
+
+@keyframes animacion-img-login {
+    from {
+    transform: translateX(-500px);
+    }
+    to {
+    visibility: visible;
+    }
+}
+
+@keyframes animacion-input-login {
+    from {
+    transform: translateY(-800px);
+    }
+    to {
+    opacity: 1s;
+    }
+}
+
+@keyframes animacion-img-registrar {
+    from {
+    transform: translate(500px);
+    }
+    to {
+    opacity: 1s;
+    }
+}
+
+@keyframes animacion-input {
+    0% {
+    transform: translateY(-800px);
+    }
+    100% {
+    visibility: visible;
+    }
+}
+
+@keyframes animacion-input-1 {
+    from {
+    transform: translateY(50px);
+    }
+    to {
+    opacity: 1s;
+    }
+}
+
+/*--------------animaciones---------*/
+
+
+
+
+
+/*----------styles de index---------*/
+
+.body-index{
+    margin: 0px;
+    padding: 0px;
+    background-color: #000000;
+    font-family:  "montserrat" ;
+}
+
+
+.navbar label{
+    cursor: pointer;
+}
+
+.container .card{
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    background-color: #03030390;
+}
+
+.container .card p{
+    color: white;
+}
+.container .card a{
+    text-align: center;
+}
+
+.custom-anchor {
+    width: 800px; 
+    height: auto; 
+    max-height: 800px; 
+    overflow-y: auto; 
+}
+
+
+.custom-anchor .dropdown-item {
+    padding: 10px 20px; 
+    font-size: 16px; 
+}
+
+.custom-anchor a{
+    border-left: 5px solid rgba(0, 0, 0, 0);
+}
+
+.custom-anchor .dropdown-item:hover{
+    border-left: 5px solid rgb(255, 255, 255);
+    transition: 0.8s;
+    
+}
+.color-bg{
+    background-color: #000000;
+}
+
+
+.carousel-background {
+    height: 80vh; 
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    transition: transform 0.8s ease, filter 0.2s ease; 
+}
+
+.carousel-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.position{
+    width: 500px;
+    margin: auto;
+}
+.close{
+    margin-right: 20px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.categorias{
+    margin: auto;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.body-vender{
+    background-color: #000000;
+    padding: 0% 0% 0% 0%;
+}
+
+
+.container-img{
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 850px;
+    background-color: #fefefe00;
+    background-size: cover;
     background-attachment: fixed;
 }
 
-.formulario2{
-    margin: auto;
-    width: 70%;
-    height: 100%;
+.cards{
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    padding: 20px 100px 50px 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 80px;
+
+}
+.card-body{
+    border: none;
+    background-color: #333333fe;
+    
+}
+.card-body p{
+    color: #fefefe;
+}
+.card-body h5{
+    color: #fefefe;
+}
+
+.card img{
+    width: 100%;
+    height: 200px;
+}
+
+.card a{
+    border: none;
+    background-color: #000000;
+    width: 100%;
+    transition: 0.9s;
+}
+
+.card a:hover{
+    color: #000000;
+    background-color: #ffffffdb;
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(255, 98, 0, 0.2); 
+}
+
+
+
+footer {
+    border-top: 1px solid white ; 
+    background-color: #000000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.footer-content a:hover{
+    color: #989898;
+}
+.footer-content h4{
+    text-align: center;
+}
+
+.footer-content a{
+    transition: 0.9s;
+}
+.footer-content svg{
+    width: 30px;
+    fill: rgb(255, 255, 255);
+    transition: 0.9s;
     background-color: rgba(255, 0, 0, 0);
+}
+
+.footer-links{
+    background-color: #000000;
+    text-align: left;
+}
+
+.footer-links a{
+    text-decoration: none;
+    color: #FFF;
+}
+
+.footer-social{
+    background-color: #000000;
+    text-align: left;
+    gap: 15px;
+}
+
+.footer-social a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.input-newsletter {
+    width: 100%;
+    height: 60px;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 15px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.boton-newsletter{
+    margin-top: 10px;
+    height: 25px;
+    cursor: pointer;
+    border: none;
+    background-color: #FFF;
+}
+
+#btn-modal{
+    display: none;
+}
+
+.container-modal{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0; left: 0;
+    background-color: rgba(62, 59, 59, 0.276);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+#btn-modal:checked ~ .container-modal{
+    display: flex;
+}
+.content-modal{
+    width: 100%;
+    max-width: 600px;
+    height: 550px;
+    padding: 20px;
+    background-color: #000000;
+    border-radius: 15px;
+    border: 1px solid white;
+}
+.content-modal h2{
+    text-align: center;
+    color: #FFF;
+}
+.content-modal p{
+    color: #FFF;
+    padding: 15px 0px;
+}
+
+.content-modal .btn-cerrar label{
+    left: 68%;
+    bottom: 80%;
+    position: absolute;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    
+}
+.content-modal .btn-cerrar label:hover{
+    background-color:#4b4b4b;
+}
+
+.modal-products{
+    width: 100%;
+    height: 400px; 
+    overflow: auto;
+    padding: 10px; 
+}
+
+.add-products{
+    margin-top: 15px;
+    width: 100%;
+    height: 100px;
+    background-color: #494949;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.add-products img{
+    background-color: #fefefe00;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+}
+
+.add-products table{
+    color: #fefefe;
+}
+
+.add-products th{
+    background-color: #3e3e3e;
+}
+
+.add-products td{
+    padding: 15px 0px;
+    border-top: 1px solid white;
+    background-color: #757575;
+}
+.total-row td {
+    padding-right: 20px;
+    text-align: right;
+}
+
+@media screen and (max-width:800px) {
+    .content-modal{
+        width: 90%;
+    }
+}
+
+
+.title-categorias h1{
+    margin-top: 5%;
+    text-align: center;
+    color: #fefefe;
+    font-size: 90px;
+}
+.title-productos h1{
+    
+    text-align: center;
+    color: #fefefe;
+    font-size: 80px;
+}
+
+.categoriass{
+    width: 100%;
+    height: 100%;
+    padding: 5%;
+    background-color: #000000;
+    gap: 25px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    
+}
+.categoriass div{
+    transition: 0.9s;
+}
+
+.categoriass div:hover{
+    transform: scale( 1.03);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.724); 
+}
+.categoriass img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.audifonos{
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+
+}
+
+.computadoras{
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+
+}
+
+.celulares{
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+
+}
+
+.teclados{
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+
+}
+
+
+@media (max-width: 1000px){
+    .categoriass{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
+
+    .title-categorias h1{
+        margin-top: 5%;
+        text-align: center;
+        color: #fefefe;
+        font-size: 50px;
+    }
+    .title-productos h1{
+        
+        text-align: center;
+        color: #fefefe;
+        font-size: 50px;
+    }
+
+    .footer-social{
+        padding: 0%;
+        background-color: #000000;
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
+    .footer-social a{
+        text-decoration: none;
+        color: #ffffff;
+    }
+    
     
 }
 
-.formulario2 h1{
-    color: #000000;
-    font-family: "montserrat";
-    font-weight: 400;
-    margin-top: 25%;
-    text-align: center;
-    margin-bottom: 10%;
+.button-more {
+    top: 85%;
+    left: 10px;
+    z-index: 1;
+    position: absolute;
+    font-size: inherit;
+    font-family: inherit;
+    color: white;
+    padding: 0.5em 1em;
+    outline: none;
+    border: none;
+    background-color: hsl(0, 0%, 4%);
+    border: 1px solid white;
 }
 
-.olv-con{
-    color: #2d8f2f;
-    text-decoration: none;
-    font-size: 14px;
-    font-family: "montserrat";
-    
+.button-more::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    transform-origin: center right;
+    transform: scaleX(0);
+    transition: transform 0.25s ease-in-out;
 }
 
-.formulario2 p{
-    margin-top: 5%;
-    text-align: center;
-    font-size: 14px;
-    color: #000000;
-    text-decoration: none;
-    font-family: "montserrat";
+.button-more:hover {
+    cursor: pointer;
+    color: rgb(0, 0, 0);
 }
 
-.btn-primary{
-    margin-top: 5%;
-    border: none !important;
-    background-color: #2d8f2f !important;
-    font-family: "montserrat";
-    transition: transform 0.1s ease, box-shadow 0.1s ease; 
-}
-.btn-primary:hover {
-    transform: scale(1.05);
+.button-more:hover::before {
+    transform-origin: center left;
+    transform: scaleX(1);
 }
 
-.formulario2 input{
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
-}
 
-.input:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
-}
+
