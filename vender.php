@@ -34,7 +34,7 @@
 
             <div class="d-grid gap-2 col-6 mx-auto">
                 <button class="btn btn-primary" type="button">Publicar</button>
-                <a class="btn btn-primary" type="button" href="index.html">Regresar</a>
+                <a class="btn btn-primary" type="button" href="main_window.php">Regresar</a>
             </div>
         </form>
     </div>
