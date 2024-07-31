@@ -9,8 +9,8 @@
 <body class="body-login">
     <div class="container-login">
         <div class="formulario">
-            <h1 class="titulo-login">Login</h1>
             <form action="">
+                <h1 class="titulo-login">Login</h1>
                 <input class="input-nombre" type="email" required spellcheck="false">
                 <label class="label-nombre">Email</label>
                 <input class="input-password" type="password" required spellcheck="false">
