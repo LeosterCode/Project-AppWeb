@@ -10,9 +10,9 @@
     <div class="container-registrar">
         <div class="img-registrar"></div>
         <div class="formulario-registrar start">
-            <h1 class="titulo-registrar">Register</h1>
+            
             <form action="">
-
+                <h1 class="titulo-registrar">Register</h1>
                 <input class="input-matricula-registrar" type="text" required spellcheck="false">
                 <label class="label-matricula-registrar">Matricula</label>
 
