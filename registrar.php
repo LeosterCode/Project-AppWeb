@@ -61,7 +61,7 @@
                 <label class="label-password-registrar">Password</label>
     
                 <button class="boton-registrar">Register</button>
-                <p class="rega">¿Ya tienes cuenta? <a href="login.html" class="buttons">Login</a></p>
+                <p class="rega">¿Ya tienes cuenta? <a href="login.php" class="buttons">Login</a></p>
             </form>  
         </div>
         
