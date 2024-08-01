@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>App Web</title>
+	<title>ChiChop</title>
 	<meta charset="utf-8">
 	<!-- Icono del Sitio Web -->
 	<link rel="icon" href="images/icon utc.png">
@@ -18,7 +18,7 @@
 
 	/* Definir las variables para la conexion al PDO */
 	define('DB_HOST', 'localhost');
-	define('DB_NAME', 'db_proyect_appweb');
+	define('DB_NAME', 'db_webapp_project');
 	define('DB_USER', 'root');
 	define('DB_PASSWORD', '');
 

@@ -1,3 +1,21 @@
+<?php
+require 'db_conexion.php';
+session_start();
+ if (isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $search = $cnnPDO->prepare('SELECT * FROM user WHERE email = ? AND password = ? ');
+    $search -> execute([$email,$password]);
+    $count = $search -> rowCount();
+    $colum = $search ->fetch();
+    
+    if ($count) {
+        header("location:main_window.php");
+    }
+ } 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,14 +27,14 @@
 <body class="body-login">
     <div class="container-login">
         <div class="formulario">
-            <form action="">
+            <form action="" method="post">
                 <h1 class="titulo-login">Login</h1>
-                <input class="input-nombre" type="email" required spellcheck="false">
+                <input name="email" class="input-nombre" type="email" required spellcheck="false">
                 <label class="label-nombre">Email</label>
-                <input class="input-password" type="password" required spellcheck="false">
+                <input name="password" class="input-password" type="password" required spellcheck="false">
                 <label class="label-password">Password</label>
                 <a href="#"><p class="olv">¿Olvidaste tu contraseña?</p></a>
-                <button class="boton-login">Login</button>
+                <button name="login" class="boton-login">Login</button>
                 <p class="reg">¿Aún no estás registrado? <a class="buttons" href="registrar.php">Registarte</a></p>
             </form>
         </div>

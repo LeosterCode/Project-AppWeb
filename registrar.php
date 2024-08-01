@@ -1,3 +1,36 @@
+<?php
+require 'db_conexion.php';
+session_start();
+if (isset($_POST['signup'])) {
+    $student_id = $_POST['student_id'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $career = $_POST['career'];
+    $building = $_POST['building'];
+    $password = $_POST['password'];
+
+    if (!empty($student_id) && !empty($name) && !empty($email) && !empty($phone) && !empty($career) && !empty($building) && !empty($password)){
+        
+        $insert = $cnnPDO -> prepare("INSERT INTO user (student_id, name, email, phone, career, building, password) VALUES (:student_id, :name, :email, :phone, :career, :building, :password)");
+
+        $insert ->bindParam(':student_id',$student_id);
+        $insert ->bindParam(':name',$name);
+        $insert ->bindParam(':email',$email);
+        $insert ->bindParam(':phone',$phone);
+        $insert ->bindParam(':career',$career);
+        $insert ->bindParam(':building',$building);
+        $insert ->bindParam(':password',$password);
+        $insert ->execute();
+        unset($insert);
+        unset($cnnPDO);
+
+        header("location:login.php");
+
+    }
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,23 +44,23 @@
         <div class="img-registrar"></div>
         <div class="formulario-registrar start">
             
-            <form action="">
+            <form action="" method="post" >
                 <h1 class="titulo-registrar">Register</h1>
-                <input class="input-matricula-registrar" type="text" required spellcheck="false">
+                <input name="student_id" class="input-matricula-registrar" type="text" required spellcheck="false">
                 <label class="label-matricula-registrar">Matricula</label>
 
-                <input class="input-nombre-registrar" type="text" required spellcheck="false">
+                <input name="name" class="input-nombre-registrar" type="text" required spellcheck="false">
                 <label class="label-nombre-registrar">Nombre</label>
     
-                <input class="input-email-registrar" type="email" required spellcheck="false">
+                <input name="email" class="input-email-registrar" type="email" required spellcheck="false">
                 <label class="label-email-registrar">Email</label>
 
-                <input class="input-numero-registrar" type="text" required spellcheck="false">
+                <input name="phone" class="input-numero-registrar" type="text" required spellcheck="false">
                 <label class="label-numero-registrar">Numero</label>
 
 
-                <select class="input-carrera-registrar">
-                    <option value="opcion1"><p>Carrera</p></option>
+                <select name="career" class="input-carrera-registrar">
+                    <option value="opcion1"><p>Selecciona tu carrera...</p></option>
                     <option value="opcion2"><p>Innovación de Negocios y Mercadotecnia</p></option>
                     <option value="opcion3"><p>Diseño y Gestión de Redes Logísticas</p></option>
                     <option value="opcion4"><p>Biotecnología</p></option>
@@ -46,8 +79,8 @@
 
                 <label class="label-carrera-registrar">Carrera</label>
 
-                <select class="input-edificio-registrar">
-                    <option value="opcion1"><p>Edificio</p></option>
+                <select name="building" class="input-edificio-registrar">
+                    <option value="opcion1"><p>Selecciona tu edificio...</p></option>
                     <option value="opcion2"><p>Edificio 1</p></option>
                     <option value="opcion3"><p>Edificio 2</p></option>
                     <option value="opcion4"><p>Edificio 3</p></option>
@@ -57,10 +90,10 @@
                 <label class="label-edificio-registrar">Edificio</label>
 
 
-                <input class="input-password-registrar" type="password" required spellcheck="false">
+                <input name="password" class="input-password-registrar" type="password" required spellcheck="false">
                 <label class="label-password-registrar">Password</label>
     
-                <button class="boton-registrar">Register</button>
+                <button name="signup" class="boton-registrar">Register</button>
                 <p class="rega">¿Ya tienes cuenta? <a href="login.php" class="buttons">Login</a></p>
             </form>  
         </div>
