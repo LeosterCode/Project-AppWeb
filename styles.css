@@ -1090,18 +1090,33 @@ footer {
 
 
 .body-vender{
-    background-color: #000000;
-    padding: 1% 0% 0% 0%;
+    background: url("image/index.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    padding: 3% 0% 0% 0%;
 }
 
-
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
 .container-vender{
     width: 30%;
     height: 750px;
     margin: auto;
-    background-color: aqua;
+    background-color: rgba(0, 187, 255, 0.176);
     border-radius: 15px;
     padding: 2%;
+    border: 1px solid white;
+    box-shadow: 0px 0px 30px 0px rgba(0, 179, 255, 0.404);
+    color: #FFF;
+}
+
+
+.container-vender h1{
+    text-align: center;
+    color: #FFF;
 }
 
 .seleccionar-imagen{
