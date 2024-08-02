@@ -33,7 +33,7 @@ session_start();
                         
                         <li><a class="dropdown-item" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M200-80q-33 0-56.5-23.5T120-160v-451q-18-11-29-28.5T80-680v-120q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v120q0 23-11 40.5T840-611v451q0 33-23.5 56.5T760-80H200Zm0-520v440h560v-440H200Zm-40-80h640v-120H160v120Zm200 280h240v-80H360v80Zm120 20Z"/></svg>   Mis productos
                         </a></li>
-                        <li><a class="dropdown-item" href="#"> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M185-80q-17 0-29.5-12.5T143-122v-105q0-90 56-159t144-88q-40 28-62 70.5T259-312v190q0 11 3 22t10 20h-87Zm147 0q-17 0-29.5-12.5T290-122v-190q0-70 49.5-119T459-480h189q70 0 119 49t49 119v64q0 70-49 119T648-80H332Zm148-484q-66 0-112-46t-46-112q0-66 46-112t112-46q66 0 112 46t46 112q0 66-46 112t-112 46Z"/></svg>  Acerca de nosotros
+                        <li><a class="dropdown-item" href="#footer"> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M185-80q-17 0-29.5-12.5T143-122v-105q0-90 56-159t144-88q-40 28-62 70.5T259-312v190q0 11 3 22t10 20h-87Zm147 0q-17 0-29.5-12.5T290-122v-190q0-70 49.5-119T459-480h189q70 0 119 49t49 119v64q0 70-49 119T648-80H332Zm148-484q-66 0-112-46t-46-112q0-66 46-112t112-46q66 0 112 46t46 112q0 66-46 112t-112 46Z"/></svg>  Acerca de nosotros
                         </a></li>
                         </ul>
                     </li>
@@ -45,7 +45,7 @@ session_start();
                         <div class="content-modal-perfil">
                           <div class="mi-perfil">
                             <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="">
-                            <h5>Nombre: PePito</h5>
+                            <h5><?php echo $_SESSION['name']; ?> </h5>
                             <ul class="menu">
                               <li><a href="#">Mis Publicaciones</a></li>
                               <li><a href="#">Mis Pedidos</a></li>
@@ -106,7 +106,7 @@ session_start();
                         <label for="btn-modal" class="cerrar-modal"></label>
                     </div>
                     
-                    <a class="close" href="login.html"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg>cerrar Sesion</a>
+                    <a class="close" href="logout.php"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg>cerrar Sesion</a>
                 </div>
             </div>
         </nav>
@@ -188,7 +188,7 @@ session_start();
       </div>
     </div>
 
-    <footer>
+    <footer id="footer">
       <h1>Información sobre la página</h1>
       <br>
       <div class="footer-content">

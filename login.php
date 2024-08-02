@@ -1,6 +1,7 @@
 <?php
-require 'db_conexion.php';
 session_start();
+require 'db_conexion.php';
+
  if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -11,6 +12,7 @@ session_start();
     $colum = $search ->fetch();
     
     if ($count) {
+        $_SESSION['name'] = $colum['name'];
         header("location:main_window.php");
     }
  } 

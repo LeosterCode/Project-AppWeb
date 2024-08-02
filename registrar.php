@@ -1,6 +1,5 @@
 <?php
 require 'db_conexion.php';
-session_start();
 if (isset($_POST['signup'])) {
     $student_id = $_POST['student_id'];
     $name = $_POST['name'];
@@ -60,31 +59,31 @@ if (isset($_POST['signup'])) {
 
 
                 <select name="career" class="input-carrera-registrar">
-                    <option value="opcion1"><p>Selecciona tu carrera...</p></option>
-                    <option value="opcion2"><p>Innovación de Negocios y Mercadotecnia</p></option>
-                    <option value="opcion3"><p>Diseño y Gestión de Redes Logísticas</p></option>
-                    <option value="opcion4"><p>Biotecnología</p></option>
-                    <option value="opcion5"><p>Confiabilidad de Planta</p></option>
-                    <option value="opcion6"><p>Desarrollo y Gestión de Software</p></option>
-                    <option value="opcion7"><p>Entornos Virtuales y Negocios Digitales</p></option>
-                    <option value="opcion8"><p>Energías Renovables</p></option>
-                    <option value="opcion9"><p>Mecatrónica</p></option>
-                    <option value="opcion10"><p>Metal Mecánica</p></option>
-                    <option value="opcion11"><p>Nanotecnología</p></option>
-                    <option value="opcion12"><p>Procesos y Operaciones Industriales</p></option>
-                    <option value="opcion13"><p>Redes Inteligentes y Ciberseguridad</p></option>
-                    <option value="opcion14"><p>Seguridad Ambiental Sustentable</p></option>
-                    <option value="opcion15"><p>Maestría en Ingeniería para la Manufactura Inteligente</p></option>
+                    <option selected><p>Selecciona tu carrera...</p></option>
+                    <option value="Innovación de Negocios y Mercadotecnia"><p>Innovación de Negocios y Mercadotecnia</p></option>
+                    <option value="Diseño y Gestión de Redes Logísticas"><p>Diseño y Gestión de Redes Logísticas</p></option>
+                    <option value="Biotecnología"><p>Biotecnología</p></option>
+                    <option value="Confiabilidad de Planta"><p>Confiabilidad de Planta</p></option>
+                    <option value="Desarrollo y Gestión de Software"><p>Desarrollo y Gestión de Software</p></option>
+                    <option value="Entornos Virtuales y Negocios Digitales"><p>Entornos Virtuales y Negocios Digitales</p></option>
+                    <option value="Energías Renovables"><p>Energías Renovables</p></option>
+                    <option value="Mecatrónica"><p>Mecatrónica</p></option>
+                    <option value="Metal Mecánica"><p>Metal Mecánica</p></option>
+                    <option value="Nanotecnología"><p>Nanotecnología</p></option>
+                    <option value="Procesos y Operaciones Industriales"><p>Procesos y Operaciones Industriales</p></option>
+                    <option value="Redes Inteligentes y Ciberseguridad"><p>Redes Inteligentes y Ciberseguridad</p></option>
+                    <option value="Seguridad Ambiental Sustentable"><p>Seguridad Ambiental Sustentable</p></option>
+                    <option value="Maestría en Ingeniería para la Manufactura Inteligente"><p>Maestría en Ingeniería para la Manufactura Inteligente</p></option>
                 </select>
 
                 <label class="label-carrera-registrar">Carrera</label>
 
                 <select name="building" class="input-edificio-registrar">
-                    <option value="opcion1"><p>Selecciona tu edificio...</p></option>
-                    <option value="opcion2"><p>Edificio 1</p></option>
-                    <option value="opcion3"><p>Edificio 2</p></option>
-                    <option value="opcion4"><p>Edificio 3</p></option>
-                    <option value="opcion5"><p>Edificio 4</p></option>
+                    <option selected><p>Selecciona tu edificio...</p></option>
+                    <option value="Edifico 1"><p>Edificio 1</p></option>
+                    <option value="Edifico 2"><p>Edificio 2</p></option>
+                    <option value="Edifico 3"><p>Edificio 3</p></option>
+                    <option value="Edifico 4"><p>Edificio 4</p></option>
                 </select>
 
                 <label class="label-edificio-registrar">Edificio</label>
