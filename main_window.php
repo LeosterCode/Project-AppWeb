@@ -37,8 +37,28 @@ session_start();
                         </a></li>
                         </ul>
                     </li>
-                    <a class="categorias" class="dropdown-item " href="#"> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M120-520v-320h320v320H120Zm0 400v-320h320v320H120Zm400-400v-320h320v320H520Zm0 400v-320h320v320H520ZM200-600h160v-160H200v160Zm400 0h160v-160H600v160Zm0 400h160v-160H600v160Zm-400 0h160v-160H200v160Zm400-400Zm0 240Zm-240 0Zm0-240Z"/></svg>  Categorias
-                    </a>
+                    <label class="close perfil-modal" for="btn-modal-perfil" class="dropdown-item" ><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/></svg>  perfil </label>
+
+
+                    <input type="checkbox" id="btn-modal-perfil">
+                    <div class="container-modal-perfil">
+                        <div class="content-modal-perfil">
+                          <div class="mi-perfil">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="">
+                            <h5>Nombre: PePito</h5>
+                            <ul class="menu">
+                              <li><a href="#">Mis Publicaciones</a></li>
+                              <li><a href="#">Mis Pedidos</a></li>
+                              <li><a href="#">Historial De Compras</a></li>
+                              <li><a href="#">Cambiar Contraseña</a></li>
+                              <li><a href="#">Editar perfil</a></li>
+                          </ul>
+                          </div>
+                        </div>
+                        <label for="btn-modal-perfil" class="cerrar-modal-perfil"></label>
+                    </div>
+
+
                     </ul>
                     <form class="d-flex position" role="search">
                     <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search" >
@@ -80,7 +100,7 @@ session_start();
                             </div>
                             <button class="boton-comprar">comprar</button>
                             <div class="btn-cerrar">
-                                <label for="btn-modal"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></label>
+                                <label for="btn-modal">cerrar</label>
                             </div>
                         </div>
                         <label for="btn-modal" class="cerrar-modal"></label>
@@ -136,20 +156,23 @@ session_start();
     <div class="title-categorias"><h1>Categorias</h1></div>
     <div class="categoriass">
       <div class="audifonos">
-        <img src="image/audifonos.png" alt="">
-        <button class="button-more">MORE</button>
+        <a href="#">
+          <img src="image/audifonos.png" alt="">
+        </a>
       </div>
       <div class="computadoras">
-        <img src="image/computadoras.png" alt="">
-        <button class="button-more">MORE</button>
+        <a href="#">
+          <img src="image/computadoras.png" alt="">
+        </a>
       </div>
       <div class="celulares">
-        <img src="image/celulares.png" alt="">
-        <button class="button-more">MORE</button>
+        <a href="#"><img src="image/celulares.png" alt="">
+        </a>
       </div>
       <div class="teclados">
-        <img src="image/Electrodomesticos.png" alt="">
-        <button class="button-more">MORE</button>
+        <a href="#">
+          <img src="image/Electrodomesticos.png" alt="">
+        </a>
       </div>
     </div>
 
@@ -163,7 +186,6 @@ session_start();
           <a href="#" class="btn btn-primary">Añadir al carrito</a>
         </div>
       </div>
-      
     </div>
 
     <footer>
