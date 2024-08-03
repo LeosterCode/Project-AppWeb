@@ -32,8 +32,13 @@ if(isset($_POST['reg_prod'])){
         <h1> VENDER</h1>
         <form action="">
             <div>
+<<<<<<< HEAD
                 <label for="formFileLg" class="form-label text-bg-dark">Seleccione Una Imagen Del Poducto</label>
                 <input name="image1" class="form-control form-control-lg text-bg-dark" id="formFileLg" type="file">
+=======
+                <label for="formFileLg" class="form-label">Seleccione Una Imagen Del Poducto</label>
+                <input name="image1" class="form-control form-control-lg" id="formFileLg" type="file">
+>>>>>>> c93bc798217d3bf373a2c124862b817b978e92ca
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Titulo</label>
@@ -54,15 +59,26 @@ if(isset($_POST['reg_prod'])){
                 $select -> execute();
                 $count = $select-> rowCount();
                 $colum = $select -> fetchAll();
+<<<<<<< HEAD
                 foreach ($colum as $data) {
                 echo '<option value="'.htmlentities($data['id_category']).'">'.htmlentities($data['name_category']).'</option>';
                 }
+=======
+                 foreach ($colum as $data) {
+                echo '<option value="'.htmlentities($data['id_category']).'">'.htmlentities($data['name_category']).'</option>';
+                 }
+>>>>>>> c93bc798217d3bf373a2c124862b817b978e92ca
 ?>                
             </select>
 
             <div class="d-grid gap-2 col-6 mx-auto">
+<<<<<<< HEAD
                 <button name="reg_prod" class="btn btn-success" type="button">Publicar</button>
                 <a  class="btn btn-success" type="button" href="main_window.php">Regresar</a>
+=======
+                <button name="reg_prod" class="btn btn-primary" type="button">Publicar</button>
+                <a  class="btn btn-primary" type="button" href="main_window.php">Regresar</a>
+>>>>>>> c93bc798217d3bf373a2c124862b817b978e92ca
             </div>
         </form>
     </div>
