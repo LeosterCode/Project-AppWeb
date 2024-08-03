@@ -12,6 +12,7 @@ require 'db_conexion.php';
     $colum = $search ->fetch();
     
     if ($count) {
+        $_SESSION['student_id'] = $colum['student_id'];
         $_SESSION['name'] = $colum['name'];
         header("location:main_window.php");
     }
