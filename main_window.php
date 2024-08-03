@@ -46,8 +46,9 @@ session_start();
                           <div class="mi-perfil">
                             <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="">
                             <h5><?php echo $_SESSION['name']; ?> </h5>
+                            <h5><?php echo $_SESSION['student_id']; ?> </h5>
                             <ul class="menu">
-                              <li><a href="#">Mis Publicaciones</a></li>
+                              <li><a href="my_products.php">Mis Publicaciones</a></li>
                               <li><a href="#">Mis Pedidos</a></li>
                               <li><a href="#">Historial De Compras</a></li>
                               <li><a href="#">Cambiar Contraseña</a></li>

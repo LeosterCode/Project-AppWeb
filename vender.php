@@ -2,15 +2,47 @@
 require 'db_conexion.php';
 session_start();
 if(isset($_POST['reg_prod'])){
-    $id_product = $_POST['id_product'];
+    $id_product = rand(1,99);
+    $student_id = $_SESSION['student_id'];
     $name_product = $_POST['name_product'];
     $description = $_POST['description'];
-    $price = $_POST['price'];
+    $price = 99;
     $stock = $_POST['stock'];
     $id_category = $_POST['id_category'];
 
-    $insert = $cnnPDO -> prepare('INSERT INTO product(id_product, name_product, description, price, stock, id_category) 
-    VALUES ()');
+    $id_images = $id_product;
+    $load_image = $_FILES['image1']['tmp_name'];
+    $image_1 = fopen($load_image,'rb');
+
+    if(!empty($image_1) && !empty($name_product) && !empty($description) && !empty($stock) && !empty($id_category)){
+
+        $insert1 = $cnnPDO -> prepare('INSERT INTO product(id_product, student_id, name_product, description, price, stock, id_category) 
+        VALUES (:id_product, :student_id, :name_product, :description, :price, :stock, :id_category)');
+
+        $insert2 = $cnnPDO -> prepare('INSERT INTO image (id_images, id_product, image_1)  
+        VALUES (:id_images, :id_product, :image_1)');
+
+        $insert1->bindParam(':id_product',$id_product);
+        $insert1->bindParam(':student_id',$student_id);
+        $insert1->bindParam(':name_product',$name_product);
+        $insert1->bindParam(':description',$description);
+        $insert1->bindParam(':price',$price);
+        $insert1->bindParam(':stock',$stock);
+        $insert1->bindParam(':id_category',$id_category);
+
+        $insert2->bindParam(':id_images',$id_images);
+        $insert2->bindParam(':id_product',$id_product);
+        $insert2->bindParam(':image_1',$image_1, PDO::PARAM_LOB);
+
+
+        $insert1->execute();
+        $insert2->execute();
+        unset($insert);
+        unset($insert2);
+        unset($cnnPDO);
+
+        header('location:main_window.php');
+    }
 }
 
 
@@ -30,55 +62,39 @@ if(isset($_POST['reg_prod'])){
 <body class="body-vender">
     <div class="container-vender">
         <h1> VENDER</h1>
-        <form action="">
+        <form method="post" enctype="multipart/form-data">
             <div>
-<<<<<<< HEAD
                 <label for="formFileLg" class="form-label text-bg-dark">Seleccione Una Imagen Del Poducto</label>
-                <input name="image1" class="form-control form-control-lg text-bg-dark" id="formFileLg" type="file">
-=======
-                <label for="formFileLg" class="form-label">Seleccione Una Imagen Del Poducto</label>
-                <input name="image1" class="form-control form-control-lg" id="formFileLg" type="file">
->>>>>>> c93bc798217d3bf373a2c124862b817b978e92ca
+                <input name="image1" accept="image/jpg" class="form-control form-control-lg text-bg-dark" id="formFileLg" type="file">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Titulo</label>
-                <input type="text" class="form-control text-bg-dark" id="exampleFormControlInput1" placeholder="Titulo Del Producto">
+                <input name="name_product" type="text" class="form-control text-bg-dark" id="exampleFormControlInput1" placeholder="Titulo Del Producto">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
-                <textarea class="form-control text-bg-dark" id="exampleFormControlTextarea1" rows="3" placeholder="Escriba una Descripcion"></textarea>
+                <textarea name="description" class="form-control text-bg-dark" id="exampleFormControlTextarea1" rows="3" placeholder="Escriba una Descripcion"></textarea>
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Stock</label>
-                <input type="number" class="form-control text-bg-dark" id="exampleFormControlInput1" placeholder="Stock">
+                <input name="stock" type="number" class="form-control text-bg-dark" id="exampleFormControlInput1" placeholder="Stock">
             </div>
-            <select class="form-select form-select-lg mb-3 text-bg-dark" aria-label="Large select example">
+            <select name="id_category" class="form-select form-select-lg mb-3 text-bg-dark" aria-label="Large select example">
                 <option selected>Categoria</option>
             <?php
                 $select = $cnnPDO->prepare('SELECT * FROM category');
                 $select -> execute();
                 $count = $select-> rowCount();
                 $colum = $select -> fetchAll();
-<<<<<<< HEAD
                 foreach ($colum as $data) {
                 echo '<option value="'.htmlentities($data['id_category']).'">'.htmlentities($data['name_category']).'</option>';
                 }
-=======
-                 foreach ($colum as $data) {
-                echo '<option value="'.htmlentities($data['id_category']).'">'.htmlentities($data['name_category']).'</option>';
-                 }
->>>>>>> c93bc798217d3bf373a2c124862b817b978e92ca
 ?>                
             </select>
 
             <div class="d-grid gap-2 col-6 mx-auto">
-<<<<<<< HEAD
-                <button name="reg_prod" class="btn btn-success" type="button">Publicar</button>
+                <button name="reg_prod" class="btn btn-success" type="submit">Publicar</button>
                 <a  class="btn btn-success" type="button" href="main_window.php">Regresar</a>
-=======
-                <button name="reg_prod" class="btn btn-primary" type="button">Publicar</button>
-                <a  class="btn btn-primary" type="button" href="main_window.php">Regresar</a>
->>>>>>> c93bc798217d3bf373a2c124862b817b978e92ca
             </div>
         </form>
     </div>
