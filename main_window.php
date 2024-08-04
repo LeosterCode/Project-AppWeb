@@ -45,8 +45,8 @@ session_start();
                         <div class="content-modal-perfil">
                           <div class="mi-perfil">
                             <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="">
-                            <h5><?php echo $_SESSION['name']; ?> </h5>
-                            <h5><?php echo $_SESSION['student_id']; ?> </h5>
+                            <h5>Nombre: <?php echo $_SESSION['name']; ?> </h5>
+                            <h5>Matricula: <?php echo $_SESSION['student_id']; ?> </h5>
                             <ul class="menu">
                               <li><a href="my_products.php">Mis Publicaciones</a></li>
                               <li><a href="#">Mis Pedidos</a></li>
@@ -122,7 +122,7 @@ session_start();
             </div>
             <div class="carousel-inner">
             <div class="carousel-item active">
-                <div class="carousel-background" style="background-image: url('image/Starting\ soon.jpg');"></div>
+                <div class="carousel-background" style="background-image: url('image/img-window.jpg');"></div>
                 <div class="carousel-caption d-none d-md-block">
                 <h5>First slide label</h5>
                 <p>Some representative placeholder content for the first slide.</p>
