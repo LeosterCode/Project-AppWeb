@@ -9,36 +9,26 @@ if(isset($_POST['reg_prod'])){
     $price = 99;
     $stock = $_POST['stock'];
     $id_category = $_POST['id_category'];
-
     $id_images = $id_product;
-    $load_image = $_FILES['image1']['tmp_name'];
+    $load_image = $_FILES['image_1']['tmp_name'];
     $image_1 = fopen($load_image,'rb');
 
     if(!empty($image_1) && !empty($name_product) && !empty($description) && !empty($stock) && !empty($id_category)){
 
-        $insert1 = $cnnPDO -> prepare('INSERT INTO product(id_product, student_id, name_product, description, price, stock, id_category) 
-        VALUES (:id_product, :student_id, :name_product, :description, :price, :stock, :id_category)');
+        $insert = $cnnPDO -> prepare('INSERT INTO product(id_product, student_id, name_product, description, price, stock, id_category, image_1) 
+        VALUES (:id_product, :student_id, :name_product, :description, :price, :stock, :id_category, :image_1)');
 
-        $insert2 = $cnnPDO -> prepare('INSERT INTO image (id_images, id_product, image_1)  
-        VALUES (:id_images, :id_product, :image_1)');
+        $insert->bindParam(':id_product',$id_product);
+        $insert->bindParam(':student_id',$student_id);
+        $insert->bindParam(':name_product',$name_product);
+        $insert->bindParam(':description',$description);
+        $insert->bindParam(':price',$price);
+        $insert->bindParam(':stock',$stock);
+        $insert->bindParam(':id_category',$id_category);
+        $insert->bindParam(':image_1',$image_1, PDO::PARAM_LOB);
 
-        $insert1->bindParam(':id_product',$id_product);
-        $insert1->bindParam(':student_id',$student_id);
-        $insert1->bindParam(':name_product',$name_product);
-        $insert1->bindParam(':description',$description);
-        $insert1->bindParam(':price',$price);
-        $insert1->bindParam(':stock',$stock);
-        $insert1->bindParam(':id_category',$id_category);
-
-        $insert2->bindParam(':id_images',$id_images);
-        $insert2->bindParam(':id_product',$id_product);
-        $insert2->bindParam(':image_1',$image_1, PDO::PARAM_LOB);
-
-
-        $insert1->execute();
-        $insert2->execute();
+        $insert->execute();
         unset($insert);
-        unset($insert2);
         unset($cnnPDO);
 
         header('location:main_window.php');
@@ -65,7 +55,7 @@ if(isset($_POST['reg_prod'])){
         <form method="post" enctype="multipart/form-data">
             <div>
                 <label for="formFileLg" class="form-label text-bg-dark">Seleccione Una Imagen Del Poducto</label>
-                <input name="image1" accept="image/jpg" class="form-control form-control-lg text-bg-dark" id="formFileLg" type="file">
+                <input name="image_1" accept="image/jpg" class="form-control form-control-lg text-bg-dark" id="formFileLg" type="file">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Titulo</label>
