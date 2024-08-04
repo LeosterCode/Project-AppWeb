@@ -1100,7 +1100,7 @@ footer {
     background: url("image/index.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
-    padding: 3% 0% 0% 0%;
+    padding: 0% 0% 0% 0%;
 }
 
 .form-group input, .form-group textarea, .form-group select {
@@ -1111,7 +1111,7 @@ footer {
 .container-vender{
     width: 30%;
     height: 750px;
-    margin: auto;
+    margin: 50px auto;
     background-color: rgba(0, 187, 255, 0.176);
     border-radius: 15px;
     padding: 2%;

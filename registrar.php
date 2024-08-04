@@ -24,10 +24,66 @@ if (isset($_POST['signup'])) {
         unset($insert);
         unset($cnnPDO);
 
-        header("location:login.php");
+        
 
     }
 
+}
+
+$apiKey = '39c8a26f01db324b4c865460a55feb0039dbbf99';
+
+function verificarCorreo($email, $dominioPermitido, $apiKey) {
+    
+    $emailDomain = substr(strrchr($email, "@"), 1);
+
+    if ($emailDomain !== $dominioPermitido) {
+        return "Necesitas registrarte con tu correo institucional.";
+    }
+
+    $url = "https://api.hunter.io/v2/email-verifier?email=" . urlencode($email) . "&api_key=" . $apiKey;
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $response = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        return 'Error en la solicitud: ' . curl_error($ch);
+    }
+
+    curl_close($ch);
+
+    $data = json_decode($response, true);
+
+    if (isset($data['data']['status']) && $data['data']['status'] == 'valid') {
+        return "El correo electrónico pertenece al dominio permitido y es válido.";
+    } else {
+        return "El correo electrónico no es válido o no existe.";
+    }
+}
+
+$resultado = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $student_id = $_POST['student_id'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $career = $_POST['career'];
+    $building = $_POST['building'];
+    $password = $_POST['password'];
+
+ 
+    $dominioPermitido = 'alumno.utc.edu.mx';
+ 
+    $resultado = verificarCorreo($email, $dominioPermitido, $apiKey);
+
+    if ($resultado === "El correo electrónico pertenece al dominio permitido y es válido.") {
+      
+        header("Location: login.php");
+        exit(); 
+    }
 }
 ?>
 <!DOCTYPE html>
