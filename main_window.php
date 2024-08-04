@@ -131,14 +131,14 @@ session_start();
                 </div>
             </div>
             <div class="carousel-item">
-                <div class="carousel-background" style="background-image: url('https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg');"></div>
+                <div class="carousel-background" style="background-image: url('image/im-nuevos-productos.jpg');"></div>
                 <div class="carousel-caption d-none d-md-block">
                 <h5>Second slide label</h5>
                 <p>Some representative placeholder content for the second slide.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <div class="carousel-background" style="background-image: url('https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630');"></div>
+                <div class="carousel-background" style="background-image: url('image/img-productos-mas-vendidos.jpg');"></div>
                 <div class="carousel-caption d-none d-md-block">
                 <h5>Third slide label</h5>
                 <p>Some representative placeholder content for the third slide.</p>
@@ -160,21 +160,21 @@ session_start();
     <div class="categoriass">
       <div class="audifonos">
         <a href="#">
-          <img src="image/audifonos.png" alt="">
+          <img src="image/audifonos.jpg" alt="">
         </a>
       </div>
       <div class="computadoras">
         <a href="#">
-          <img src="image/computadoras.png" alt="">
+          <img src="image/computadoras.jpg" alt="">
         </a>
       </div>
       <div class="celulares">
-        <a href="#"><img src="image/celulares.png" alt="">
+        <a href="#"><img src="image/celulares.jpg" alt="">
         </a>
       </div>
       <div class="teclados">
         <a href="#">
-          <img src="image/Electrodomesticos.png" alt="">
+          <img src="image/electrodomesticos.jpg" alt="">
         </a>
       </div>
     </div>
