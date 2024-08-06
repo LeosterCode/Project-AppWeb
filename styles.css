@@ -1109,8 +1109,8 @@ footer {
     box-sizing: border-box;
 }
 .container-vender{
-    width: 30%;
-    height: 750px;
+    width: 35%;
+    height: 850px;
     margin: 50px auto;
     background-color: rgba(0, 187, 255, 0.176);
     border-radius: 15px;
@@ -1118,6 +1118,48 @@ footer {
     border: 1px solid white;
     box-shadow: 0px 0px 30px 0px rgba(0, 179, 255, 0.404);
     color: #FFF;
+}
+
+.input-vender{
+    width: 100%;
+    height: 60px;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 15px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    
+}
+.input-vender{
+    width: 100%;
+    height: 60px;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 15px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    
+}
+
+.container-vender select{
+    
+    width: 100%;
+    height: 60px;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 15px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    
 }
 
 
@@ -1133,6 +1175,41 @@ footer {
     cursor: pointer;
 }
 
+
+.custom-file-input {
+    width: 100%;
+    height: 150px;
+    padding: 50px;
+    color: #999;
+    border: 3px dashed #ffffff;
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+    display: none;
+    
+}
+.custom-file-input::before {
+    content: 'Seleccionar imagen';
+    color: #ffffff;
+    display: inline-block;
+    background: #ffffff00;
+    
+    border-radius: 3px;
+    margin: -3px 0 -3px -3px;
+    padding: 5px 20px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    text-align: center;
+    
+    font-weight: 500;
+    font-size: 10pt;
+    height: 50px;
+}
 
 
 @media (max-width: 900px){
