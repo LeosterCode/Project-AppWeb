@@ -172,23 +172,27 @@ if (isset($_POST['reg_prod'])) {
     <div class="container-vender">
         <h1> VENDER</h1>
         <form method="post" enctype="multipart/form-data">
-            <div>
-                <label for="formFileLg" class="form-label text-bg-dark">Seleccione Una Imagen Del Poducto</label>
-                <input name="image_1" accept="image/jpg" class="form-control form-control-lg text-bg-dark" id="formFileLg" type="file">
+            <div class="mb-3">
+                <label>Imagen</label>
+                <input class="custom-file-input"  id="upload"  type="file" id="fileInput" accept="image/jpg" name="image_1">
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Titulo</label>
-                <input name="name_product" type="text" class="form-control text-bg-dark" id="exampleFormControlInput1" placeholder="Titulo Del Producto">
+                <label>Titulo</label>
+                <input class="input-vender" name="name_product" type="text">
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
-                <textarea name="description" class="form-control text-bg-dark" id="exampleFormControlTextarea1" rows="3" placeholder="Escriba una Descripcion"></textarea>
+                <label>Descripcion</label>
+                <textarea class="input-vender"  name="description" ></textarea>
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Stock</label>
-                <input name="stock" type="number" class="form-control text-bg-dark" id="exampleFormControlInput1" placeholder="Stock">
+                <label>Stock</label>
+                <input class="input-vender"  name="stock" type="number">
             </div>
-            <select name="id_category" class="form-select form-select-lg mb-3 text-bg-dark" aria-label="Large select example">
+            <div class="mb-3">
+                <label>Precio</label>
+                <input class="input-vender"  name="price" type="number">
+            </div>
+            <select class="input-vender"  name="id_category" >
                 <option selected>Categoria</option>
                 <?php
                 $select = $cnnPDO->prepare('SELECT * FROM category');

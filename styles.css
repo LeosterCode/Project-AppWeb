@@ -682,8 +682,9 @@
 .body-main_window{
     margin: 0px;
     padding: 0px;
-    background: rgb(0, 63, 0);
-    background: radial-gradient(circle, rgb(0, 50, 0) 0%, rgba(0,0,0,1) 100%);
+    background: rgb(0, 0, 0);
+    background: radial-gradient(circle, rgb(44, 44, 44) 0%, rgba(0,0,0,1) 100%);
+    background-size: cover;
     font-family:  "montserrat" ;
 }
 
@@ -1025,6 +1026,7 @@ footer {
 .categoriass img{
     width: 100%;
     height: 100%;
+    border-radius: 15px;
 }
 
 
@@ -1032,6 +1034,7 @@ footer {
     width: 100%;
     height: 100%;
     background-color: #00000000;
+    border-radius: 15px;
 
 }
 
@@ -1039,6 +1042,7 @@ footer {
     width: 100%;
     height: 100%;
     background-color: #00000000;
+    border-radius: 15px;
 
 }
 
@@ -1046,6 +1050,7 @@ footer {
     width: 100%;
     height: 100%;
     background-color: #00000000;
+    border-radius: 15px;
 
 }
 
@@ -1053,6 +1058,7 @@ footer {
     width: 100%;
     height: 100%;
     background-color: #00000000;
+    border-radius: 15px;
 }
 
 
@@ -1103,8 +1109,8 @@ footer {
     box-sizing: border-box;
 }
 .container-vender{
-    width: 30%;
-    height: 750px;
+    width: 35%;
+    height: 850px;
     margin: 50px auto;
     background-color: rgba(0, 187, 255, 0.176);
     border-radius: 15px;
@@ -1112,6 +1118,48 @@ footer {
     border: 1px solid white;
     box-shadow: 0px 0px 30px 0px rgba(0, 179, 255, 0.404);
     color: #FFF;
+}
+
+.input-vender{
+    width: 100%;
+    height: 60px;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 15px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    
+}
+.input-vender{
+    width: 100%;
+    height: 60px;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 15px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    
+}
+
+.container-vender select{
+    
+    width: 100%;
+    height: 60px;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 15px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    
 }
 
 
@@ -1127,6 +1175,41 @@ footer {
     cursor: pointer;
 }
 
+
+.custom-file-input {
+    width: 100%;
+    height: 150px;
+    padding: 50px;
+    color: #999;
+    border: 3px dashed #ffffff;
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+    display: none;
+    
+}
+.custom-file-input::before {
+    content: 'Seleccionar imagen';
+    color: #ffffff;
+    display: inline-block;
+    background: #ffffff00;
+    
+    border-radius: 3px;
+    margin: -3px 0 -3px -3px;
+    padding: 5px 20px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    text-align: center;
+    
+    font-weight: 500;
+    font-size: 10pt;
+    height: 50px;
+}
 
 
 @media (max-width: 900px){
@@ -1253,6 +1336,10 @@ footer {
     height: 100%;
     background-color: #000000;
     animation: modal-animacion  0.5s ease;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #0c0c0c #f1f1f100;
+    
 }
 
 .img-perfil{
@@ -1260,8 +1347,8 @@ footer {
     height: 400px;
     border-bottom-left-radius: 30%;
     border-bottom-right-radius: 30%;
-    background: rgb(0,61,21);
-    background: linear-gradient(0deg, rgba(0, 61, 21, 0.356) 0%, rgba(0,54,6,1) 100%);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.356) 0%, rgb(254, 254, 254) 100%);
     padding: 0% 10% 10% 10%;
     
 }
@@ -1340,16 +1427,25 @@ footer {
 @media screen and (max-width:800px) {
     .container-modal-perfil{
         width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0; left: 0;
+        background-color: rgba(0, 0, 0, 0);
+        display: none;
+        z-index: 100;
+        transition: opacity 0.3s ease;
     }
     .content-modal-perfil{
+        position: absolute;
         text-align: center;
-        width: 100%;
-        max-width: 1500px;
+        width: 90%;
+        max-width: 500px;
         height: 100%;
         background-color: #000000;
         animation: modal-animacion  0.5s ease;
     }
     
+
 }
 
 
