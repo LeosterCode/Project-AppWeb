@@ -182,7 +182,8 @@ require 'db_conexion.php';
 
     <div class="title-productos"><h1>Productos</h1></div>
     <?php
-      $select = $cnnPDO -> prepare('SELECT * FROM product');
+      $select = $cnnPDO -> prepare('SELECT * FROM product WHERE student_id <> :student_id');
+      $select ->bindParam(':student_id',$_SESSION['student_id']);
       $select -> execute();
       $count = $select -> rowCount();
       $column = $select -> fetchAll(PDO::FETCH_ASSOC);
@@ -195,7 +196,7 @@ require 'db_conexion.php';
       echo '      <h5 class="card-title">'.htmlentities($data['name_product']).'</h5>';
       echo '      <p class="card-text">'.htmlentities($data['description']).'</p>';
       echo '      <p class="card-text">'.htmlentities($data['price']).'</p>';
-      echo '      <a href="#" class="btn btn-primary">Añadir al carrito</a>';
+      echo '      <a href="window_product.php" class="btn btn-primary">Ver producto</a>';
       echo '    </div>';
       echo '  </div>';
       }
