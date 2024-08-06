@@ -186,8 +186,6 @@ require 'db_conexion.php';
       $count = $select -> rowCount();
       $column = $select -> fetchAll(PDO::FETCH_ASSOC);
       
-
-     
       echo '  <div class="cards">';
       foreach($column as $data){
       echo '  <div class="card border-dark mb-3" style="max-width: 18rem;">';
