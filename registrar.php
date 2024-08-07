@@ -1,90 +1,9 @@
 <?php
+
 require 'db_conexion.php';
-if (isset($_POST['signup'])) {
-    $student_id = $_POST['student_id'];
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $career = $_POST['career'];
-    $building = $_POST['building'];
-    $password = $_POST['password'];
-
-    if (!empty($student_id) && !empty($name) && !empty($email) && !empty($phone) && !empty($career) && !empty($building) && !empty($password)){
-        
-        $insert = $cnnPDO -> prepare("INSERT INTO user (student_id, name, email, phone, career, building, password) VALUES (:student_id, :name, :email, :phone, :career, :building, :password)");
-
-        $insert ->bindParam(':student_id',$student_id);
-        $insert ->bindParam(':name',$name);
-        $insert ->bindParam(':email',$email);
-        $insert ->bindParam(':phone',$phone);
-        $insert ->bindParam(':career',$career);
-        $insert ->bindParam(':building',$building);
-        $insert ->bindParam(':password',$password);
-        $insert ->execute();
-        unset($insert);
-        unset($cnnPDO);
-
-        
-
-    }
-
-}
 
 $apiKey = '39c8a26f01db324b4c865460a55feb0039dbbf99';
 
-function verificarCorreo($email, $dominioPermitido, $apiKey) {
-    
-    $emailDomain = substr(strrchr($email, "@"), 1);
-
-    if ($emailDomain !== $dominioPermitido) {
-        return "Necesitas registrarte con tu correo institucional.";
-    }
-
-    $url = "https://api.hunter.io/v2/email-verifier?email=" . urlencode($email) . "&api_key=" . $apiKey;
-
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-    $response = curl_exec($ch);
-
-    if (curl_errno($ch)) {
-        return 'Error en la solicitud: ' . curl_error($ch);
-    }
-
-    curl_close($ch);
-
-    $data = json_decode($response, true);
-
-    if (isset($data['data']['status']) && $data['data']['status'] == 'valid') {
-        return "El correo electrónico pertenece al dominio permitido y es válido.";
-    } else {
-        return "El correo electrónico no es válido o no existe.";
-    }
-}
-
-$resultado = "";
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $student_id = $_POST['student_id'];
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $career = $_POST['career'];
-    $building = $_POST['building'];
-    $password = $_POST['password'];
-
- 
-    $dominioPermitido = 'alumno.utc.edu.mx';
- 
-    $resultado = verificarCorreo($email, $dominioPermitido, $apiKey);
-
-    if ($resultado === "El correo electrónico pertenece al dominio permitido y es válido.") {
-      
-        header("Location: login.php");
-        exit(); 
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="body-registrar">
     <div class="container-registrar">
@@ -147,8 +67,93 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <input name="password" class="input-password-registrar" type="password" required spellcheck="false">
                 <label class="label-password-registrar">Password</label>
-    
+
+
+<?php
+
+function verificarCorreo($email, $dominioPermitido, $apiKey) {
+    $emailDomain = substr(strrchr($email, "@"), 1);
+
+    if ($emailDomain !== $dominioPermitido) {
+        return "Necesitas registrarte con tu correo institucional.";
+    }
+
+    $url = "https://api.hunter.io/v2/email-verifier?email=" . urlencode($email) . "&api_key=" . $apiKey;
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $response = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        return 'Error en la solicitud: ' . curl_error($ch);
+    }
+
+    curl_close($ch);
+
+    $data = json_decode($response, true);
+
+    if (isset($data['data']['status']) && $data['data']['status'] == 'valid') {
+        return "El correo electrónico pertenece al dominio permitido y es válido.";
+    } else {
+        return "El correo electrónico no es válido o no existe.";
+    }
+}
+
+$resultado = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
+    $student_id = $_POST['student_id'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $career = $_POST['career'];
+    $building = $_POST['building'];
+    $password = $_POST['password'];
+
+    if (!empty($student_id) && !empty($name) && !empty($email) && !empty($phone) && !empty($career) && !empty($building) && !empty($password)) {
+        $dominioPermitido = 'alumno.utc.edu.mx';
+
+        $resultado = verificarCorreo($email, $dominioPermitido, $apiKey);
+
+        if ($resultado === "El correo electrónico pertenece al dominio permitido y es válido.") {
+            try {
+                $insert = $cnnPDO->prepare("INSERT INTO user (student_id, name, email, phone, career, building, password) VALUES (:student_id, :name, :email, :phone, :career, :building, :password)");
+
+                $insert->bindParam(':student_id', $student_id);
+                $insert->bindParam(':name', $name);
+                $insert->bindParam(':email', $email);
+                $insert->bindParam(':phone', $phone);
+                $insert->bindParam(':career', $career);
+                $insert->bindParam(':building', $building);
+                $insert->bindParam(':password', $password);
+
+                $insert->execute();
+
+                header("Location: login.php");
+                exit();
+            } catch (PDOException $e) {
+                $resultado = 'Error al insertar en la base de datos: ' . $e->getMessage();
+                $alertClass = 'alert-danger';
+            }
+        } else {
+            $alertClass = 'alert-danger';
+        }
+    } else {
+        $resultado = "Por favor, complete todos los campos.";
+        $alertClass = 'alert-warning';
+    }
+}
+
+?>                
+ 
                 <button name="signup" class="boton-registrar">Register</button>
+<?php if ($resultado): ?>
+                <div class="alert <?= $alertClass ?>" role="alert">
+                    <?= $resultado ?>
+                </div>
+<?php endif; ?>  
                 <p class="rega">¿Ya tienes cuenta? <a href="login.php" class="buttons">Login</a></p>
             </form>  
         </div>
