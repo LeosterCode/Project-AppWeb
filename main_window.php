@@ -162,20 +162,20 @@ require 'db_conexion.php';
     <div id="carouselExample" class="carousel slide">
   <div class="carousel-inner">
     <div class="carousel-item active">
-    <div class="audifonos">
+    <div class="imagenes-de-carrusel">
+      <div class="audifonos">
         <a href="#">
           <img src="image/audifonos.jpg" alt="">
         </a>
       </div>
-    </div>
-    <div class="carousel-item">
-    <div class="computadoras">
+      <div class="computadoras">
         <a href="#">
           <img src="image/computadoras.jpg" alt="">
         </a>
       </div>
-      <div class="celulares">
-        <a href="#"><img src="image/celulares.jpg" alt="">
+      <div class="teclados">
+        <a href="#">
+          <img src="image/electrodomesticos.jpg" alt="">
         </a>
       </div>
       </div>
@@ -199,7 +199,7 @@ require 'db_conexion.php';
       </div>
       </div>
     </div>
-  </div>
+ 
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
