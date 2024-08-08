@@ -32,7 +32,6 @@ require 'navbar.php';
                 echo '               <img src="data:image_png;base64,' . base64_encode($data['image_1']) . '" class="card-img-top" alt="...">';
                 echo '               <div class="card-body-products ">';
                 echo '                   <p class="id-producto">id producto:  ' . htmlentities($data["id_product"]) . '</p >';
-                echo '                   <p>Matricula:  ' . htmlentities($data["student_id"]) . '</p >';
                 echo '                   <p>Nombre:  ' . htmlentities($data["name_product"]) . '</p >';
                 echo '                   <p>Descripcion:  ' . htmlentities($data["description"]) . '</p >';
                 echo '                   <p>Precio:  ' . htmlentities($data["price"]) . '</p >';
