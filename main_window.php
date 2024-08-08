@@ -122,7 +122,7 @@ require 'db_conexion.php';
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-            < -->
+          
             <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="carousel-background" style="background-image: url('image/img-window.jpg');"></div> 
@@ -216,7 +216,7 @@ require 'db_conexion.php';
       echo '      <h5 class="card-title">'.htmlentities($data['name_product']).'</h5>';
       echo '      <p class="card-text">'.htmlentities($data['description']).'</p>';
       echo '      <p class="card-text">'.htmlentities($data['price']).'</p>';
-      echo '      <a href="window_product.php" class="btn btn-primary">Ver producto</a>';
+      echo '      <a href="window_product.php?slug='.htmlentities($data['slug_product']).' " class="btn btn-primary">Ver producto</a>';
       echo '    </div>';
       echo '  </div>';
       }
