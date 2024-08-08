@@ -2,23 +2,32 @@
 require 'db_conexion.php';
 session_start();
 require 'navbar.php';
+function createSlug($text) {
+
+    $text = strtolower($text);
+    $text = preg_replace('/[^a-z0-9-]/', '-', $text);
+    $text = preg_replace('/-+/', '-', $text);
+    $text = trim($text, '-');
+    return $text;
+}
 
 if (isset($_POST['reg_prod'])) {
     $id_product = rand(1, 99);
     $student_id = $_SESSION['student_id'];
     $name_product = $_POST['name_product'];
     $description = $_POST['description'];
-    $price = 99;
+    $price = $_POST['price'];
     $stock = $_POST['stock'];
     $id_category = $_POST['id_category'];
     $id_images = $id_product;
     $load_image = $_FILES['image_1']['tmp_name'];
     $image_1 = fopen($load_image, 'rb');
+    $slug_product = createSlug($name_product);
+    
+    if (!empty($image_1) && !empty($name_product) && !empty($description) && !empty($stock) &&!empty($price) && !empty($id_category)) {
 
-    if (!empty($image_1) && !empty($name_product) && !empty($description) && !empty($stock) && !empty($id_category)) {
-
-        $insert = $cnnPDO->prepare('INSERT INTO product(id_product, student_id, name_product, description, price, stock, id_category, image_1) 
-        VALUES (:id_product, :student_id, :name_product, :description, :price, :stock, :id_category, :image_1)');
+        $insert = $cnnPDO->prepare('INSERT INTO product(id_product, student_id, name_product, description, price, stock, id_category, image_1, slug_product) 
+        VALUES (:id_product, :student_id, :name_product, :description, :price, :stock, :id_category, :image_1, :slug_product)');
 
         $insert->bindParam(':id_product', $id_product);
         $insert->bindParam(':student_id', $student_id);
@@ -28,12 +37,14 @@ if (isset($_POST['reg_prod'])) {
         $insert->bindParam(':stock', $stock);
         $insert->bindParam(':id_category', $id_category);
         $insert->bindParam(':image_1', $image_1, PDO::PARAM_LOB);
+        $insert->bindParam(':slug_product',$slug_product);
+
 
         $insert->execute();
         unset($insert);
         unset($cnnPDO);
 
-        header('location:main_window.php');
+        
     }
 }
 
@@ -47,7 +58,6 @@ if (isset($_POST['reg_prod'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vender</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
