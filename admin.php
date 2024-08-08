@@ -1,20 +1,33 @@
 <?php
 require 'db_conexion.php';
 
+function createSlug($text)
+{
+
+    $text = strtolower($text);
+    $text = preg_replace('/[^a-z0-9-]/', '-', $text);
+    $text = preg_replace('/-+/', '-', $text);
+    $text = trim($text, '-');
+    return $text;
+}
+
 if (isset($_POST['summit'])) {
 
     $name_category = $_POST['name_category'];
     $load_image = $_FILES['image_category']['tmp_name'];
     $image_category = fopen($load_image, 'rb');
+    $slug_category = createSlug($name_category);
   
 
     if (!empty($image_category) && !empty($name_category)) {
 
-        $insert = $cnnPDO->prepare('INSERT INTO category (name_category, image_category) 
-        VALUES (:name_category, :image_category)');
+        $insert = $cnnPDO->prepare('INSERT INTO category (name_category, image_category, slug_category) 
+        VALUES (:name_category, :image_category, :slug_category)');
 
         $insert->bindParam(':image_category', $image_category, PDO::PARAM_LOB);
         $insert->bindParam(':name_category', $name_category);
+        $insert->bindParam(':slug_category', $slug_category);
+
 
         $insert->execute();
         unset($insert);
