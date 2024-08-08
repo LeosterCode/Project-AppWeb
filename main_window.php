@@ -209,7 +209,8 @@ require 'db_conexion.php';
     <span class="visually-hidden">Next</span>
   </button>
 </div>                 
-    </div>
+</div>
+</div>
 
     <div class="title-productos"><h1>Productos</h1></div>
     <?php

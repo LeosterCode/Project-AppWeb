@@ -28,21 +28,29 @@ require 'navbar.php';
             echo '   <div class="row">';
             foreach ($column as $data) {
                 echo '       <div>';
-                echo '           <div class="carda" style="width: 100%; border:solid 1px black;">';
+                echo '           <div class="carda" style="width: 100%; border:solid 1px while;">';
                 echo '               <img src="data:image_png;base64,' . base64_encode($data['image_1']) . '" class="card-img-top" alt="...">';
                 echo '               <div class="card-body-products ">';
-                echo '                   <p class="id-producto">id producto:  ' . htmlentities($data["id_product"]) . '</p >';
-                echo '                   <p>Matricula:  ' . htmlentities($data["student_id"]) . '</p >';
+                echo '<div class="element-1">';
+                echo '                   <p>id producto:  ' . htmlentities($data["id_product"]) . '</p >';
+                echo '</div>';
+                echo '<div class="element-2">';
                 echo '                   <p>Nombre:  ' . htmlentities($data["name_product"]) . '</p >';
                 echo '                   <p>Descripcion:  ' . htmlentities($data["description"]) . '</p >';
+                echo '</div>';
+                echo '<div class="element-4">';
+                echo '                   <p>Categoria:  ' . htmlentities($data["name_category"]) . '</p >';
                 echo '                   <p>Precio:  ' . htmlentities($data["price"]) . '</p >';
                 echo '                   <p>Stock:  ' . htmlentities($data["stock"]) . '</p >';
-                echo '                   <p>Categoria:  ' . htmlentities($data["name_category"]) . '</p >';
-                
+                echo '</div>';
+                echo '<div class="element-5">';
+                echo '<button type="button" class="boton-productos">Ver Producto</button>';
+                echo '<button type="button" class="boton-productos-editar">Editar </button>';
+                echo '<button type="button" class="boton-productos-eliminar">Eliminar </button>';
+                echo '</div>';
                 echo '               </div>';
                 echo'';
-                echo '<button type="button" class="boton-productos">Ver Producto</button>';
-                echo '<button type="button" class="boton-productoss">Eliminar </button>';
+
                 echo '           </div>';
                 echo '       </div>';
             }
