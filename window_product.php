@@ -39,7 +39,7 @@ if (isset($_GET['slug'])) {
             echo '                   <p>Descripción:  ' . htmlentities($column["description"]) . '</p>';
             echo '                   <p>Precio:  ' . htmlentities($column["price"]) . '</p>';
             echo '                   <p>Stock:  ' . htmlentities($column["stock"]) . '</p>';
-            echo '                   <p>Categoría:  ' . htmlentities($column["id_category"]) . '</p>';
+            echo '                   <p>Categoría:  ' . htmlentities($column["name_category"]) . '</p>';
             echo '               </div>';
             echo '               <button type="button" class="boton-productos">Ver Producto</button>';
             echo '               <button type="button" class="boton-productoss">Eliminar</button>';

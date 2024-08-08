@@ -37,7 +37,7 @@ require 'navbar.php';
                 echo '                   <p>Descripcion:  ' . htmlentities($data["description"]) . '</p >';
                 echo '                   <p>Precio:  ' . htmlentities($data["price"]) . '</p >';
                 echo '                   <p>Stock:  ' . htmlentities($data["stock"]) . '</p >';
-                echo '                   <p>Categoria:  ' . htmlentities($data["id_category"]) . '</p >';
+                echo '                   <p>Categoria:  ' . htmlentities($data["name_category"]) . '</p >';
                 
                 echo '               </div>';
                 echo'';

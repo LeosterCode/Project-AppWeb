@@ -163,14 +163,14 @@ require 'db_conexion.php';
   <div class="carousel-inner">
     <div class="carousel-item active">
     <div class="audifonos">
-        <a href="#">
+        <a href="categories.php?slug=manualidades">
           <img src="image/audifonos.jpg" alt="">
         </a>
       </div>
     </div>
     <div class="carousel-item">
     <div class="computadoras">
-        <a href="#">
+        <a href="categories.php?slug=postres">
           <img src="image/computadoras.jpg" alt="">
         </a>
       </div>
