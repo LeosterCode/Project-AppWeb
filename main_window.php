@@ -190,9 +190,9 @@ $select_cat = $cnnPDO->prepare('SELECT * FROM category');
 $select_cat->execute();
 $column_cat = $select_cat->fetchAll(PDO::FETCH_ASSOC);
 
-$items_per_slide = 3; // Número de imágenes por slide
-$total_items = count($column_cat); // Total de imágenes
-$slides = ceil($total_items / $items_per_slide); // Número de slides necesarios
+$items_per_slide = 3; 
+$total_items = count($column_cat); 
+$slides = ceil($total_items / $items_per_slide); 
 ?>
 
 <div class="title-categorias">
@@ -205,13 +205,13 @@ $slides = ceil($total_items / $items_per_slide); // Número de slides necesarios
             for ($i = 0; $i < $slides; $i++) {
                 $start = $i * $items_per_slide;
                 $end = min($start + $items_per_slide, $total_items);
-                $active_class = ($i === 0) ? 'active' : ''; // Marcar el primer slide como activo
+                $active_class = ($i === 0) ? 'active' : ''; 
                 echo '<div class="carousel-item ' . $active_class . '">';
                 echo '<div class="imagenes-de-carrusel row">';
                 
                 for ($j = $start; $j < $end; $j++) {
                     $img_car = $column_cat[$j];
-                    echo '<div class="col-3 mx-2 audifonos">'; // Usa col-4 para mostrar 3 imágenes por fila
+                    echo '<div class="col-3 mx-2 audifonos">'; 
                     echo '  <a href="categories.php?slug=' . htmlentities($img_car['slug_category']) . '">';
                     echo '    <img src="data:image/png;base64,' . base64_encode($img_car['image_category']) . '" alt="">';
                     echo '  </a>';
@@ -233,7 +233,6 @@ $slides = ceil($total_items / $items_per_slide); // Número de slides necesarios
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-
 
 
     <div class="title-productos">
