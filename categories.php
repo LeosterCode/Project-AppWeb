@@ -1,6 +1,7 @@
 
 <?php
 require 'db_conexion.php';
+session_start();
 require 'navbar.php';
 if (isset($_GET['slug'])) {
     $slug_category = $_GET['slug'];
