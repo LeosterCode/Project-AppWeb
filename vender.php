@@ -1,24 +1,37 @@
 <?php
+ob_start();
 require 'db_conexion.php';
 session_start();
 require 'navbar.php';
+
+function createSlug($text)
+{
+
+    $text = strtolower($text);
+    $text = preg_replace('/[^a-z0-9-]/', '-', $text);
+    $text = preg_replace('/-+/', '-', $text);
+    $text = trim($text, '-');
+    return $text;
+}
 
 if (isset($_POST['reg_prod'])) {
     $id_product = rand(1, 99);
     $student_id = $_SESSION['student_id'];
     $name_product = $_POST['name_product'];
     $description = $_POST['description'];
-    $price = 99;
+    $price = $_POST['price'];
     $stock = $_POST['stock'];
-    $id_category = $_POST['id_category'];
+    $name_category = $_POST['name_category'];
     $id_images = $id_product;
     $load_image = $_FILES['image_1']['tmp_name'];
     $image_1 = fopen($load_image, 'rb');
+    $slug_product = createSlug($name_product);
+    $slug_category = createSlug($name_category);
 
-    if (!empty($image_1) && !empty($name_product) && !empty($description) && !empty($stock) && !empty($id_category)) {
+    if (!empty($image_1) && !empty($name_product) && !empty($description) && !empty($stock) && !empty($price) && !empty($name_category)) {
 
-        $insert = $cnnPDO->prepare('INSERT INTO product(id_product, student_id, name_product, description, price, stock, id_category, image_1) 
-        VALUES (:id_product, :student_id, :name_product, :description, :price, :stock, :id_category, :image_1)');
+        $insert = $cnnPDO->prepare('INSERT INTO product(id_product, student_id, name_product, description, price, stock, name_category, image_1, slug_product, slug_category) 
+        VALUES (:id_product, :student_id, :name_product, :description, :price, :stock, :name_category, :image_1, :slug_product, :slug_category)');
 
         $insert->bindParam(':id_product', $id_product);
         $insert->bindParam(':student_id', $student_id);
@@ -26,18 +39,30 @@ if (isset($_POST['reg_prod'])) {
         $insert->bindParam(':description', $description);
         $insert->bindParam(':price', $price);
         $insert->bindParam(':stock', $stock);
-        $insert->bindParam(':id_category', $id_category);
+        $insert->bindParam(':name_category', $name_category);
         $insert->bindParam(':image_1', $image_1, PDO::PARAM_LOB);
+        $insert->bindParam(':slug_product', $slug_product);
+        $insert->bindParam(':slug_category', $slug_category);
 
         $insert->execute();
         unset($insert);
         unset($cnnPDO);
 
-        header('location:main_window.php');
+?>
+       
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Producto subido con exito!!</strong> <br>Seras redireccionado en 3 segundos...
+        </div>
+        
+        <script>
+            setTimeout(function() {
+                window.location.href = 'main_window.php';
+            }, 3000);
+        </script>
+<?php
+       
     }
 }
-
-
 
 ?>
 <!DOCTYPE html>
@@ -48,37 +73,32 @@ if (isset($_POST['reg_prod'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vender</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 
 <body class="body-vender">
-   
+
     <div class="container-vender">
         <h1> VENDER</h1>
         <form method="post" enctype="multipart/form-data">
-            <div class="mb-3">
-                <label>Imagen</label>
-                <input class="custom-file-input"  id="upload"  type="file" id="fileInput" accept="image/jpg" name="image_1">
-            </div>
             <div class="mb-3">
                 <label>Titulo</label>
                 <input class="input-vender" name="name_product" type="text">
             </div>
             <div class="mb-3">
                 <label>Descripcion</label>
-                <textarea class="input-vender"  name="description" ></textarea>
+                <textarea class="input-vender" name="description"></textarea>
             </div>
             <div class="mb-3">
                 <label>Stock</label>
-                <input class="input-vender"  name="stock" type="number">
+                <input class="input-vender" name="stock" type="number">
             </div>
             <div class="mb-3">
                 <label>Precio</label>
-                <input class="input-vender"  name="price" type="number">
+                <input class="input-vender" name="price" type="number">
             </div>
-            <select class="input-vender"  name="id_category" >
+            <select class="input-vender" name="name_category">
                 <option selected>Categoria</option>
                 <?php
                 $select = $cnnPDO->prepare('SELECT * FROM category');
@@ -86,10 +106,14 @@ if (isset($_POST['reg_prod'])) {
                 $count = $select->rowCount();
                 $colum = $select->fetchAll();
                 foreach ($colum as $data) {
-                    echo '<option value="' . htmlentities($data['id_category']) . '">' . htmlentities($data['name_category']) . '</option>';
+                    echo '<option value="' . htmlentities($data['name_category']) . '">' . htmlentities($data['name_category']) . '</option>';
                 }
                 ?>
             </select>
+            <div class="mb-3">
+                <label>Imagen</label>
+                <input class="custom-file-input" id="upload" type="file" id="fileInput" accept="image/jpg" name="image_1">
+            </div>
 
             <div class="d-grid gap-2 col-6 mx-auto">
                 <button name="reg_prod" class="btn btn-success" type="submit">Publicar</button>
@@ -98,5 +122,6 @@ if (isset($_POST['reg_prod'])) {
         </form>
     </div>
 </body>
+
 
 </html>

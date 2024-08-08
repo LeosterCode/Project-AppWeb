@@ -1,7 +1,19 @@
+
 <?php
 require 'db_conexion.php';
 session_start();
 require 'navbar.php';
+if (isset($_GET['slug'])) {
+    $slug_category = $_GET['slug'];
+
+    $select = $cnnPDO->prepare('SELECT * FROM product WHERE slug_category = :slug_category');
+    $select->bindParam(':slug_category',$slug_category);
+    $select->execute(); 
+    $column = $select->fetch(PDO::FETCH_ASSOC); 
+} else {
+    echo '<p>No se encontrola categoria</p>';
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,8 +29,9 @@ require 'navbar.php';
     <div class="container-products">
         <h1>Mis Productos</h1>
     <?php
-    $select = $cnnPDO->prepare('SELECT * FROM product WHERE student_id = ?');
-    $select->execute([$_SESSION['student_id']]);
+    $select = $cnnPDO->prepare('SELECT * FROM product WHERE slug_category = :slug_category');
+    $select->bindParam(':slug_category',$slug_category);
+    $select->execute();
     $count = $select->rowCount();
     $column = $select->fetchAll(PDO::FETCH_ASSOC);
 
