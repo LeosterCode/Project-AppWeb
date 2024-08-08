@@ -162,30 +162,41 @@ require 'db_conexion.php';
     <div id="carouselExample" class="carousel slide">
   <div class="carousel-inner">
     <div class="carousel-item active">
-    <div class="audifonos">
+
+      <div class="imagenes-de-carrusel">
+      <div class="audifonos">
         <a href="#">
           <img src="image/audifonos.jpg" alt="">
         </a>
       </div>
-    </div>
-    <div class="carousel-item">
-    <div class="computadoras">
+      <div class="computadoras">
         <a href="#">
           <img src="image/computadoras.jpg" alt="">
         </a>
       </div>
-    </div>
-    <div class="carousel-item">
-    <div class="celulares">
+      <div class="celulares">
         <a href="#"><img src="image/celulares.jpg" alt="">
         </a>
       </div>
+      </div>
     </div>
     <div class="carousel-item">
-    <div class="teclados">
+    <div class="imagenes-de-carrusel">
+      <div class="audifonos">
+        <a href="#">
+          <img src="image/audifonos.jpg" alt="">
+        </a>
+      </div>
+      <div class="computadoras">
+        <a href="#">
+          <img src="image/computadoras.jpg" alt="">
+        </a>
+      </div>
+      <div class="teclados">
         <a href="#">
           <img src="image/electrodomesticos.jpg" alt="">
         </a>
+      </div>
       </div>
     </div>
   </div>
@@ -225,7 +236,6 @@ require 'db_conexion.php';
       
       
     ?>
-   
 
     <footer id="footer">
       <h1>Información sobre la página</h1>
