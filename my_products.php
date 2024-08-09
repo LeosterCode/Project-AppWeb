@@ -31,14 +31,10 @@ require 'navbar.php';
                 echo '           <div class="carda" style="width: 100%; border:solid 1px while;">';
                 echo '               <img src="data:image_png;base64,' . base64_encode($data['image_1']) . '" class="card-img-top" alt="...">';
                 echo '               <div class="card-body-products ">';
-<<<<<<< HEAD
                 echo '<div class="element-1">';
                 echo '                   <p>id producto:  ' . htmlentities($data["id_product"]) . '</p >';
                 echo '</div>';
                 echo '<div class="element-2">';
-=======
-                echo '                   <p class="id-producto">id producto:  ' . htmlentities($data["id_product"]) . '</p >';
->>>>>>> 54bcd0a29e3a77400f8a387246d3fca39feae944
                 echo '                   <p>Nombre:  ' . htmlentities($data["name_product"]) . '</p >';
                 echo '                   <p>Descripcion:  ' . htmlentities($data["description"]) . '</p >';
                 echo '</div>';
