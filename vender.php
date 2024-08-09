@@ -23,8 +23,18 @@ if (isset($_POST['reg_prod'])) {
     $stock = $_POST['stock'];
     $name_category = $_POST['name_category'];
     $id_images = $id_product;
+
     $load_image = $_FILES['image_1']['tmp_name'];
     $image_1 = fopen($load_image, 'rb');
+    $load_image = $_FILES['image_2']['tmp_name'];
+    $image_2 = fopen($load_image, 'rb');
+    $load_image = $_FILES['image_3']['tmp_name'];
+    $image_3 = fopen($load_image, 'rb');
+    $load_image = $_FILES['image_4']['tmp_name'];
+    $image_4 = fopen($load_image, 'rb');
+    $load_image = $_FILES['image_5']['tmp_name'];
+    $image_5 = fopen($load_image, 'rb');
+    
     $slug_product = createSlug($name_product);
     $slug_category = createSlug($name_category);
 
@@ -113,6 +123,22 @@ if (isset($_POST['reg_prod'])) {
             <div class="mb-3">
                 <label>Imagen</label>
                 <input class="custom-file-input" id="upload" type="file" id="fileInput" accept="image/jpg" name="image_1">
+            </div>
+            <div class="mb-3">
+                <label>Imagen 2</label>
+                <input class="custom-file-input" id="upload" type="file" id="fileInput" accept="image/jpg" name="image_2">
+            </div>
+            <div class="mb-3">
+                <label>Imagen 3</label>
+                <input class="custom-file-input" id="upload" type="file" id="fileInput" accept="image/jpg" name="image_3">
+            </div>
+            <div class="mb-3">
+                <label>Imagen 4</label>
+                <input class="custom-file-input" id="upload" type="file" id="fileInput" accept="image/jpg" name="image_4">
+            </div>
+            <div class="mb-3">
+                <label>Imagen 5</label>
+                <input class="custom-file-input" id="upload" type="file" id="fileInput" accept="image/jpg" name="image_5">
             </div>
 
             <div class="d-grid gap-2 col-6 mx-auto">

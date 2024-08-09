@@ -68,7 +68,7 @@
                     <img src="https://masterpiecer-images.s3.yandex.net/05582065717511ee954256181a0358a2:upscaled" alt="">
                 </div>
                 <div>
-                    <p><b>nombre del usuario </b></p>
+                    <p><b>nombre del usuario</b></p>
                     <p><b>comentario:</b> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut ullam explicabo consequatur temporibus vero corporis cum ipsa aliquid sequi alias. Non vel delectus repudiandae odio veniam dolorum excepturi debitis cum!</p>
                 </div>
             </div>
