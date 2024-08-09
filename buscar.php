@@ -1,11 +1,11 @@
 <?php
 require 'navbar.php';
 require 'db_conexion.php';
-// Definir las variables para la conexión al PDO
+
 
 
 try {
-    // Conectar a la base de datos con PDO
+
     $utf8 = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
     $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD, $utf8);
 } catch (PDOException $e) {
