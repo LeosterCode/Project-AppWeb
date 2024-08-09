@@ -34,14 +34,14 @@ if (isset($_POST['reg_prod'])) {
     $image_4 = fopen($load_image, 'rb');
     $load_image = $_FILES['image_5']['tmp_name'];
     $image_5 = fopen($load_image, 'rb');
-    
+
     $slug_product = createSlug($name_product);
     $slug_category = createSlug($name_category);
 
     if (!empty($image_1) && !empty($name_product) && !empty($description) && !empty($stock) && !empty($price) && !empty($name_category)) {
 
-        $insert = $cnnPDO->prepare('INSERT INTO product(id_product, student_id, name_product, description, price, stock, name_category, image_1, slug_product, slug_category) 
-        VALUES (:id_product, :student_id, :name_product, :description, :price, :stock, :name_category, :image_1, :slug_product, :slug_category)');
+        $insert = $cnnPDO->prepare('INSERT INTO product(id_product, student_id, name_product, description, price, stock, name_category, image_1, image_2, image_3, image_4, image_5, slug_product, slug_category) 
+        VALUES (:id_product, :student_id, :name_product, :description, :price, :stock, :name_category, :image_1, :image_2, :image_3, :image_4, :image_5, :slug_product, :slug_category)');
 
         $insert->bindParam(':id_product', $id_product);
         $insert->bindParam(':student_id', $student_id);
@@ -51,6 +51,10 @@ if (isset($_POST['reg_prod'])) {
         $insert->bindParam(':stock', $stock);
         $insert->bindParam(':name_category', $name_category);
         $insert->bindParam(':image_1', $image_1, PDO::PARAM_LOB);
+        $insert->bindParam(':image_2', $image_2, PDO::PARAM_LOB);
+        $insert->bindParam(':image_3', $image_3, PDO::PARAM_LOB);
+        $insert->bindParam(':image_4', $image_4, PDO::PARAM_LOB);
+        $insert->bindParam(':image_5', $image_5, PDO::PARAM_LOB);
         $insert->bindParam(':slug_product', $slug_product);
         $insert->bindParam(':slug_category', $slug_category);
 
