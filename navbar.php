@@ -83,8 +83,8 @@ require 'cdn.html';
 
 
                 </ul>
-                <form class="d-flex position" role="search">
-                    <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex position" role="search" action="buscar.php" method="GET">
+                    <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 <label class="close" for="btn-modal" class="dropdown-item"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
