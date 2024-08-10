@@ -96,23 +96,24 @@ if (isset($_POST['reg_prod'])) {
     <div class="container-vender">
         <h1> VENDER</h1>
         <form method="post" enctype="multipart/form-data">
-            <div class="mb-3">
+            <div class="grid-vender">
+            <div class="container-vender-titulo">
                 <label>Titulo</label>
                 <input class="input-vender" name="name_product" type="text">
             </div>
-            <div class="mb-3">
+            <div class="container-vender-descripcion">
                 <label>Descripcion</label>
                 <textarea class="input-vender" name="description"></textarea>
             </div>
-            <div class="mb-3">
+            <div class="container-vender-stock">
                 <label>Stock</label>
                 <input class="input-vender" name="stock" type="number">
             </div>
-            <div class="mb-3">
+            <div class="container-vender-precio">
                 <label>Precio</label>
                 <input class="input-vender" name="price" type="number">
             </div>
-            <select class="input-vender" name="name_category">
+            <select class="container-vender-categorias input-vender" name="name_category">
                 <option selected>Categoria</option>
                 <?php
                 $select = $cnnPDO->prepare('SELECT * FROM category');
@@ -125,7 +126,7 @@ if (isset($_POST['reg_prod'])) {
                 ?>
             </select>
 
-            <div class="imagenes-vender">
+            <div class="container-vender-imagenes imagenes-vender">
             <div class="mb-3">
                 <label>Imagen</label>
                 <input class="custom-file-input" id="upload" type="file" id="fileInput" accept="image/jpg" name="image_1">
@@ -147,11 +148,11 @@ if (isset($_POST['reg_prod'])) {
                 <input class="custom-file-input" id="upload" type="file" id="fileInput" accept="image/jpg" name="image_5">
             </div>
             </div>
-            <div class="d-grid gap-2 col-6 mx-auto">
+            <div class="container-vender-botones d-grid gap-2 col-6 mx-auto">
                 <button name="reg_prod" class="btn btn-success" type="submit">Publicar</button>
                 <a class="btn btn-success" type="button" href="main_window.php">Regresar</a>
             </div>
-            
+            </div>
         </form>
     </div>
 </body>

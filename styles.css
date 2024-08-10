@@ -799,12 +799,10 @@
 
 }
 .card-body{
-    height: 250px;
+    height: 150px;
     border: none;
     background-color: #333333;
-    overflow-y: scroll;
-    scrollbar-width: thin;
-    scrollbar-color: #0c0c0c00 #f1f1f100;
+
 }
 .card-body p{
     color: #fefefe;
@@ -816,6 +814,23 @@
 .card img{
     height: 250px;
 }
+
+.card-description{
+    background-color: rgba(255, 127, 80, 0);
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #0c0c0c00 #f1f1f100;
+    height: 50px;
+}
+
+.card-name{
+    background-color: rgba(255, 127, 80, 0);
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #0c0c0c00 #f1f1f100;
+    height: 25px;
+}
+
 
 .card a{
     height: 30px;
@@ -1103,9 +1118,11 @@ footer{
     padding: 8px;
     box-sizing: border-box;
 }
+
+
 .container-vender{
-    width: 35%;
-    height: 800px;
+    width: 40%;
+    height: 700px;
     margin: 50px auto;
     background-color: rgba(0, 187, 255, 0.176);
     border-radius: 15px;
@@ -1113,7 +1130,57 @@ footer{
     border: 1px solid white;
     box-shadow: 0px 0px 30px 0px rgba(0, 179, 255, 0.404);
     color: #FFF;
+
+    
 }
+.grid-vender{
+    display: grid;
+    grid-template-columns: repeat( 3, 1fr);
+    grid-template-rows: 100px 12em 1fr ;
+}
+
+.container-vender-titulo{
+    width: 100%;
+    grid-column: 3/1;
+}
+
+.container-vender-descripcion{
+    width: 100%;
+    grid-column: 3/1;
+}
+
+.container-vender-descripcion textarea{
+    max-height: 150px;
+    height: 100%;
+}
+
+.container-vender-stock{
+    padding-left: 20px;
+    width: 90%;
+    grid-column: 3/3;
+    grid-row: 1/3;
+}
+
+.container-vender-categorias{
+    grid-column: 4/1;
+}
+
+.container-vender-imagenes{
+    grid-column: 4/1; 
+}
+
+.container-vender-botones{
+    grid-column: 5/1; 
+    
+}
+
+.container-vender-precio{
+    padding-left: 20px;
+    width: 90%;
+    grid-column: 3/3;
+    grid-row: 2/3;
+}
+
 
 .input-vender{
     width: 100%;
@@ -1710,6 +1777,13 @@ footer{
 
 .container h2{
     color: #ffffff;
+}
+
+.card-body{
+    overflow-wrap: break-word;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #0c0c0c00 #f1f1f100;
 }
 
 

@@ -252,9 +252,9 @@ $slides = ceil($total_items / $items_per_slide);
       echo '  <div class="card border-dark mx-3 mb-3" style="max-width: 18rem;">';
       echo '    <img src="data:image_png;base64,' . base64_encode($data['image_1']) . '" class="card-img-top" alt="...">';
       echo '    <div class="card-body">';
-      echo '      <h5 class="card-title">' . htmlentities($data['name_product']) . '</h5>';
-      echo '      <p class="card-text">' . htmlentities($data['description']) . '</p>';
-      echo '      <p class="card-text">' . htmlentities($data['price']) . '</p>';
+      echo '      <h5 class="card-name">' . htmlentities($data['name_product']) . '</h5>';
+      echo '      <p class="card-description">' . htmlentities($data['description']) . '</p>';
+      echo '      <p class="card-text">$' . htmlentities($data['price']) . '</p>';
       
       echo '    </div>';
       echo '      <a href="window_product.php?slug=' . htmlentities($data['slug_product']) . ' " >Ver producto</a>';
