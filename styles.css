@@ -1122,7 +1122,7 @@ footer{
 
 .container-vender{
     width: 40%;
-    height: 700px;
+    height: 800px;
     margin: 50px auto;
     background-color: rgba(0, 187, 255, 0.176);
     border-radius: 15px;
@@ -1136,17 +1136,17 @@ footer{
 .grid-vender{
     display: grid;
     grid-template-columns: repeat( 3, 1fr);
-    grid-template-rows: 100px 12em 1fr ;
+    grid-template-rows: 120px 12em 1fr ;
 }
 
 .container-vender-titulo{
     width: 100%;
-    grid-column: 3/1;
+    grid-column: 4/1;
 }
 
 .container-vender-descripcion{
     width: 100%;
-    grid-column: 3/1;
+    grid-column: 4/1;
 }
 
 .container-vender-descripcion textarea{
@@ -1155,10 +1155,11 @@ footer{
 }
 
 .container-vender-stock{
-    padding-left: 20px;
-    width: 90%;
-    grid-column: 3/3;
-    grid-row: 1/3;
+    padding-right: 10%;
+    padding-bottom: 30px;
+    width: 80%;
+    grid-column: 3/1;
+    grid-row: 3/3;
 }
 
 .container-vender-categorias{
@@ -1175,10 +1176,10 @@ footer{
 }
 
 .container-vender-precio{
-    padding-left: 20px;
-    width: 90%;
-    grid-column: 3/3;
-    grid-row: 2/3;
+    padding-left: 30%;
+    width: 100%;
+    grid-column: 4/2;
+    grid-row: 3/4;
 }
 
 
