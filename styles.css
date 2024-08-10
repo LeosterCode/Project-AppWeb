@@ -1689,6 +1689,29 @@ footer{
     scrollbar-color: #0c0c0c00 #f1f1f100;
 }
 
+/*--------body de busacar----------*/
+.body-buscar{
+    background-color: #000000;
+}
+
+.container-cards-buscar {
+    margin: auto;
+    width: 90%;
+    background-color: #ff000000;
+}
+.container-cardss{
+    background-color: rgba(255, 11, 11, 0);
+    width: 100%;
+    padding: 20px 0px 50px 0px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap:15px;
+}
+
+.container h2{
+    color: #ffffff;
+}
+
 
 @media screen and (max-width:800px) {
     .container-modal-perfil{

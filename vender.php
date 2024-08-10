@@ -104,6 +104,7 @@ if (isset($_POST['reg_prod'])) {
                 <label>Descripcion</label>
                 <textarea class="input-vender" name="description"></textarea>
             </div>
+            <div class="mb-3">
                 <label>Stock</label>
                 <input class="input-vender" name="stock" type="number">
             </div>
