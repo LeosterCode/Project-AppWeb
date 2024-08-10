@@ -104,7 +104,6 @@ if (isset($_POST['reg_prod'])) {
                 <label>Descripcion</label>
                 <textarea class="input-vender" name="description"></textarea>
             </div>
-            <div class="mb-3">
                 <label>Stock</label>
                 <input class="input-vender" name="stock" type="number">
             </div>
@@ -124,6 +123,8 @@ if (isset($_POST['reg_prod'])) {
                 }
                 ?>
             </select>
+
+            <div class="imagenes-vender">
             <div class="mb-3">
                 <label>Imagen</label>
                 <input class="custom-file-input" id="upload" type="file" id="fileInput" accept="image/jpg" name="image_1">
@@ -144,11 +145,12 @@ if (isset($_POST['reg_prod'])) {
                 <label>Imagen 5</label>
                 <input class="custom-file-input" id="upload" type="file" id="fileInput" accept="image/jpg" name="image_5">
             </div>
-
+            </div>
             <div class="d-grid gap-2 col-6 mx-auto">
                 <button name="reg_prod" class="btn btn-success" type="submit">Publicar</button>
                 <a class="btn btn-success" type="button" href="main_window.php">Regresar</a>
             </div>
+            
         </form>
     </div>
 </body>

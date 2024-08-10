@@ -232,13 +232,15 @@ $slides = ceil($total_items / $items_per_slide);
             <span class="visually-hidden">Next</span>
           </button>
       </div>
-
+      </div>
 
 
 
     <div class="title-productos">
       <h1>Productos</h1>
     </div>
+    
+    <div class="container-cards">
     <?php
     $select = $cnnPDO->prepare('SELECT * FROM product WHERE student_id <> :student_id');
     $select->bindParam(':student_id', $_SESSION['student_id']);
@@ -253,8 +255,9 @@ $slides = ceil($total_items / $items_per_slide);
       echo '      <h5 class="card-title">' . htmlentities($data['name_product']) . '</h5>';
       echo '      <p class="card-text">' . htmlentities($data['description']) . '</p>';
       echo '      <p class="card-text">' . htmlentities($data['price']) . '</p>';
-      echo '      <a href="window_product.php?slug=' . htmlentities($data['slug_product']) . ' " class="btn btn-primary">Ver producto</a>';
+      
       echo '    </div>';
+      echo '      <a href="window_product.php?slug=' . htmlentities($data['slug_product']) . ' " >Ver producto</a>';
       echo '  </div>';
     }
     echo '</div>';
@@ -262,6 +265,8 @@ $slides = ceil($total_items / $items_per_slide);
 
 
     ?>
+    </div>
+   
 
     <footer id="footer">
       <h1>Información sobre la página</h1>

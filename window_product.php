@@ -91,11 +91,13 @@ if (isset($_POST['save_comm'])) {
         </div>
         <div class="detalles-texto">
             <h4><?php echo htmlentities($column['name_product']) ?> </h4>
+            <div class="descripcion-producto">
             <p><b>Descripcion:</b> <?php echo htmlentities($column['description']) ?></p>
+            </div>
             <p><b>Precio: </b> <?php echo htmlentities($column['price']) ?></p>
             <p><b>Stock: </b><?php echo htmlentities($column['stock']) ?></p>
             <p><b>Categoria:</b> <?php echo htmlentities($column['name_category']) ?></p>
-
+            
             <input type="number" placeholder="1" value="1" min="1" class="input-quantity" />
             <button class="button-añadir-carrito">Añadir al carrito</button>
         </div>
