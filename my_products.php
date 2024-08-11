@@ -44,7 +44,7 @@ require 'navbar.php';
                 echo '                   <p>Stock:  ' . htmlentities($data["stock"]) . '</p >';
                 echo '</div>';
                 echo '<div class="element-5">';
-                echo '<button type="button" class="boton-productos">Ver Producto</button>';
+                echo '<a href="#" type="button" class="boton-productos">Ver Producto</a>';
                 echo '<button type="button" class="boton-productos-editar">Editar </button>';
                 echo '<button type="button" class="boton-productos-eliminar">Eliminar </button>';
                 echo '</div>';
