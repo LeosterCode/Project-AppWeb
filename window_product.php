@@ -107,7 +107,7 @@ if (isset($_POST['save_comm'])) {
         <div class="comentario">
             <form method="post" action="">
                 <textarea name="comment" placeholder="Agregar Comentario"></textarea>
-                <button name="save_comm" type="submit" class="button-añadir-carrito">Publicar</button>
+                <button name="save_comm" type="submit" >Publicar</button>
             </form>
 
             <?php
