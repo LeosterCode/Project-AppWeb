@@ -21,25 +21,25 @@ if (isset($_POST['save_comm'])) {
     $id_product = $column['id_product'];
     $name_student = $_SESSION['name'];
 
-    if (!empty($id_review) && !empty($comment) && !empty($student_id) && !empty($date_review) && !empty($id_product) && !empty($name_student)){
+    if (!empty($id_review) && !empty($comment) && !empty($student_id) && !empty($date_review) && !empty($id_product) && !empty($name_student)) {
 
-    $ins_comm = $cnnPDO->prepare('INSERT INTO review (id_review, id_product, name_student, student_id, comment, date_review)VALUES (:id_review, :id_product, :name_student, :student_id, :comment, :date_review)');
-    $ins_comm->bindParam(':id_review', $id_review);
-    $ins_comm->bindParam(':id_product', $id_product);
-    $ins_comm->bindParam(':name_student', $name_student);
-    $ins_comm->bindParam(':student_id', $student_id);
-    $ins_comm->bindParam(':comment', $comment);
-    $ins_comm->bindParam(':date_review', $date_review);
+        $ins_comm = $cnnPDO->prepare('INSERT INTO review (id_review, id_product, name_student, student_id, comment, date_review)VALUES (:id_review, :id_product, :name_student, :student_id, :comment, :date_review)');
+        $ins_comm->bindParam(':id_review', $id_review);
+        $ins_comm->bindParam(':id_product', $id_product);
+        $ins_comm->bindParam(':name_student', $name_student);
+        $ins_comm->bindParam(':student_id', $student_id);
+        $ins_comm->bindParam(':comment', $comment);
+        $ins_comm->bindParam(':date_review', $date_review);
 
-    $ins_comm->execute();
-    
-    
+        $ins_comm->execute();
+
+
 ?>
 
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>EXITO</strong> El comentario se publico con exito 
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>EXITO</strong> El comentario se publico con exito
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
 <?php
     }
 }
@@ -62,20 +62,22 @@ if (isset($_POST['save_comm'])) {
                 <div id="carouselExampleFade" class="carousel slide carousel-fade">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="imagnes-carrusel-detalles" src="https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/page/franchise/alienware-laptops/dell-alienware-lt-franchise-cd-1920x1440-x16-mod03-collapsed-1.png?fmt=png-alpha&wid=1920&hei=1440" class="d-block w-100" alt="...">
+                            <?php echo '<img class="imgenes-carrusel-detalles d-block w-100" src="data:image/png;base64,' . base64_encode($column['image_1']) . '" width="150px" height="150px class="card-img-top " style="margin:10px auto;"/>' ?>
+
                         </div>
                         <div class="carousel-item">
-                            <img class="imagnes-carrusel-detalles" src="https://unaluka.com/cdn/shop/files/B0C3FBFCNG_2_1200x1200.jpg?v=1689380717" class="d-block w-100" alt="...">
+                            <?php echo '<img class="imgenes-carrusel-detalles d-block w-100" src="data:image/png;base64,' . base64_encode($column['image_2']) . '" width="150px" height="150px class="card-img-top " style="margin:10px auto;"/>' ?>
                         </div>
                         <div class="carousel-item">
-                            <img class="imagnes-carrusel-detalles" src="https://m.media-amazon.com/images/I/61-lXvvhBtS._AC_UF894,1000_QL80_.jpg" class="d-block w-100" alt="...">
+                            <?php echo '<img class="imgenes-carrusel-detalles d-block w-100" src="data:image/png;base64,' . base64_encode($column['image_3']) . '" width="150px" height="150px class="card-img-top " style="margin:10px auto;"/>' ?>
                         </div>
                         <div class="carousel-item">
-                            <img class="imagnes-carrusel-detalles" src="https://m.media-amazon.com/images/I/7111yvAR-bL._AC_UF894,1000_QL80_.jpg" class="d-block w-100" alt="...">
+                            <?php echo '<img class="imgenes-carrusel-detalles d-block w-100" src="data:image/png;base64,' . base64_encode($column['image_4']) . '" width="150px" height="150px class="card-img-top " style="margin:10px auto;"/>' ?>
                         </div>
                         <div class="carousel-item">
-                            <img class="imagnes-carrusel-detalles" src="https://m.media-amazon.com/images/I/61-lXvvhBtS._AC_UF894,1000_QL80_.jpg" class="d-block w-100" alt="...">
+                            <?php echo '<img class="imgenes-carrusel-detalles d-block w-100" src="data:image/png;base64,' . base64_encode($column['image_5']) . '" width="150px" height="150px class="card-img-top " style="margin:10px auto;"/>' ?>
                         </div>
+
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -92,12 +94,12 @@ if (isset($_POST['save_comm'])) {
         <div class="detalles-texto">
             <h4><?php echo htmlentities($column['name_product']) ?> </h4>
             <div class="descripcion-producto">
-            <p><b>Descripcion:</b> <?php echo htmlentities($column['description']) ?></p>
+                <p><b>Descripcion:</b> <?php echo htmlentities($column['description']) ?></p>
             </div>
             <p><b>Precio: </b> <?php echo htmlentities($column['price']) ?></p>
             <p><b>Stock: </b><?php echo htmlentities($column['stock']) ?></p>
             <p><b>Categoria:</b> <?php echo htmlentities($column['name_category']) ?></p>
-            
+
             <input type="number" placeholder="1" value="1" min="1" class="input-quantity" />
             <button class="button-añadir-carrito">Añadir al carrito</button>
         </div>
@@ -107,7 +109,7 @@ if (isset($_POST['save_comm'])) {
         <div class="comentario">
             <form method="post" action="">
                 <textarea name="comment" placeholder="Agregar Comentario"></textarea>
-                <button name="save_comm" type="submit" >Publicar</button>
+                <button name="save_comm" type="submit">Publicar</button>
             </form>
 
             <?php
@@ -136,7 +138,7 @@ if (isset($_POST['save_comm'])) {
             ?>
 
         </div>
-        
+
     </div>
 </body>
 

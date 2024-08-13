@@ -35,7 +35,7 @@ if (isset($_POST['reg_prod'])) {
     $load_image = $_FILES['image_5']['tmp_name'];
     $image_5 = fopen($load_image, 'rb');
 
-    $slug_product = createSlug($name_product);
+    $slug_product = createSlug($name_product).createSlug($id_product);
     $slug_category = createSlug($name_category);
 
     if (!empty($image_1) && !empty($name_product) && !empty($description) && !empty($stock) && !empty($price) && !empty($name_category)) {
@@ -77,7 +77,7 @@ if (isset($_POST['reg_prod'])) {
        
     }
 }
-
+ echo $slug_product;
 ?>
 <!DOCTYPE html>
 <html lang="en">
