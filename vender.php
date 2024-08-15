@@ -77,7 +77,7 @@ if (isset($_POST['reg_prod'])) {
        
     }
 }
- echo $slug_product;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

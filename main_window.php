@@ -104,27 +104,36 @@ require 'db_conexion.php';
                     </tr>
                   </thead>
                   <?php
+
                     $sc=$cnnPDO->prepare('SELECT * FROM shopping_cart WHERE student_id =?');
                     $sc -> execute([$_SESSION['student_id']]);
                     $count_car= $sc->rowCount();
                     $col_car=$sc->fetchAll();
                     if ($count_car){
-                    }
+                    
 
                     foreach($col_car as $data){
                 
-                echo'  <tr>
-                    <td>'.$data['name_product'].'</td>
-                    <td>'.$data['amount'].'</td>
-                    <td>'.$data['price'].'</td>
-                    <td>'.$data['total'].'</td>
-                    <td><button><i class="fa-solid fa-trash"></i></button></td>
-                  </tr>';
-                    }?>
+                echo'<form method="POST">  
+                      <tr>
+                      <td>'.$data['name_product'].'</td>
+                      <td>'.$data['amount'].'</td>
+                      <td>'.$data['price'].'</td>
+                      <td>'.$data['total'].'</td>
+                      <td><button value="'.$data['id_product'].'" name="delete" type="submit"><i class="fa-solid fa-trash"></i></button></td>
+                      </tr>
+                    </form>
+                  ';
+                    }
+                    } else echo 'carrito vacio';
+                    $sum=$cnnPDO->prepare('SELECT SUM(total) FROM shopping_cart WHERE student_id = ?');
+                    $sum->execute([$_SESSION['student_id']]);
+                    $pay = $sum->fetchColumn();
+                    ?>
                 <tfoot>
                     <tr class="total-row">
                       <td colspan="4">Total General:</td>
-                      <td>$56.00</td>
+                      <td><?php echo '$'. $pay.'.00 MXN';  ?></td>
                     </tr>
                   </tfoot>
                   
@@ -252,9 +261,9 @@ $slides = ceil($total_items / $items_per_slide);
       echo '    <img src="data:image_png;base64,' . base64_encode($data['image_1']) . '" class="card-img-top" alt="...">';
       echo '    <div class="card-body">';
       echo '      <h5 class="card-name">' . htmlentities($data['name_product']) . '</h5>';
-      echo '      <p class="card-description">' . htmlentities($data['description']) . '</p>';
       echo '      <p class="card-text">$' . htmlentities($data['price']) . '</p>';
-      
+      echo '      <p class="card-text">$' . htmlentities($data['stock']) . '</p>';
+     
       echo '    </div>';
       echo '      <a href="window_product.php?slug=' . htmlentities($data['slug_product']) . ' " >Ver producto</a>';
       echo '  </div>';
