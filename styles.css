@@ -1752,18 +1752,21 @@ footer{
     overflow-wrap: break-word;
     overflow-y: scroll;
     scrollbar-width: thin;
-    scrollbar-color: #0c0c0c00 #f1f1f100;
+    scrollbar-color: #929292 #f1f1f100;
 }
 
 /*--------body de busacar----------*/
 .body-buscar{
-    background-color: #000000;
+    background: url("image/index.jpg");
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .container-cards-buscar {
     margin: auto;
+    margin-top: 2%;
     width: 90%;
-    background-color: #000000;
+    background-color: #00000000;
 }
 .container-cardss{
     background-color: rgba(255, 11, 11, 0);
@@ -1960,6 +1963,17 @@ footer{
     display: inline-block;
     border-radius: 100%;
     border: 3px dashed white;
+    text-align: center;
+}
+
+/*-----------diseño de categotias-----------*/
+.body-categorias{
+    background: url("image/index.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+.body-categorias h1{
+    color: white;
     text-align: center;
 }
 
