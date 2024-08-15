@@ -63,9 +63,34 @@ require 'db_conexion.php';
                         <path d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z" />
                       </svg> Historial De Compras</a></li>
 
-                  <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                        <path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z" />
-                      </svg> Editar perfil</a></li>
+                  <li>
+      <label class="close" for="btn-modal-editar" class="dropdown-item"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+        <path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z" />
+        </svg> Editar Perfil </label>
+
+        <input type="checkbox" id="btn-modal-editar">
+        <div class="container-modal-editar">
+          <div class="content-modal-editar">
+            <h2>Editar Perfil</h2>
+            <form action="" method="post">
+                      <div class="form-floating mb-2">
+                      <input type="file" class="custom-file-input-editar" name="nombre" required>
+                      <label for="floatingInput" class="label-editar">Foto</label>
+                      </div>
+                      <div class="form-floating">
+                      <input class="input-editar" type="password" name="password" required>
+                      <label class="label-editar">Password</label>
+                      <br>
+                      <div class="d-grid gap-3 col-7 mx-auto">
+                      <button  type="submit" name="actualizar">Guardar</button>
+                      </div>
+                      </form>
+            <div class="btn-cerrar-editar">
+              <label for="btn-modal-editar">cerrar</label>
+            </div>
+          </div>
+          <label for="btn-modal-editar" class="cerrar-modal"></label>
+          </li>
 
                   <li><a class="close" href="logout.php"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
             <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z" />

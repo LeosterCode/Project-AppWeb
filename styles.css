@@ -102,6 +102,7 @@
 
 .container-login {
     margin-top: 7%;
+    margin-bottom: 7%;
     width: 35%;
     height: 650px;
     background-color: rgba(0, 83, 81, 0.231);
@@ -297,16 +298,12 @@
     animation-fill-mode: forwards;
 }
 
-
-
 .rega{
     margin: 0% 25% 5% 25%;
     text-decoration: none;
     color: #fefefe;
     animation: animacion-input-1 0.9s ease-out ;
 }
-
-
 
 .boton-registrar{
     margin: 5% 25% 5% 25%;
@@ -551,7 +548,6 @@
     outline: none;
     box-sizing: border-box;
     animation: animacion-input 2s ease-out;
-    animation-delay: 0.2s;
     visibility: hidden;
     animation-fill-mode: forwards;
 }
@@ -573,7 +569,6 @@
     background: rgba(0, 0, 0, 0);
     padding: 0 5px 120px;
     animation: animacion-input 2s ease-out;
-    animation-delay: 0.2s;
     visibility: hidden;
     animation-fill-mode: forwards;
 }
@@ -593,6 +588,7 @@
     outline: none;
     box-sizing: border-box;
     animation: animacion-input 2s ease-out;
+    
     visibility: hidden;
     animation-fill-mode: forwards;
 }
@@ -607,7 +603,6 @@
     background: rgba(0, 0, 0, 0);
     padding: 0 5px 45px;
     animation: animacion-input 2s ease-out;
-    animation-delay: 0.5s;
     visibility: hidden;
     animation-fill-mode: forwards;
 }
@@ -843,12 +838,6 @@
     transition: 0.9s;
 }
 
-.card a:hover{
-    color: #000000;
-    background-color: #ffffffdb;
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(255, 98, 0, 0.2); 
-}
 
 
 
@@ -1262,8 +1251,9 @@ footer{
 }
 
 .custom-file-input::before {
-    content: '📸';
-    font-size: 23pt;
+    content: 'imagen';
+    font-size: 10pt;
+    padding: 15%;
     color: #ffffff;
     display: inline-block;
     border: 1px dashed white;
@@ -1868,6 +1858,112 @@ footer{
 .pedido-footer button:hover{
     background-color: rgba(15, 213, 1, 0.648);
 }
+
+/*--------modal editar perfil---------*/
+#btn-modal-editar{
+    display: none;
+}
+#btn-modal-editar:checked ~ .container-modal-editar{
+    display: flex;
+}
+.container-modal-editar{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0; left: 0;
+    background-color: rgba(103, 103, 103, 0);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.content-modal-editar{
+    width: 100%;
+    max-width: 620px;
+    height: 550px;
+    padding: 20px;
+    background-color: #5b5a5afd;
+    border-radius: 15px;
+    border: 1px solid white;
+}
+.content-modal-editar h2{
+    text-align: center;
+    color: #FFF;
+}
+.content-modal-editar p{
+    color: #FFF;
+    padding: 15px 0px;
+}
+.content-modal-editar button{
+    margin: auto;
+    padding: 5%;
+    width: 150px;
+    height: 50px;
+    background-color: #000000;
+    color: #fefefe;
+    border: none;
+    border-radius: 10px;
+}
+
+.content-modal-editar .btn-cerrar-editar label{
+    margin-left: 90%;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    
+}
+.content-modal-editar .btn-cerrar-editar label:hover{
+    background-color:#a8a8a8;
+}
+
+.label-editar{
+    position: absolute;
+    transform: translateY(-49%);
+    color: #FFF;
+    font-size: 19px;
+    pointer-events: none;
+    transition: .3s;
+    background: rgba(0, 0, 0, 0);
+    padding: 0 5px 60px;
+}
+
+.input-editar{
+    width: 100%;
+    height: 45px;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 15px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+}
+
+.custom-file-input-editar {
+    width: 50%;
+    margin: auto;
+    color: #999;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.custom-file-input-editar::-webkit-file-upload-button {
+    visibility: hidden;
+    display: none;
+}
+
+.custom-file-input-editar::before {
+    content: 'imagen';
+    font-size: 25pt;
+    padding: 40% 00% 40% 0%;
+    color: #ffffff;
+    display: inline-block;
+    border-radius: 100%;
+    border: 3px dashed white;
+    text-align: center;
+}
+
 
 @media screen and (max-width:800px) {
     .container-modal-perfil{
