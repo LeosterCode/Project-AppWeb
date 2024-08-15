@@ -82,20 +82,20 @@ if (isset($_POST['save_comm'])) {
                 <div id="carouselExampleFade" class="carousel slide carousel-fade">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <?php echo '<img class="imgenes-carrusel-detalles d-block w-100" src="data:image/png;base64,' . base64_encode($column['image_1']) . '" width="150px" height="150px class="card-img-top " style="margin:10px auto;"/>' ?>
+                            <?php echo '<img class="imgenes-carrusel-detalles d-block w-100" src="data:image/png;base64,' . base64_encode($column['image_1']) . '" width="150px" height="350px class="card-img-top " style="margin:10px auto;"/>' ?>
 
                         </div>
                         <div class="carousel-item">
-                            <?php echo '<img class="imgenes-carrusel-detalles d-block w-100" src="data:image/png;base64,' . base64_encode($column['image_2']) . '" width="150px" height="150px class="card-img-top " style="margin:10px auto;"/>' ?>
+                            <?php echo '<img class="imgenes-carrusel-detalles d-block w-100" src="data:image/png;base64,' . base64_encode($column['image_2']) . '" width="150px" height="350px class="card-img-top " style="margin:10px auto;"/>' ?>
                         </div>
                         <div class="carousel-item">
-                            <?php echo '<img class="imgenes-carrusel-detalles d-block w-100" src="data:image/png;base64,' . base64_encode($column['image_3']) . '" width="150px" height="150px class="card-img-top " style="margin:10px auto;"/>' ?>
+                            <?php echo '<img class="imgenes-carrusel-detalles d-block w-100" src="data:image/png;base64,' . base64_encode($column['image_3']) . '" width="150px" height="350px class="card-img-top " style="margin:10px auto;"/>' ?>
                         </div>
                         <div class="carousel-item">
-                            <?php echo '<img class="imgenes-carrusel-detalles d-block w-100" src="data:image/png;base64,' . base64_encode($column['image_4']) . '" width="150px" height="150px class="card-img-top " style="margin:10px auto;"/>' ?>
+                            <?php echo '<img class="imgenes-carrusel-detalles d-block w-100" src="data:image/png;base64,' . base64_encode($column['image_4']) . '" width="150px" height="350px class="card-img-top " style="margin:10px auto;"/>' ?>
                         </div>
                         <div class="carousel-item">
-                            <?php echo '<img class="imgenes-carrusel-detalles d-block w-100" src="data:image/png;base64,' . base64_encode($column['image_5']) . '" width="150px" height="150px class="card-img-top " style="margin:10px auto;"/>' ?>
+                            <?php echo '<img class="imgenes-carrusel-detalles d-block w-100" src="data:image/png;base64,' . base64_encode($column['image_5']) . '" width="150px" height="350px class="card-img-top " style="margin:10px auto;"/>' ?>
                         </div>
 
                     </div>
@@ -132,7 +132,7 @@ if (isset($_POST['save_comm'])) {
                 <textarea name="comment" placeholder="Agregar Comentario"></textarea>
                 <button name="save_comm" type="submit">Publicar</button>
             </form>
-
+        </div>
             <?php
             $slct_rev = $cnnPDO->prepare('SELECT * FROM review WHERE id_product = :id_product');
             $slct_rev->bindParam(':id_product', $column['id_product']);
