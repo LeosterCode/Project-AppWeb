@@ -15,8 +15,11 @@
                     <br><br>
                     Estamos emocionados de presentarles una solución innovadora diseñada específicamente para los alumnos de nuestra institución. Nuestra página web ha sido creada con el objetivo de proporcionar una forma más organizada, eficiente y segura para que puedan realizar sus compras y ventas dentro del campus.</p>
                     <br>
-                    <a href="login.php">Login</a>
-                    <a href="registrar.php">Register</a>
+
+            </div>
+            <div class="link-index">
+            <a href="login.php">Login</a>
+            <a href="registrar.php">Register</a>
             </div>
         </div>
         <div class="img-index"></div>
