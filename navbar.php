@@ -100,18 +100,24 @@ require 'cdn.html';
                       <th></th>
                     </tr>
                   </thead>
-                  <tr>
-                    <td>Producto 1</td>
-                    <td>2</td>
-                    <td>$10.00</td>
-                    <td>$20.00</td>
+                  <?php
+                    $sc=$cnnPDO->prepare('SELECT * FROM shopping_cart WHERE student_id =?');
+                    $sc -> execute([$_SESSION['student_id']]);
+                    $count_car= $sc->rowCount();
+                    $col_car=$sc->fetchAll();
+                    if ($count_car){
+                    }
+
+                    foreach($col_car as $data){
+                
+                echo'  <tr>
+                    <td>'.$data['name_product'].'</td>
+                    <td>'.$data['amount'].'</td>
+                    <td>'.$data['price'].'</td>
+                    <td>'.$data['total'].'</td>
                     <td><button><i class="fa-solid fa-trash"></i></button></td>
-                  </tr>
-                  <tfoot>
-                    <tr class="total-row">
-                      <td colspan="4">Total General:</td>
-                      <td>$56.00</td>
-                    </tr>
+                  </tr>';
+                    }?>
                   </tfoot>
                 </table>
               </div>
