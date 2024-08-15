@@ -9,8 +9,29 @@ if (isset($_GET['slug'])) {
     $select->bindParam(':slug_product', $slug);
     $select->execute();
     $column = $select->fetch(PDO::FETCH_ASSOC);
+
+
+
 } else {
     echo '<p>No se encontro el producto</p>';
+}
+if (isset($_POST['add'])){
+    $student_id = $_SESSION['student_id'];
+    $id_product = $column['id_product'];
+    $name_product = $column['name_product'];
+    $amount = $_POST['amount'];
+    $price = $column['price'];
+    $total = $amount * $price;
+    $date = date('Y-m-d');
+
+        if (!empty($student_id) && !empty($name_product) && !empty($amount) && !empty($price) && !empty($total) &&  !empty($date)){
+            $insert = $cnnPDO -> prepare('INSERT INTO shopping_cart (student_id, id_product, name_product, total, price, amount, date) VALUES (?,?,?,?,?,?,?)');
+            $insert->execute([$student_id, $id_product, $name_product, $total, $price, $amount, $date]);
+            unset($insert);
+
+        }else {
+            header('location:admin.php');
+        }
 }
 
 if (isset($_POST['save_comm'])) {
@@ -30,7 +51,6 @@ if (isset($_POST['save_comm'])) {
         $ins_comm->bindParam(':student_id', $student_id);
         $ins_comm->bindParam(':comment', $comment);
         $ins_comm->bindParam(':date_review', $date_review);
-
         $ins_comm->execute();
 
 
@@ -99,9 +119,10 @@ if (isset($_POST['save_comm'])) {
             <p><b>Precio: </b> <?php echo htmlentities($column['price']) ?></p>
             <p><b>Stock: </b><?php echo htmlentities($column['stock']) ?></p>
             <p><b>Categoria:</b> <?php echo htmlentities($column['name_category']) ?></p>
-
-            <input type="number" placeholder="1" value="1" min="1" class="input-quantity" />
-            <button class="button-añadir-carrito">Añadir al carrito</button>
+            <form method="post">
+                <input name="amount" type="number" placeholder="0" min="1" class="input-quantity" />
+                <button name="add" type="submit" class="button-añadir-carrito">Añadir al carrito</button>
+            </form>
         </div>
     </div>
     <div class="comentarios">
