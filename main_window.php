@@ -104,16 +104,22 @@ require 'db_conexion.php';
                     </tr>
                   </thead>
                   <?php
+                    if (isset($_POST['delete'])){
+                          $p= $_POST['delete'];
+                          $delete = $cnnPDO->prepare('DELETE FROM shopping_cart WHERE id_product =?');
+                          $delete->execute([$p]);
+                    }
 
                     $sc=$cnnPDO->prepare('SELECT * FROM shopping_cart WHERE student_id =?');
                     $sc -> execute([$_SESSION['student_id']]);
                     $count_car= $sc->rowCount();
                     $col_car=$sc->fetchAll();
+                
                     if ($count_car){
                     
 
                     foreach($col_car as $data){
-                
+
                 echo'<form method="POST">  
                       <tr>
                       <td>'.$data['name_product'].'</td>
@@ -125,7 +131,7 @@ require 'db_conexion.php';
                     </form>
                   ';
                     }
-                    } else echo 'carrito vacio';
+                    } 
                     $sum=$cnnPDO->prepare('SELECT SUM(total) FROM shopping_cart WHERE student_id = ?');
                     $sum->execute([$_SESSION['student_id']]);
                     $pay = $sum->fetchColumn();
@@ -261,8 +267,8 @@ $slides = ceil($total_items / $items_per_slide);
       echo '    <img src="data:image_png;base64,' . base64_encode($data['image_1']) . '" class="card-img-top" alt="...">';
       echo '    <div class="card-body">';
       echo '      <h5 class="card-name">' . htmlentities($data['name_product']) . '</h5>';
-      echo '      <p class="card-text">$' . htmlentities($data['price']) . '</p>';
-      echo '      <p class="card-text">$' . htmlentities($data['stock']) . '</p>';
+      echo '      <p class="card-text">Disponibles: ' . htmlentities($data['stock']) . '</p>';
+      echo '      <p class="card-text">Precio: $' . htmlentities($data['price']) . '</p>';
      
       echo '    </div>';
       echo '      <a href="window_product.php?slug=' . htmlentities($data['slug_product']) . ' " >Ver producto</a>';

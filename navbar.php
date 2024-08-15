@@ -92,7 +92,7 @@ require 'cdn.html';
               <div class="add-products">
                 <table>
                   <thead>
-                    <tr>
+                  <tr>
                       <th>Producto</th>
                       <th>Cantidad</th>
                       <th>Precio Unitario</th>
@@ -101,23 +101,43 @@ require 'cdn.html';
                     </tr>
                   </thead>
                   <?php
+                    if (isset($_POST['delete'])){
+                          $p= $_POST['delete'];
+                          $delete = $cnnPDO->prepare('DELETE FROM shopping_cart WHERE id_product =?');
+                          $delete->execute([$p]);
+                    }
+
                     $sc=$cnnPDO->prepare('SELECT * FROM shopping_cart WHERE student_id =?');
                     $sc -> execute([$_SESSION['student_id']]);
                     $count_car= $sc->rowCount();
                     $col_car=$sc->fetchAll();
+                
                     if ($count_car){
-                    }
+                    
 
                     foreach($col_car as $data){
-                
-                echo'  <tr>
-                    <td>'.$data['name_product'].'</td>
-                    <td>'.$data['amount'].'</td>
-                    <td>'.$data['price'].'</td>
-                    <td>'.$data['total'].'</td>
-                    <td><button><i class="fa-solid fa-trash"></i></button></td>
-                  </tr>';
-                    }?>
+
+                echo'<form method="POST">  
+                      <tr>
+                      <td>'.$data['name_product'].'</td>
+                      <td>'.$data['amount'].'</td>
+                      <td>'.$data['price'].'</td>
+                      <td>'.$data['total'].'</td>
+                      <td><button value="'.$data['id_product'].'" name="delete" type="submit"><i class="fa-solid fa-trash"></i></button></td>
+                      </tr>
+                    </form>
+                  ';
+                    }
+                    } 
+                    $sum=$cnnPDO->prepare('SELECT SUM(total) FROM shopping_cart WHERE student_id = ?');
+                    $sum->execute([$_SESSION['student_id']]);
+                    $pay = $sum->fetchColumn();
+                    ?>
+                <tfoot>
+                    <tr class="total-row">
+                      <td colspan="4">Total General:</td>
+                      <td><?php echo '$'. $pay.'.00 MXN';  ?></td>
+                    </tr>
                   </tfoot>
                 </table>
               </div>
