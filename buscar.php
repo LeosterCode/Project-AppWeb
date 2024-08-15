@@ -38,7 +38,6 @@ if ($count) {
         echo '          <img src="data:image/png;base64,' . base64_encode($row['image_1']) . '" class="card-img-top"  none; alt="Imagen del producto" object-fit: cover;">';
         echo '          <div class="card-body">';
         echo '              <p>Nombre: ' . htmlentities($row["name_product"]) . '</p>';
-        echo '              <p>Descripción: ' . htmlentities($row["description"]) . '</p>';
         echo '              <p>Precio: ' . htmlentities($row["price"]) . '</p>';
         echo '              <p>Stock: ' . htmlentities($row["stock"]) . '</p>';
         echo '          </div>';
@@ -46,7 +45,6 @@ if ($count) {
         echo '   </div>';
         echo '</div>';
     }
-     
 
 
 } else {
