@@ -23,7 +23,7 @@ require 'cdn.html';
     
             }else{
                 echo  ' <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            <strong>ATENCION!</strong> .
+                            <strong>ATENCION!</strong> Correo o contraseña incorrectos.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>';
 
@@ -48,7 +48,6 @@ require 'cdn.html';
                 <label class="label-nombre">Email</label>
                 <input name="password" class="input-password" type="password" required spellcheck="false">
                 <label class="label-password">Password</label>
-                <a href="#"><p class="olv">¿Olvidaste tu contraseña?</p></a>
                 <button name="login" class="boton-login">Login</button>
                 <p class="reg">¿Aún no estás registrado? <a class="buttons" href="registrar.php">Registarte</a></p>
             </form>

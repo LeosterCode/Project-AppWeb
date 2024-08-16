@@ -258,7 +258,7 @@ require 'db_conexion.php';
 
     echo '  <div class="cards">';
     foreach ($column as $data) {
-      echo '  <div class="card border-dark mx-3 mb-3" style="max-width: 18rem;">';
+      echo '  <div class="card border-dark mx-3 mb-3" style="max-width: 14rem;">';
       echo '    <img src="data:image_png;base64,' . base64_encode($data['image_1']) . '" class="card-img-top" alt="...">';
       echo '    <div class="card-body">';
       echo '      <h5 class="card-name">' . htmlentities($data['name_product']) . '</h5>';
