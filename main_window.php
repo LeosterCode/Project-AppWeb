@@ -181,8 +181,8 @@ require 'db_conexion.php';
                 </table>
               </div>
             </div>
-            <form action="">
-              <button class="boton-comprar">comprar</button>
+            <form method="post" action="comprar.php">
+              <button name="buy" class="boton-comprar">comprar</button>
             </form>
             <div class="btn-cerrar">
               <label for="btn-modal">cerrar</label>
