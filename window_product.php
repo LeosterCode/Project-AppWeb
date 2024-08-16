@@ -120,7 +120,7 @@ if (isset($_POST['save_comm'])) {
             <div class="descripcion-producto">
                 <p><b>Descripcion: </b> <?php echo htmlentities($column['description']) ?></p>
             </div>
-            <p><b>Precio: </b> <?php echo htmlentities($column['price']) ?></p>
+            <p><b>Precio: </b> $ <?php echo htmlentities($column['price']) ?>.00 MXN</p>
             <p><b>Stock: </b><?php echo htmlentities($column['stock']) ?></p>
             <p><b>Categoria:</b> <?php echo htmlentities($column['name_category']) ?></p>
             <form method="post">

@@ -21,22 +21,28 @@ $col=$select->fetchAll();
     <div class="container-mis-pedidos">
         <h2>Mis Pedidos</h2>
         <div class="pedido">
-            <?php foreach($col as $data){
-            echo  '<div class="pedido-contenido">
-                <div class="img-pedidos">
-                    <img src="image/6384868.png" alt="Producto">
-                </div>
-                <div class="pedido-header">
-                    <h3>Pedido #'.htmlentities($data['id_purchase']).' </h3>
-                    <p>Fecha: '.htmlentities($data['date']).'</p>
-                    <p>Estado: Enviado</p>
-                </div>
-                <div class="detalle-pedido">
-                    <h4>Detalles del Producto</h4>
-                    <p>Total de la compra: $ '.htmlentities($data['total']).'.00</p>
-                </div>
-            </div>';
-            }?>
+            <?php
+            if($count){ 
+                foreach($col as $data){
+                echo  '<div class="pedido-contenido">
+                    <div class="img-pedidos">
+                        <img src="image/6384868.png" alt="Producto">
+                    </div>
+                    <div class="pedido-header">
+                        <h3>Pedido #'.htmlentities($data['id_purchase']).' </h3>
+                        <p>Fecha: '.htmlentities($data['date']).'</p>
+                        <p>Estado: Enviado</p>
+                    </div>
+                    <div class="detalle-pedido">
+                        <h4>Detalles del Producto</h4>
+                        <p>Total de la compra: $ '.htmlentities($data['total']).'.00</p>
+                    </div>
+                </div>';
+                }
+        }else{
+            echo'<h3>Aun no has realizado ninguna compra</h3>';
+        }
+        ?>
         </div>
         
     </div>

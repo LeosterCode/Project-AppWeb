@@ -44,8 +44,8 @@ if (isset($_POST['delete'])) {
                     echo '                   <p>Descripcion:  ' . htmlentities($data["description"]) . '</p >';
                     echo '</div>';
                     echo '<div class="element-4">';
-                    echo '                   <p>Categoria:  ' . htmlentities($data["name_category"]) . '</p >';
-                    echo '                   <p>Precio:  ' . htmlentities($data["price"]) . '</p >';
+                    echo '                   <p>Categoria:  '.htmlentities($data["name_category"]). '</p >';
+                    echo '                   <p>Precio: $ '. htmlentities($data["price"]).'.00 MXN</p >';
                     echo '                   <p>Stock:  ' . htmlentities($data["stock"]) . '</p >';
                     echo '</div>';
                     echo '<div class="element-5">';
@@ -62,7 +62,7 @@ if (isset($_POST['delete'])) {
                 echo 'ERROR EN LA BASE DE DATOS' . $error->getMessage();
             }
         } else {
-            echo "No tienes productos registrados";
+            echo '<h3>No tienes productos registrados</h3>';
         }
         ?>
     </div>

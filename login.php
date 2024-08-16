@@ -1,10 +1,12 @@
 <?php
 session_start();
 require 'db_conexion.php';
+require 'cdn.html';
 
  if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
+
 
     $search = $cnnPDO->prepare('SELECT * FROM user WHERE email = ? AND password = ? ');
     $search -> execute([$email,$password]);
@@ -20,17 +22,14 @@ require 'db_conexion.php';
         header('location:main_window.php');
     
             }else{
-                ?>
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>REGISTRO</strong> Sus datos fueron editados
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-        <?php
+                echo  ' <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>ATENCION!</strong> .
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>';
 
             }
         }
       
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -46,7 +46,7 @@ if (isset($_GET['slug'])) {
                 echo '    <div class="card-body">';
                 echo '      <h5 class="card-name">' . htmlentities($data['name_product']) . '</h5>';
     
-                echo '      <p class="card-text">$' . htmlentities($data['price']) . '</p>';
+                echo '      <p class="card-text">$ '.htmlentities($data['price']).'.00 MXN</p>';
                 echo '              <p>Stock: ' . htmlentities($data["stock"]) . '</p>';
                 echo '    </div>';
                 echo '      <a href="window_product.php?slug=' . htmlentities($data['slug_product']) . ' " >Ver producto</a>';
