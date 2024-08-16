@@ -14,6 +14,7 @@ require 'db_conexion.php';
     if ($count) {
         $_SESSION['student_id'] = $colum['student_id'];
         $_SESSION['name'] = $colum['name'];
+        $_SESSION['pic_profile']=$colum['pic_profile'];
 
         header('location:main_window.php');
     
