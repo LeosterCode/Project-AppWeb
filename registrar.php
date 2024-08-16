@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
         <div class="img-registrar"></div>
         <div class="formulario-registrar start">
             <form action="" method="post">
-                <h1 class="titulo-registrar">Register</h1>
+                <h1 class="titulo-registrar">Registrar</h1>
                 <input name="student_id" class="input-matricula-registrar" type="text" required spellcheck="false">
                 <label class="label-matricula-registrar">Matricula</label>
 
