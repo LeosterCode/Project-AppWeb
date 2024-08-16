@@ -15,7 +15,7 @@ function createSlug($text)
 }
 
 if (isset($_POST['reg_prod'])) {
-    $id_product = rand(1, 99);
+    $id_product = rand(1, 999);
     $student_id = $_SESSION['student_id'];
     $name_product = $_POST['name_product'];
     $description = $_POST['description'];

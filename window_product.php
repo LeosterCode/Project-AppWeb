@@ -44,17 +44,20 @@ if (isset($_POST['save_comm'])) {
     $student_id = $_SESSION['student_id'];
     $date_review = date("Y,m,d");
     $id_product = $column['id_product'];
-    $name_student = $_SESSION['name'];
+    $name_student = $_SESSION['name']; 
+    $pic_profile= $_SESSION['pic_profile'];
 
-    if (!empty($id_review) && !empty($comment) && !empty($student_id) && !empty($date_review) && !empty($id_product) && !empty($name_student)) {
 
-        $ins_comm = $cnnPDO->prepare('INSERT INTO review (id_review, id_product, name_student, student_id, comment, date_review)VALUES (:id_review, :id_product, :name_student, :student_id, :comment, :date_review)');
+    if (!empty($id_review) && !empty($comment) && !empty($student_id) && !empty($date_review) && !empty($id_product) && !empty($name_student) && !empty($pic_profile)) {
+
+        $ins_comm = $cnnPDO->prepare('INSERT INTO review (id_review, id_product, name_student, student_id, comment, date_review, pic_profile)VALUES (:id_review, :id_product, :name_student, :student_id, :comment, :date_review, :pic_profile)');
         $ins_comm->bindParam(':id_review', $id_review);
         $ins_comm->bindParam(':id_product', $id_product);
         $ins_comm->bindParam(':name_student', $name_student);
         $ins_comm->bindParam(':student_id', $student_id);
         $ins_comm->bindParam(':comment', $comment);
         $ins_comm->bindParam(':date_review', $date_review);
+        $ins_comm->bindParam(':pic_profile', $pic_profile,PDO::PARAM_LOB);
         $ins_comm->execute();
 
 
@@ -149,7 +152,7 @@ if (isset($_POST['save_comm'])) {
             foreach ($col as $data) {
                 echo '<div class="comentario-del-usuario">';
                 echo '    <div>';
-                echo '        <img src="https://masterpiecer-images.s3.yandex.net/05582065717511ee954256181a0358a2:upscaled" alt="">';
+                echo '        <img src="data:image/png;base64,'.base64_encode($data['pic_profile']).'" alt="">';
                 echo '    </div>';
                 echo '    <div>';
                 echo '        <p><b>' . htmlentities($data['name_student']) . '</b></p>';

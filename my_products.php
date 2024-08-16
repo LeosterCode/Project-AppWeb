@@ -49,8 +49,9 @@ if (isset($_POST['delete'])) {
                     echo '                   <p>Stock:  ' . htmlentities($data["stock"]) . '</p >';
                     echo '</div>';
                     echo '<div class="element-5">';
-                    echo '   <a href="window_product.php?slug=' . htmlentities($data['slug_product']) . ' " type="button" class="boton-productos">Ver Producto</a>';
-                    echo '   <form method="post">  <button  name="delete" value="'.$data['id_product'].'" type="submit" class="boton-productos-eliminar">Eliminar </button></form>';               
+                    echo '   <form  class="element-5" method="post">';  
+                    echo '      <a href="window_product.php?slug=' . htmlentities($data['slug_product']) . ' " type="button" class="boton-productos">Ver Producto</a>';
+                    echo '      <button  name="delete" value="'.$data['id_product'].'" type="submit" class="boton-productos-eliminar">Eliminar </button></form>';               
                     echo '</div>';
                     echo '               </div>';
                     echo '           </div>';
