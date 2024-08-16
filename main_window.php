@@ -18,7 +18,7 @@ require 'db_conexion.php';
 <body class="body-main_window">
   <nav class="navbar navbar-expand-lg color-bg" data-bs-theme="dark">
     <div class="container-fluid ">
-      <a class="navbar-brand" href="main_window.php" style="color: rgb(255, 255, 255);">Chishop</a>
+      <a class="navbar-brand" href="main_window.php" style="color: rgb(255, 255, 255);">Halcon Store</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color: rgba(100, 100, 100, 0.265);">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -47,7 +47,7 @@ require 'db_conexion.php';
                 <h5>Matricula: <?php echo $_SESSION['student_id']; ?> </h5>
                 <ul class="menu">
                   <li><a href="my_products.php"><i class="fa-solid fa-arrow-up"></i> Mis Publicaciones</a></li>
-                  <li><a href="#"><i class="fa-solid fa-clock-rotate-left"></i>  Historial De Compras</a></li>
+                  <li><a href="mis_pedidos.php"><i class="fa-solid fa-clock-rotate-left"></i>  Historial De Compras</a></li>
                   <li>
         <label class="close" for="btn-modal-editar" class="dropdown-item"><i class="fa-regular fa-pen-to-square"></i> Editar Perfil </label>
 
@@ -169,14 +169,14 @@ require 'db_conexion.php';
 
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <div class="carousel-background" style="background-image: url('image/img-window.jpg');"></div>
+          <div class="carousel-background" style="background-image: url('image/im-nuevos-productos.jpg');"></div>
           <div class="carousel-caption d-none d-md-block">
             <h5>First slide label</h5>
             <p>Some representative placeholder content for the first slide.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <div class="carousel-background" style="background-image: url('image/im-nuevos-productos.jpg');"></div>
+          <div class="carousel-background" style="background-image: url('image/img-productos-mas-vendidos.jpg');"></div>
           <div class="carousel-caption d-none d-md-block">
             <h5>Second slide label</h5>
             <p>Some representative placeholder content for the second slide.</p>
@@ -289,7 +289,6 @@ $slides = ceil($total_items / $items_per_slide);
           <ul>
             <li><a href="/privacy-policy">Política de Privacidad</a></li>
             <li><a href="/terms-of-service">Términos de Servicio</a></li>
-            <li><a href="/returns">Devoluciones y Reembolsos</a></li>
             <li><a href="/faq">Preguntas Frecuentes</a></li>
           </ul>
         </div>

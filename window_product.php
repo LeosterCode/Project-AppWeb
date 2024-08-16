@@ -114,7 +114,7 @@ if (isset($_POST['save_comm'])) {
         <div class="detalles-texto">
             <h4><?php echo htmlentities($column['name_product']) ?> </h4>
             <div class="descripcion-producto">
-                <p><b>Descripcion:</b> <?php echo htmlentities($column['description']) ?></p>
+                <p><b>Descripcion: </b> <?php echo htmlentities($column['description']) ?></p>
             </div>
             <p><b>Precio: </b> <?php echo htmlentities($column['price']) ?></p>
             <p><b>Stock: </b><?php echo htmlentities($column['stock']) ?></p>
@@ -149,7 +149,7 @@ if (isset($_POST['save_comm'])) {
                     echo '    </div>';
                     echo '    <div>';
                     echo '        <p><b>' . htmlentities($data['name_student']) . '</b></p>';
-                    echo '        <p><b>comentario:</b>' . htmlentities($data['comment']) . ' </p>';
+                    echo '        <p><b>comentario: </b>' . htmlentities($data['comment']) . ' </p>';
                     echo '    </div>';
                     echo '</div>';
                 }
