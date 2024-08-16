@@ -1,21 +1,19 @@
 <?php
 require 'db_conexion.php';
 session_start();
+ob_start();
 require 'navbar.php';
 if (isset($_GET['slug'])) {
     $slug = $_GET['slug'];
 
-    $select = $cnnPDO->prepare('SELECT * FROM product WHERE slug_product = :slug_product');
+    $select = $cnnPDO -> prepare('SELECT * FROM product WHERE slug_product = :slug_product');
     $select->bindParam(':slug_product', $slug);
     $select->execute();
     $column = $select->fetch(PDO::FETCH_ASSOC);
-
-
-
 } else {
     echo '<p>No se encontro el producto</p>';
 }
-if (isset($_POST['add'])){
+if (isset($_POST['add'])) {
     $student_id = $_SESSION['student_id'];
     $id_product = $column['id_product'];
     $name_product = $column['name_product'];
@@ -23,15 +21,21 @@ if (isset($_POST['add'])){
     $price = $column['price'];
     $total = $amount * $price;
     $date = date('Y-m-d');
+    if ($amount <= $column['stock']) {
 
-        if (!empty($student_id) && !empty($name_product) && !empty($amount) && !empty($price) && !empty($total) &&  !empty($date)){
-            $insert = $cnnPDO -> prepare('INSERT INTO shopping_cart (student_id, id_product, name_product, total, price, amount, date) VALUES (?,?,?,?,?,?,?)');
+        if (!empty($student_id) && !empty($name_product) && !empty($amount) && !empty($price) && !empty($total) &&  !empty($date)) {
+            $insert = $cnnPDO->prepare('INSERT INTO shopping_cart (student_id, id_product, name_product, total, price, amount, date) VALUES (?,?,?,?,?,?,?)');
             $insert->execute([$student_id, $id_product, $name_product, $total, $price, $amount, $date]);
             unset($insert);
 
-        }else {
-            header('location:admin.php');
+            header('location:window_product.php?slug='.$slug);
         }
+    } else {
+        echo  '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>ATENCION!</strong> La cantidad solicitada supera el stock.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+    }
 }
 
 if (isset($_POST['save_comm'])) {
@@ -133,32 +137,32 @@ if (isset($_POST['save_comm'])) {
                 <button name="save_comm" type="submit">Publicar</button>
             </form>
         </div>
-            <?php
-            $slct_rev = $cnnPDO->prepare('SELECT * FROM review WHERE id_product = :id_product');
-            $slct_rev->bindParam(':id_product', $column['id_product']);
-            $slct_rev->execute();
-            $count = $slct_rev->rowCount();
-            $col = $slct_rev->fetchAll();
-            if ($count) {
+        <?php
+        $slct_rev = $cnnPDO->prepare('SELECT * FROM review WHERE id_product = :id_product');
+        $slct_rev->bindParam(':id_product', $column['id_product']);
+        $slct_rev->execute();
+        $count = $slct_rev->rowCount();
+        $col = $slct_rev->fetchAll();
+        if ($count) {
 
-                echo '<div class="comentarios-publicados">';
-                foreach ($col as $data) {
-                    echo '<div class="comentario-del-usuario">';
-                    echo '    <div>';
-                    echo '        <img src="https://masterpiecer-images.s3.yandex.net/05582065717511ee954256181a0358a2:upscaled" alt="">';
-                    echo '    </div>';
-                    echo '    <div>';
-                    echo '        <p><b>' . htmlentities($data['name_student']) . '</b></p>';
-                    echo '        <p><b>comentario: </b>' . htmlentities($data['comment']) . ' </p>';
-                    echo '    </div>';
-                    echo '</div>';
-                }
+            echo '<div class="comentarios-publicados">';
+            foreach ($col as $data) {
+                echo '<div class="comentario-del-usuario">';
+                echo '    <div>';
+                echo '        <img src="https://masterpiecer-images.s3.yandex.net/05582065717511ee954256181a0358a2:upscaled" alt="">';
+                echo '    </div>';
+                echo '    <div>';
+                echo '        <p><b>' . htmlentities($data['name_student']) . '</b></p>';
+                echo '        <p><b>comentario: </b>' . htmlentities($data['comment']) . ' </p>';
+                echo '    </div>';
                 echo '</div>';
-            } else echo 'Tu producto no tiene comentarios';
+            }
+            echo '</div>';
+        } else echo 'Tu producto no tiene comentarios';
 
-            ?>
+        ?>
 
-        </div>
+    </div>
 
     </div>
 </body>
@@ -169,5 +173,5 @@ if (isset($_POST['save_comm'])) {
 
 
 </body>
-
+<?php ob_end_flush();?>
 </html>

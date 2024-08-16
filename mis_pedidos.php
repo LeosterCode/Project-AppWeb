@@ -2,6 +2,11 @@
 require 'db_conexion.php';
 session_start();
 require 'navbar.php';
+$select=$cnnPDO->prepare('SELECT * FROM purchase WHERE student_id=?');
+$select->execute([$_SESSION['student_id']]);
+$count =$select->rowCount();
+$col=$select->fetchAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -16,26 +21,22 @@ require 'navbar.php';
     <div class="container-mis-pedidos">
         <h2>Mis Pedidos</h2>
         <div class="pedido">
-            <div class="pedido-contenido">
+            <?php foreach($col as $data){
+            echo  '<div class="pedido-contenido">
                 <div class="img-pedidos">
-                    <img src="https://d22k5h68hofcrd.cloudfront.net/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/7/F/7F213LT-1_T1680201707.png" alt="Producto">
+                    <img src="image/6384868.png" alt="Producto">
                 </div>
                 <div class="pedido-header">
-                    <h3>Pedido #12345</h3>
-                    <p>Fecha: 10 de agosto de 2024</p>
+                    <h3>Pedido #'.htmlentities($data['id_purchase']).' </h3>
+                    <p>Fecha: '.htmlentities($data['date']).'</p>
                     <p>Estado: Enviado</p>
                 </div>
                 <div class="detalle-pedido">
                     <h4>Detalles del Producto</h4>
-                    <p>Nombre del Producto</p>
-                    <p>Cantidad: 1</p>
-                    <p>Precio: $100.00</p>
+                    <p>Total de la compra: $ '.htmlentities($data['total']).'.00</p>
                 </div>
-            </div>
-            <div class="pedido-footer">
-                <p>Total: $100.00</p>
-                <button>Ver Más Detalles</button>
-            </div>
+            </div>';
+            }?>
         </div>
         
     </div>

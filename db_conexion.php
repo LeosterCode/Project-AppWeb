@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title null>ChiChop</title>
+	<title >Halcon Store</title>
 	<meta charset="utf-8">
 	<!-- Icono del Sitio Web -->
 	<link rel="icon" href="images/icon utc.png">
