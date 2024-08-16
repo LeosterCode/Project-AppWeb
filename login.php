@@ -15,11 +15,22 @@ require 'db_conexion.php';
         $_SESSION['student_id'] = $colum['student_id'];
         $_SESSION['name'] = $colum['name'];
         $_SESSION['pic_profile']=$colum['pic_profile'];
+        $_SESSION['password'] = $colum['password'];
 
         header('location:main_window.php');
     
+            }else{
+                ?>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>REGISTRO</strong> Sus datos fueron editados
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+        <?php
+
             }
         }
+      
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
