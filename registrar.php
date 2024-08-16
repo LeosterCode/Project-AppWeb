@@ -44,6 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
     $career = $_POST['career'];
     $building = $_POST['building'];
     $password = $_POST['password'];
+    $url_img = 'image/pic profile.jpg';
+    $pic_profile = file_get_contents($url_img);
 
     if (!empty($student_id) && !empty($name) && !empty($email) && !empty($phone) && !empty($career) && !empty($building) && !empty($password)) {
         if ($career !== "Selecciona tu carrera..." && $building !== "Selecciona tu edificio...") {
@@ -54,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
             if ($resultado === "El correo electrónico pertenece al dominio permitido y es válido.") {
                 try {
                     
-                    $insert = $cnnPDO->prepare("INSERT INTO user (student_id, name, email, phone, career, building, password) VALUES (:student_id, :name, :email, :phone, :career, :building, :password)");
+                    $insert = $cnnPDO->prepare("INSERT INTO user (student_id, name, email, phone, career, building, password, pic_profile) VALUES (:student_id, :name, :email, :phone, :career, :building, :password, :pic_profile)");
 
                     $insert->bindParam(':student_id', $student_id);
                     $insert->bindParam(':name', $name);
@@ -63,6 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
                     $insert->bindParam(':career', $career);
                     $insert->bindParam(':building', $building);
                     $insert->bindParam(':password', $password);
+                    $insert->bindParam(':pic_profile', $pic_profile,PDO::PARAM_LOB);
 
                     $insert->execute();
 

@@ -41,13 +41,12 @@ require 'db_conexion.php';
           <div class="container-modal-perfil">
             <div class="content-modal-perfil">
               <div class="mi-perfil">
-                <div class="img-perfil"><img src="https://pm1.aminoapps.com/7933/780e7616157d238903727816597e4c1c36aa7b98r1-372-371v2_uhq.jpg" alt=""></div>
-
+                <div class="img-perfil"><?php echo '<img src="data:image/png;base64,' .base64_encode($_SESSION['pic_profile']). '" alt="">';?></div>
                 <h5>Nombre: <?php echo $_SESSION['name']; ?> </h5>
                 <h5>Matricula: <?php echo $_SESSION['student_id']; ?> </h5>
                 <ul class="menu">
                   <li><a href="my_products.php"><i class="fa-solid fa-arrow-up"></i> Mis Publicaciones</a></li>
-                  <li><a href="#"><i class="fa-solid fa-clock-rotate-left"></i>  Historial De Compras</a></li>
+                  <li><a href="mis_pedidos.php"><i class="fa-solid fa-clock-rotate-left"></i>  Historial De Compras</a></li>
                   <li>
         <label class="close" for="btn-modal-editar" class="dropdown-item"><i class="fa-regular fa-pen-to-square"></i> Editar Perfil </label>
 
@@ -69,12 +68,12 @@ require 'db_conexion.php';
                       </div>
                       </form>
                       <div class="btn-cerrar-editar">
-                    <label for="btn-modal-editar">cerrar</label>
+                    <label for="btn-modal-editar">Cerrar</label>
                   </div>
                 </div>
                   <label for="btn-modal-editar" class="cerrar-modal"></label>
                 </li>
-                  <li><a class="close" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> cerrar Sesion</a></li>
+                  <li><a class="close" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesion</a></li>
                 </ul>
               </div>
             </div>
