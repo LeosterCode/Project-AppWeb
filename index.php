@@ -24,7 +24,7 @@
             <a href="registrar.php">Registrar</a>
             </div>
         </div>
-        <div class="img-index"></div>
+        <div class="img-index"><img src="image/img-index.jpg" alt=""></div>
     </div>
 
 </body>

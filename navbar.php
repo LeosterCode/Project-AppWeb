@@ -15,7 +15,7 @@ require 'cdn.html';
 <body>
 <nav class="navbar navbar-expand-lg color-bg" data-bs-theme="dark">
     <div class="container-fluid ">
-      <a class="navbar-brand" href="main_window.php" style="color: rgb(255, 255, 255);">Chishop</a>
+      <a class="navbar-brand" href="main_window.php" style="color: rgb(255, 255, 255);">Halcon Store</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color: rgba(100, 100, 100, 0.265);">
         <span class="navbar-toggler-icon"></span>
       </button>

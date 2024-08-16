@@ -19,7 +19,7 @@ require 'db_conexion.php';
 <body class="body-main_window">
   <nav class="navbar navbar-expand-lg color-bg" data-bs-theme="dark">
     <div class="container-fluid ">
-      <a class="navbar-brand" href="main_window.php" style="color: rgb(255, 255, 255);">Chishop</a>
+      <a class="navbar-brand" href="main_window.php" style="color: rgb(255, 255, 255);">Halcon Store</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color: rgba(100, 100, 100, 0.265);">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -204,14 +204,14 @@ require 'db_conexion.php';
 
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <div class="carousel-background" style="background-image: url('image/img-window.jpg');"></div>
+          <div class="carousel-background" style="background-image: url('image/im-nuevos-productos.jpg');"></div>
           <div class="carousel-caption d-none d-md-block">
             <h5>First slide label</h5>
             <p>Some representative placeholder content for the first slide.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <div class="carousel-background" style="background-image: url('image/im-nuevos-productos.jpg');"></div>
+          <div class="carousel-background" style="background-image: url('image/img-productos-mas-vendidos.jpg');"></div>
           <div class="carousel-caption d-none d-md-block">
             <h5>Second slide label</h5>
             <p>Some representative placeholder content for the second slide.</p>
@@ -314,29 +314,28 @@ require 'db_conexion.php';
 
 
     ?>
-  </div>
-  <footer id="footer">
-    <h1>Información sobre la página</h1>
-    <br>
-    <div class="footer-content">
-      <div class="footer-links">
-        <h4>Información Legal</h4>
-        <ul>
-          <li><a href="/privacy-policy">Política de Privacidad</a></li>
-          <li><a href="/terms-of-service">Términos de Servicio</a></li>
-          <li><a href="/returns">Devoluciones y Reembolsos</a></li>
-          <li><a href="/faq">Preguntas Frecuentes</a></li>
-        </ul>
-      </div>
-      <div class="footer-social">
-        <h4>Contactos</h4>
-        <a href="https://facebook.com/mitienda" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a>
-        <a href="https://twitter.com/mitienda" target="_blank"> <i class="fa-brands fa-twitter"></i> Twitter</a>
-        <a href="https://instagram.com/mitienda" target="_blank"> <i class="fa-brands fa-instagram"></i>
-          Instagram</a>
-      </div>
     </div>
-  </footer>
+    <footer id="footer">
+      <h1>Información sobre la página</h1>
+      <br>
+      <div class="footer-content">
+        <div class="footer-links">
+          <h4>Información Legal</h4>
+          <ul>
+            <li><a href="/privacy-policy">Política de Privacidad</a></li>
+            <li><a href="/terms-of-service">Términos de Servicio</a></li>
+            <li><a href="/faq">Preguntas Frecuentes</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Contactos</h4>
+          <a href="https://facebook.com/mitienda" target="_blank"><i class="fa-brands fa-facebook"></i>  Facebook</a>
+          <a href="https://twitter.com/mitienda" target="_blank"> <i class="fa-brands fa-twitter"></i> Twitter</a>
+          <a href="https://instagram.com/mitienda" target="_blank"> <i class="fa-brands fa-instagram"></i>
+            Instagram</a>
+        </div>
+      </div>
+    </footer>
 </body>
 <?php
 ob_end_flush(); 
