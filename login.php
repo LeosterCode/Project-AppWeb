@@ -22,14 +22,14 @@ require 'cdn.html';
         header('location:main_window.php');
     
             }else{
-                echo  ' <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                echo  ' <div class="alert alert-danger  alert-dismissible fade show" role="alert">
                             <strong>ATENCION!</strong> Correo o contraseña incorrectos.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>';
 
             }
         }
-      
+        
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,6 +38,7 @@ require 'cdn.html';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/b1473ebfe8.js" crossorigin="anonymous"></script>
 </head>
 <body class="body-login">
     <div class="container-login">
@@ -47,7 +48,7 @@ require 'cdn.html';
                 <input name="email" class="input-nombre" type="email" required spellcheck="false">
                 <label class="label-nombre">Email</label>
                 <input name="password" class="input-password" type="password" required spellcheck="false">
-                <label class="label-password">Password</label>
+                <label class="label-password">Password </label>
                 <button name="login" class="boton-login">Login</button>
                 <p class="reg">¿Aún no estás registrado? <a class="buttons" href="registrar.php">Registarte</a></p>
             </form>

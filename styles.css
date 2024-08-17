@@ -110,9 +110,7 @@
 
 /*----------styles de login---------*/
 .body-login {
-    
     justify-content: center;
-    height: 100vh;
     margin: 0;
     background: url("image/fondo-login.jpg");
     background-size: cover;
@@ -122,19 +120,38 @@
     font-weight: 300;
 }
 
+.alert {
+    width: 30%;
+    position: fixed; 
+    top: 20px;
+    left: 35%; 
+    animation: animacion-alert 0.9s ease;
+}
+
+@keyframes animacion-alert {
+    0% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 
 .container-login {
     margin: auto;
-    margin-top: 7%;
-    margin-bottom: 7%;
+    margin-top: 10%;
+    margin-bottom: 10%;
     width: 35%;
-    height: 650px;
-    background-color: rgba(0, 83, 81, 0.231);
+    height: 600px;
+    background-color: #ffffff0e;
+    backdrop-filter: blur(20px);
     border-radius: 15px;
     display: flex;
-    box-shadow: 0px 0px 30px 0px rgb(255, 253, 253);
+    border: 1px solid rgb(197, 197, 197);
     justify-content: center;
     align-items: center;
+    padding: 20px 0 20px 0;
 }
 
 .formulario{
@@ -148,6 +165,7 @@
 .titulo-login{
     text-align: center;
     font-size: 50px;
+    margin-bottom: 40px;
     color: #fefefe;
     font-family: "montserrat";
     font-weight: 400;
@@ -171,14 +189,15 @@
 }
 
 .boton-login{
-    margin: 10% 25% 0% 25%;
-    width: 50%;
-    height: 25px;
+    margin: 20px 50px 10px 50px;
+    border-radius: 40px;
+    width: 80%;
+    height: 40px;
     cursor: pointer;
     border: none;
-    border-radius: 15px;
+    border-radius: 50px;
     animation: animacion-input-1 0.9s ease-out ;
-    
+    font-size: 20px;
 }
 
 .input-nombre {
@@ -187,9 +206,10 @@
     border-radius: 6px;
     font-size: 18px;
     padding: 15px;
-    border: 2px solid #fff;
+    border: 1px solid #ffffff;
     background: transparent;
     color: #fff;
+    border-radius: 40px;
     outline: none;
     box-sizing: border-box;
     animation: animacion-input-login 2s ease-out;
@@ -203,7 +223,7 @@
     pointer-events: none;
     transition: .3s;
     background: rgba(0, 0, 0, 0);
-    padding: 0 5px 60px;
+    padding: 0 20px 60px;
     animation: animacion-input-login 2s ease-out;
 }
 
@@ -214,8 +234,8 @@
 .input-nombre:focus ~ .label-nombre,
 .input-nombre:valid ~ .label-nombre {
     font-size: 17px;
-    background: #19182500;
-    padding: 0 5px 140px;
+    background: #ffffff00;
+    padding: 0 30px 140px;
 }
 
 .input-container {
@@ -231,8 +251,9 @@
     border-radius: 6px;
     font-size: 18px;
     padding: 15px;
-    border: 2px solid #fff;
+    border: 1px solid #fff;
     background: transparent;
+    border-radius: 40px;
     color: #fff;
     outline: none;
     box-sizing: border-box;
@@ -247,7 +268,7 @@
     pointer-events: none;
     transition: .3s;
     background: rgba(0, 0, 0, 0);
-    padding: 0 5px 60px;
+    padding: 0 20px 60px;
     animation: animacion-input-login 2s ease-out;
 }
 
@@ -259,7 +280,7 @@
 .input-password:valid ~ .label-password {
     font-size: 17px;
     background: #19182500;
-    padding: 0 5px 140px;
+    padding: 0 30px 140px;
 }
 
 
@@ -277,9 +298,6 @@
 /*--------------styles de registrar--------------*/
 
 .body-registrar{
-    display: flex;
-    justify-content: center;
-    height: 100vh;
     margin: 0;
     background-color: #000000;
     background: url("image/fondo-login.jpg");
@@ -291,15 +309,18 @@
 }
 
 .container-registrar{
-    margin-top: 2%;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
     width: 35%;
-    height: 750px;
-    background-color: rgba(0, 83, 81, 0.231);
+    height: 900px;
+    backdrop-filter: blur(20px);
     border-radius: 15px;
     display: flex;
-    box-shadow: 0px 0px 30px 0px rgb(255, 253, 253);
+    border: 1px solid white;
     justify-content: center;
     align-items: center;
+    padding: 20px 0 20px 0;
 }
 
 .formulario-registrar{
@@ -312,6 +333,7 @@
 
 .titulo-registrar{
     text-align: center;
+    margin-bottom: 50px;
     font-size: 50px;
     color: #fefefe;
     font-family: "montserrat";
@@ -323,29 +345,30 @@
 }
 
 .rega{
-    margin: 0% 25% 5% 25%;
+    margin: 10px 120px 10px 120px;
     text-decoration: none;
     color: #fefefe;
     animation: animacion-input-1 0.9s ease-out ;
 }
 
 .boton-registrar{
-    margin: 5% 25% 5% 25%;
-    width: 50%;
-    height: 25px;
+    margin: 20px 50px 10px 50px;
+    border-radius: 40px;
+    width: 80%;
+    height: 40px;
     cursor: pointer;
     border: none;
-    border-radius: 15px;
+    border-radius: 50px;
     animation: animacion-input-1 0.9s ease-out ;
 }
 
 .input-matricula-registrar {
     width: 100%;
-    height: 45px;
-    border-radius: 6px;
+    height: 60px;
+    border-radius: 40px;
     font-size: 18px;
     padding: 15px;
-    border: 2px solid #fff;
+    border: 1px solid #fff;
     background: transparent;
     color: #fff;
     outline: none;
@@ -364,7 +387,7 @@
     pointer-events: none;
     transition: .3s;
     background: rgba(0, 0, 0, 0);
-    padding: 0 5px 45px;
+    padding: 0 20px 60px;
     animation: animacion-input 2s ease-out;
     animation-delay: 0.7s;
     visibility: hidden;
@@ -379,18 +402,18 @@
 .input-matricula-registrar:valid ~ .label-matricula-registrar {
     font-size: 17px;
     background: #19182500;
-    padding: 0 5px 120px;
+    padding: 0 30px 150px;
 }
 
 
 .input-nombre-registrar {
     margin-top: 30px;
     width: 100%;
-    height: 45px;
-    border-radius: 6px;
+    height: 60px;
+    border-radius: 40px;
     font-size: 18px;
     padding: 15px;
-    border: 2px solid #fff;
+    border: 1px solid #fff;
     background: transparent;
     color: #fff;
     outline: none;
@@ -403,14 +426,13 @@
 
 .label-nombre-registrar {
     position: absolute;
-    padding: 0 5px 45px;
     transform: translateY(-49%);
     color: #FFF;
     font-size: 19px;
     pointer-events: none;
     transition: .3s;
     background: rgba(0, 0, 0, 0);
-    padding: 0 5px 45px;
+    padding: 0 20px 60px;
     animation: animacion-input 2s ease-out;
     animation-delay: 0.6s;
     visibility: hidden;
@@ -425,17 +447,17 @@
 .input-nombre-registrar:valid ~ .label-nombre-registrar {
     font-size: 17px;
     background: #19182500;
-    padding: 0 5px 120px;
+    padding: 0 30px 150px;
 }
 
 .input-email-registrar {
     margin-top: 30px;
     width: 100%;
-    height: 45px;
-    border-radius: 6px;
+    height: 60px;
+    border-radius: 40px;
     font-size: 18px;
     padding: 15px;
-    border: 2px solid #fff;
+    border: 1px solid #fff;
     background: transparent;
     color: #fff;
     outline: none;
@@ -454,7 +476,7 @@
     pointer-events: none;
     transition: .3s;
     background: rgba(0, 0, 0, 0);
-    padding: 0 5px 45px;
+    padding: 0 20px 60px;
     animation: animacion-input 2s ease-out;
     animation-delay: 0.5s;
     visibility: hidden;
@@ -469,18 +491,18 @@
 .input-email-registrar:valid ~ .label-email-registrar {
     font-size: 17px;
     background: #19182500;
-    padding: 0 5px 120px;
+    padding: 0 30px 150px;
 }
 
 
 .input-numero-registrar {
     margin-top: 30px;
     width: 100%;
-    height: 45px;
-    border-radius: 6px;
+    height: 60px;
+    border-radius: 40px;
     font-size: 18px;
     padding: 15px;
-    border: 2px solid #fff;
+    border: 1px solid #fff;
     background: transparent;
     color: #fff;
     outline: none;
@@ -499,7 +521,7 @@
     pointer-events: none;
     transition: .3s;
     background: rgba(0, 0, 0, 0);
-    padding: 0 5px 47px;
+    padding: 0 20px 60px;
     animation: animacion-input 2s ease-out;
     animation-delay: 0.4s;
     visibility: hidden;
@@ -514,17 +536,17 @@
 .input-numero-registrar:valid ~ .label-numero-registrar {
     font-size: 17px;
     background: #19182500;
-    padding: 0 5px 120px;
+    padding: 0 30px 150px;
 }
 
 .input-carrera-registrar{
     margin-top: 30px;
     width: 100%;
-    height: 45px;
-    border-radius: 6px;
+    height: 60px;
+    border-radius: 40px;
     font-size: 18px;
     padding-left: 15px;
-    border: 2px solid #fff;
+    border: 1px solid #fff;
     background: transparent;
     color: #fff;
     outline: none;
@@ -547,11 +569,11 @@
     position: absolute;
     transform: translateY(-49%);
     color: #FFF;
-    font-size: 19px;
+    font-size: 17px;
     pointer-events: none;
     transition: .3s;
     background: rgba(0, 0, 0, 0);
-    padding: 0 5px 120px;
+    padding: 0 30px 150px;
     animation: animacion-input 2s ease-out;
     animation-delay: 0.3s;
     visibility: hidden;
@@ -562,11 +584,11 @@
 .input-edificio-registrar {
     margin-top: 30px;
     width: 100%;
-    height: 45px;
+    height: 60px;
     padding-left: 15px;
-    border-radius: 6px;
+    border-radius: 40px;
     font-size: 18px;
-    border: 2px solid #fff;
+    border: 1px solid #fff;
     background: transparent;
     color: #fff;
     outline: none;
@@ -587,11 +609,11 @@
     position: absolute;
     transform: translateY(-49%);
     color: #FFF;
-    font-size: 19px;
+    font-size: 17px;
     pointer-events: none;
     transition: .3s;
     background: rgba(0, 0, 0, 0);
-    padding: 0 5px 120px;
+    padding: 0 30px 150px;
     animation: animacion-input 2s ease-out;
     visibility: hidden;
     animation-fill-mode: forwards;
@@ -602,11 +624,11 @@
 .input-password-registrar {
     margin-top: 30px;
     width: 100%;
-    height: 45px;
-    border-radius: 6px;
+    height: 60px;
+    border-radius: 40px;
     font-size: 18px;
     padding: 15px;
-    border: 2px solid #fff;
+    border: 1px solid #fff;
     background: transparent;
     color: #fff;
     outline: none;
@@ -625,7 +647,7 @@
     pointer-events: none;
     transition: .3s;
     background: rgba(0, 0, 0, 0);
-    padding: 0 5px 45px;
+    padding: 0 20px 60px;
     animation: animacion-input 2s ease-out;
     visibility: hidden;
     animation-fill-mode: forwards;
@@ -639,7 +661,7 @@
 .input-password-registrar:valid ~ .label-password-registrar {
     font-size: 17px;
     background: #19182500;
-    padding: 0 5px 120px;
+    padding: 0 30px 150px;
 }
 
 
@@ -1036,8 +1058,8 @@ footer{
 
 .categoriass{
     margin: auto;
-    width: 80%;
-    height: 100%;
+    width: 100%;
+    height: 10%;
     padding: 2%;
     background-color: #00000000;
 }
@@ -1047,13 +1069,13 @@ footer{
 
 .categoriass img:hover{
     transform: scale( 1.03);
-    box-shadow: 0 10px 20px rgb(5, 0, 0); 
+    box-shadow: 0 10px 20px rgba(5, 0, 0, 0); 
     border-radius: 15px;
 }
 .categoriass img{
-    width: 100%;
+    width: 110%;
     height: 100%;
-    border-radius: 15px;
+    border-radius: 1px;
     transition: 0.9s;
 }
 
@@ -1061,36 +1083,13 @@ footer{
     width: 100%;
     height: 100%;
     background-color: #00000000;
-    border-radius: 15px;
+    border-radius: 1px;
 
-}
-
-.computadoras{
-    width: 100%;
-    height: 100%;
-    background-color: #00000000;
-    border-radius: 15px;
-
-}
-
-.celulares{
-    width: 100%;
-    height: 100%;
-    background-color: #00000000;
-    border-radius: 15px;
-
-}
-
-.teclados{
-    width: 100%;
-    height: 100%;
-    background-color: #00000000;
-    border-radius: 15px;
 }
 
 .imagenes-de-carrusel{
     display: flex;
-    gap: 15px;
+    gap: 1px;
     justify-content: center; 
     align-items: center;   
     text-align: center;    

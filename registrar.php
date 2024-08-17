@@ -150,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
 
                 <button name="signup" class="boton-registrar" type="submit">Register</button>
                 <?php if ($resultado): ?>
-                <div class="alert <?= $alertClass ?>" role="alert">
+                <div class="alerta <?= $alertClass ?>" role="alert">
                     <?= $resultado ?>
                 </div>
                 <?php endif; ?>
