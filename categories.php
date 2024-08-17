@@ -39,21 +39,19 @@ if (isset($_GET['slug'])) {
     if ($count) {
         try {
             
-            echo '   <div class="cards">';
+            
             foreach ($column as $data) {
-                echo '  <div class="card border-dark mx-3 mb-3" style="max-width: 18rem;">';
+                echo '     <a class="card-product" href="window_product.php?slug=' . htmlentities($data['slug_product']) . ' " >';
                 echo '    <img src="data:image_png;base64,' . base64_encode($data['image_1']) . '" class="card-img-top" alt="...">';
-                echo '    <div class="card-body">';
+                echo '    <div class="card-body-product">';
                 echo '      <h5 class="card-name">' . htmlentities($data['name_product']) . '</h5>';
     
                 echo '      <p class="card-text">$ '.htmlentities($data['price']).'.00 MXN</p>';
                 echo '              <p>Stock: ' . htmlentities($data["stock"]) . '</p>';
                 echo '    </div>';
-                echo '      <a href="window_product.php?slug=' . htmlentities($data['slug_product']) . ' " >Ver producto</a>';
-                echo '  </div>';
-                
+                echo '    </a>';
             }
-            echo '</div';
+            
             
         } catch (PDOException $error) {
             echo 'ERROR EN LA BASE DE DATOS' . $error->getMessage();
