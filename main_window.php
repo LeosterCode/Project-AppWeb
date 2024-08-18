@@ -194,6 +194,7 @@ require 'db_conexion.php';
     </div>
   </nav>
 
+  <div class="imagen-principal"><div class="imagen-principal-text"><h1>Halcon Store</h1></div></div>
   
   <?php
   $select_cat = $cnnPDO->prepare('SELECT * FROM category');
