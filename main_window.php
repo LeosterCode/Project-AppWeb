@@ -133,11 +133,23 @@ require 'db_conexion.php';
           <input class="form-control me-2" type="search" name="query" placeholder="Buscar" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
-        <button class="notificaciones">
-        <i class="fa-sharp-duotone fa-solid fa-bell"></i> Notificaciones
-          </button>
-        <label class="close" for="btn-modal" class="dropdown-item"><i class="fa-solid fa-cart-shopping"></i> Carrito de compras </label>
 
+        <label class="close" for="btn-modal-notificaciones" class="dropdown-item"><i class="fa-sharp-duotone fa-solid fa-bell"></i> Norificaciones </label>
+        <input type="checkbox" id="btn-modal-notificaciones">
+        <div class="container-modal-notificaciones">
+          <div class="content-modal-notificaciones">
+            <div class="btn-cerrar">
+              <label for="btn-modal-notificaciones"><i class="fa-sharp-duotone fa-solid fa-xmark"></i></label>
+            </div>
+            <h2><i class="fa-sharp-duotone fa-solid fa-bell"></i> Notificaciones</h2>
+            
+
+          </div>
+          </div>
+        </div>
+
+          
+        <label class="close" for="btn-modal" class="dropdown-item"><i class="fa-solid fa-cart-shopping"></i> Carrito de compras </label>
         <input type="checkbox" id="btn-modal">
         <div class="container-modal">
           <div class="content-modal">
