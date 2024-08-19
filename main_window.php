@@ -128,10 +128,14 @@ require 'db_conexion.php';
             <label for="btn-modal-perfil" class="cerrar-modal-perfil"></label>
           </div>
         </ul>
+        
         <form class="d-flex position" role="search" action="buscar.php" method="GET">
           <input class="form-control me-2" type="search" name="query" placeholder="Buscar" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
+        <button class="notificaciones">
+        <i class="fa-sharp-duotone fa-solid fa-bell"></i> Notificaciones
+          </button>
         <label class="close" for="btn-modal" class="dropdown-item"><i class="fa-solid fa-cart-shopping"></i> Carrito de compras </label>
 
         <input type="checkbox" id="btn-modal">

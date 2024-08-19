@@ -90,6 +90,18 @@ if (isset($_POST['save_comm'])) {
 </head>
 
 <body class="body-detalles">
+<div class="vendedor-container">
+        <div class="comentario-del-usuario">
+                <div>
+                <?php  echo  '<img src="data:image/png;base64,'.base64_encode($column2['pic_profile']).'" alt="">';?>
+                </div>
+                <div>
+                    <p><b><?php echo $column2['name'] ?></b></p>
+                    <p><b>Telefono:</b> <?php echo htmlentities( $column2['phone'])?> </p>
+                    <p><b>Edificio:</b> <?php echo htmlentities($column2['building'])?> </p>
+                </div>
+        </div>
+    </div>
     <div class="container-detalles">
         <div class="detalles-imagen">
             <div class="carrusel-detalles">
@@ -143,21 +155,10 @@ if (isset($_POST['save_comm'])) {
         }
         ?>
         </div>
-            
+
     </div>
 
-    <div class="vendedor-container">
-        <div class="comentario-del-usuario">
-                <div>
-                <?php  echo  '<img src="data:image/png;base64,'.base64_encode($column2['pic_profile']).'" alt="">';?>
-                </div>
-                <div>
-                    <p><b><?php echo $column2['name'] ?></b></p>
-                    <p><b>Telefono:</b> <?php echo htmlentities( $column2['phone'])?> </p>
-                    <p><b>Edificio:</b> <?php echo htmlentities($column2['building'])?> </p>
-                </div>
-        </div>
-    </div>
+
     <div class="comentarios">
         <h2>Comentarios</h2>
         <?php if ($column['student_id']!= $_SESSION['student_id']){ 

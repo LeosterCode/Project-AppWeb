@@ -763,7 +763,13 @@
     font-family:  "montserrat";
 }
 
-
+.notificaciones{
+    color: #fefefe;
+    text-decoration: none;
+    margin-right: 10px;
+    background-color: transparent;
+    border: none;
+}
 
 .navbar label{
     cursor: pointer;
@@ -1675,9 +1681,7 @@ footer{
 
 .body-detalles{
     background: radial-gradient(circle, rgb(0, 54, 57) 0%, rgb(0, 0, 0) 100%);
-    background-attachment: fixed;
-    justify-content: center;
-    align-items: center;
+
     
 }
 
@@ -1754,6 +1758,17 @@ footer{
     color: #fefefe;
     padding-bottom: 50px;
     margin-bottom: 50px;
+}
+
+.vendedor-container .comentario-del-usuario{
+    width: 1000px;
+    margin: auto;
+    color: #fefefe;
+    background-color: #002c2c55;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    border-radius: 0px;
 }
 
 .comentarios h2{
