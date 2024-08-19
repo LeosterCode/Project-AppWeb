@@ -354,10 +354,10 @@ require 'db_conexion.php';
         </ul>
       </div>
       <div class="footer-social">
-        <h4>Contactos</h4>
-        <a href="https://facebook.com/mitienda" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a>
-        <a href="https://twitter.com/mitienda" target="_blank"> <i class="fa-brands fa-twitter"></i> Twitter</a>
-        <a href="https://instagram.com/mitienda" target="_blank"> <i class="fa-brands fa-instagram"></i>
+        <h4>Siguenos!</h4>
+        <a href="https://www.facebook.com/UniversidadTecnologicadeCoahuila" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a>
+        <a href="https://www.tiktok.com/@utdecoahuila" target="_blank"> <i class="fa-brands fa-twitter"></i> Twitter</a>
+        <a href="https://www.instagram.com/utcoahuila" target="_blank"> <i class="fa-brands fa-instagram"></i>
           Instagram</a>
       </div>
     </div>

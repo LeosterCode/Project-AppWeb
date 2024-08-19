@@ -153,8 +153,8 @@ if (isset($_POST['save_comm'])) {
                 </div>
                 <div>
                     <p><b><?php echo $column2['name'] ?></b></p>
-                    <p><b>Telefono:</b> <?php echo $column2['phone']?> </p>
-                    <p><b>Edificio:</b> <?php echo $column2['building']?> </p>
+                    <p><b>Telefono:</b> <?php echo htmlentities( $column2['phone'])?> </p>
+                    <p><b>Edificio:</b> <?php echo htmlentities($column2['building'])?> </p>
                 </div>
         </div>
     </div>
