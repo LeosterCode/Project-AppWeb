@@ -39,6 +39,7 @@ require 'cdn.html';
             <div class="content-modal-perfil">
               <div class="mi-perfil">
                 <div class="img-perfil"><?php echo '<img src="data:image/png;base64,' . base64_encode($_SESSION['pic_profile']) . '" alt="">'; ?></div>
+                <div class="container-menu">
                 <h5>Nombre: <?php echo $_SESSION['name']; ?> </h5>
                 <h5>Matricula: <?php echo $_SESSION['student_id']; ?> </h5>
                 <ul class="menu">
@@ -80,12 +81,15 @@ require 'cdn.html';
                     <input type="checkbox" id="btn-modal-editar">
                     <div class="container-modal-editar">
                       <div class="content-modal-editar">
-                        <h2>Editar Perfil</h2>
                         <form enctype="multipart/form-data" method="post">
+                        <div class="img-perfil-editar">
+                        <h2>Editar Perfil</h2>
                           <div class="form-floating mb-2">
                             <input name="new_pic"  type="file" class="custom-file-input-editar">
-                            <label for="floatingInput" class="label-editar">Foto</label>
+                            
                           </div>
+                          </div>
+                          <div class="container-editar-form">
                           <div class="form-floating mb-4">
                             <input name="new_password" value="<?php echo $_SESSION['password']?>" class="input-editar" type="text">
                             <label class="label-editar">Password</label>
@@ -94,6 +98,7 @@ require 'cdn.html';
                             <input name="new_name" value="<?php echo $_SESSION['name']?>" class="input-editar" type="text">
                             <label class="label-editar">Nombre</label>
                           </div> 
+                          </div>
                             <br>
                             <div class="d-grid gap-3 col-7 mx-auto">
                               <button class="btn btn-light" type="submit" name="edit">Guardar</button>
@@ -103,10 +108,11 @@ require 'cdn.html';
                           <label for="btn-modal-editar">Cerrar</label>
                         </div>
                       </div>
-                      <label for="btn-modal-editar" class="cerrar-modal"></label>
+                      <label for="btn-modal-editar" class="cerrar-modal-perfil"></label>
                   </li>
                   <li><a class="close" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesion</a></li>
                 </ul>
+                </div>
               </div>
             </div>
             <label for="btn-modal-perfil" class="cerrar-modal-perfil"></label>
@@ -121,7 +127,10 @@ require 'cdn.html';
         <input type="checkbox" id="btn-modal">
         <div class="container-modal">
           <div class="content-modal">
-            <h2>Carrito De Compras</h2>
+          <div class="btn-cerrar">
+              <label for="btn-modal"><i class="fa-sharp-duotone fa-solid fa-xmark"></i></label>
+            </div>
+            <h2><i class="fa-sharp-duotone fa-solid fa-cart-shopping"></i> Carrito De Compras</h2>
             <div class="modal-products">
               <div class="add-products">
                 <table>
@@ -180,9 +189,7 @@ require 'cdn.html';
             <form method="post" action="comprar.php">
               <button name="buy" class="boton-comprar">comprar</button>
             </form>
-            <div class="btn-cerrar">
-              <label for="btn-modal">cerrar</label>
-            </div>
+
           </div>
           <label for="btn-modal" class="cerrar-modal"></label>
         </div>

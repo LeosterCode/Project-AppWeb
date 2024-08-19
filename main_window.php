@@ -208,7 +208,7 @@ require 'db_conexion.php';
   $select_cat->execute();
   $column_cat = $select_cat->fetchAll(PDO::FETCH_ASSOC);
 
-  $items_per_slide = 5;
+  $items_per_slide = 3;
   $total_items = count($column_cat);
   $slides = ceil($total_items / $items_per_slide);
   ?>
