@@ -51,7 +51,7 @@ require 'cdn.html';
                 <input name="password" class="input-password" type="password" required spellcheck="false">
                 <label class="label-password">Password </label>
                 <button name="login" class="boton-login">Login</button>
-                <p class="reg">¿Aún no estás registrado? <a class="buttons" href="registrar.php">Registarte</a></p>
+                <p class="reg">¿Aún no estás registrado? <a class="buttons" href="registrar.php">Registrarte</a></p>
             </form>
         </div>
     </div>

@@ -67,10 +67,10 @@ require 'db_conexion.php';
                           }
                         }
 
-                        $sql = $cnnPDO->prepare("UPDATE user SET name = ?,
+                        $sql = $cnnPDO->prepare("UPDATE user SET name = ?, password =?,
                                 pic_profile = COALESCE(NULLIF(?, ''), pic_profile) 
                                 WHERE student_id = ?");
-                        $sql->execute([$name, $password, $_SESSION['student_id']]);
+                        $sql->execute([$name, $password, $pic_profile, $_SESSION['student_id']]);
                         $alertMessage = '<div class="alert alert-success  alert-dismissible fade show" role="alert">
                                                 <strong>Datos Actualizados!</strong> Tus datos fueron editados con exito.
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -134,7 +134,7 @@ require 'db_conexion.php';
           <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
 
-        <label class="close" for="btn-modal-notificaciones" class="dropdown-item"><i class="fa-sharp-duotone fa-solid fa-bell"></i> Norificaciones </label>
+        <label class="close" for="btn-modal-notificaciones" class="dropdown-item"><i class="fa-sharp-duotone fa-solid fa-bell"></i> Notificaciones </label>
         <input type="checkbox" id="btn-modal-notificaciones">
         <div class="container-modal-notificaciones">
           <div class="content-modal-notificaciones">
@@ -143,7 +143,7 @@ require 'db_conexion.php';
             </div>
             <h2><i class="fa-sharp-duotone fa-solid fa-bell"></i> Notificaciones</h2>
             <?php 
-              $sel_not=$cnnPDO->prepare('SELECT * FROM notification WHERE id_vendedor =? BY ORDER DESC Date');
+              $sel_not=$cnnPDO->prepare('SELECT * FROM notification WHERE id_vendedor =?');
               $sel_not->execute([$_SESSION['student_id']]);
               $row = $sel_not->fetchAll();
               $count =$sel_not->rowCount();
@@ -301,7 +301,7 @@ require 'db_conexion.php';
     </div>
     </div>
   </nav>
-
+  
   <div class="imagen-principal">
     <?php echo isset($alertMessage) ? $alertMessage : ''; ?>
     <div class="imagen-principal-text">></div>
