@@ -143,6 +143,10 @@ require 'db_conexion.php';
             </div>
             <h2><i class="fa-sharp-duotone fa-solid fa-bell"></i> Notificaciones</h2>
             
+             <div class="informacion-notificacion">
+              <p>Nombre Compro:</p>
+              <p>Fecha:</p>
+             </div>
 
           </div>
           </div>
