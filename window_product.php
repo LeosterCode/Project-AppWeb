@@ -10,9 +10,11 @@ if (isset($_GET['slug'])) {
     $select->bindParam(':slug_product', $slug);
     $select->execute();
     $column = $select->fetch(PDO::FETCH_ASSOC);
+    
 } else {
     echo '<p>No se encontro el producto</p>';
 }
+
 if (isset($_POST['add'])) {
     $student_id = $_SESSION['student_id'];
     $id_product = $column['id_product'];
@@ -126,20 +128,30 @@ if (isset($_POST['save_comm'])) {
             <p><b>Precio: </b> $ <?php echo htmlentities($column['price']) ?>.00 MXN</p>
             <p><b>Stock: </b><?php echo htmlentities($column['stock']) ?></p>
             <p><b>Categoria:</b> <?php echo htmlentities($column['name_category']) ?></p>
+            <?php if ($column['student_id']!= $_SESSION['student_id']){ 
+            ?>
             <form method="post">
                 <input name="amount" type="number" placeholder="0" min="1" class="input-quantity" />
                 <button name="add" type="submit" class="button-añadir-carrito">Añadir al carrito</button>
             </form>
+            <?php
+        }
+        ?>
         </div>
     </div>
     <div class="comentarios">
         <h2>Comentarios</h2>
+        <?php if ($column['student_id']!= $_SESSION['student_id']){ 
+            ?>
         <div class="comentario">
             <form method="post" action="">
                 <textarea name="comment" placeholder="Agregar Comentario"></textarea>
                 <button name="save_comm" type="submit">Publicar</button>
             </form>
         </div>
+        <?php
+        }
+        ?>
         <?php
         $slct_rev = $cnnPDO->prepare('SELECT * FROM review WHERE id_product = :id_product');
         $slct_rev->bindParam(':id_product', $column['id_product']);
