@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="body-index">
+<div class="imagen-login">
     <div class="container-informacion">
         <div class="informacion">
             <div class="text">
@@ -17,7 +18,6 @@
                     <br>
                     <br>
                     Utiliza tu <b>correo intitucional</b> para crear tu cuenta, y empieza a disfrutar de esta nueva manera de hacer negocios en el campus!!</p>
-
             </div>
             <div class="link-index">
             <a href="login.php">Inciar Sesion</a>
@@ -25,6 +25,7 @@
             </div>
         </div>
         <div class="img-index"><img src="image/img-index.jpg" alt=""></div>
+    </div>
     </div>
 
 </body>

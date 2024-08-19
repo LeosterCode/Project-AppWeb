@@ -41,6 +41,7 @@ require 'cdn.html';
     <script src="https://kit.fontawesome.com/b1473ebfe8.js" crossorigin="anonymous"></script>
 </head>
 <body class="body-login">
+    <div class="imagen-login">
     <div class="container-login">
         <div class="formulario">
             <form action="" method="post">
@@ -53,6 +54,7 @@ require 'cdn.html';
                 <p class="reg">¿Aún no estás registrado? <a class="buttons" href="registrar.php">Registarte</a></p>
             </form>
         </div>
+    </div>
     </div>
 </body>
 </html>

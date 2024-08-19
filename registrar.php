@@ -98,6 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="body-registrar">
+<div class="imagen-login">
     <div class="container-registrar">
         <div class="img-registrar"></div>
         <div class="formulario-registrar start">
@@ -157,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
                 <p class="rega">¿Ya tienes cuenta? <a href="login.php" class="buttons">Login</a></p>
             </form>  
         </div>
-        
+        </div>
     </div>
 </body>
 </html>
