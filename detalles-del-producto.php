@@ -72,7 +72,6 @@
                     <p><b>comentario:</b> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut ullam explicabo consequatur temporibus vero corporis cum ipsa aliquid sequi alias. Non vel delectus repudiandae odio veniam dolorum excepturi debitis cum!</p>
                 </div>
             </div>
-            
         </div>
     </div>
 </body>

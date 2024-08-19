@@ -138,10 +138,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
 
                 <select name="building" class="input-edificio-registrar" required>
                     <option selected>Selecciona tu edificio...</option>
-                    <option value="Edifico 1">Edificio 1</option>
-                    <option value="Edifico 2">Edificio 2</option>
-                    <option value="Edifico 3">Edificio 3</option>
-                    <option value="Edifico 4">Edificio 4</option>
+                    <option value="1">Edificio 1</option>
+                    <option value="2">Edificio 2</option>
+                    <option value="3">Edificio 3</option>
+                    <option value="4">Edificio 4</option>
                 </select>
 
                 <label class="label-edificio-registrar">Edificio</label>

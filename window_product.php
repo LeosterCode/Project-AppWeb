@@ -10,10 +10,15 @@ if (isset($_GET['slug'])) {
     $select->bindParam(':slug_product', $slug);
     $select->execute();
     $column = $select->fetch(PDO::FETCH_ASSOC);
+
+    $select2 = $cnnPDO ->prepare('SELECT * FROM user WHERE student_id =?');
+    $select2 ->execute([$column['student_id']]);
+    $column2 = $select2->fetch(PDO::FETCH_ASSOC);
     
 } else {
     echo '<p>No se encontro el producto</p>';
 }
+
 
 if (isset($_POST['add'])) {
     $student_id = $_SESSION['student_id'];
@@ -131,12 +136,26 @@ if (isset($_POST['save_comm'])) {
             <?php if ($column['student_id']!= $_SESSION['student_id']){ 
             ?>
             <form method="post">
-                <input name="amount" type="number" placeholder="0" min="1" class="input-quantity" />
+                <input name="amount" value="0" type="number" placeholder="0" min="1" class="input-quantity" />
                 <button name="add" type="submit" class="button-añadir-carrito">Añadir al carrito</button>
             </form>
             <?php
         }
         ?>
+        </div>
+            
+    </div>
+
+    <div class="vendedor-container">
+        <div class="comentario-del-usuario">
+                <div>
+                <?php  echo  '<img src="data:image/png;base64,'.base64_encode($column2['pic_profile']).'" alt="">';?>
+                </div>
+                <div>
+                    <p><b><?php echo $column2['name'] ?></b></p>
+                    <p><b>Telefono:</b> <?php echo $column2['phone']?> </p>
+                    <p><b>Edificio:</b> <?php echo $column2['building']?> </p>
+                </div>
         </div>
     </div>
     <div class="comentarios">
