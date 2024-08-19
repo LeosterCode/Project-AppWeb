@@ -739,31 +739,16 @@
 .imagen-principal {
     width: 100%; 
     height: 800px; 
-    background:url('https://mexicoindustry.com/admin/images/notas/2020/12/refuerzan-alumnos-de-utc-su-experiencia-laboral-y-academica-4969.jpg');
+    background:url('image/imagen\ portada.jpg');
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
     background-attachment: fixed; 
     border-radius: 15px; 
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(50px);
 }
 
 
-.imagen-principal-text{
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.251);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-}
 
-.imagen-principal-text h1{
-    color: #FFF;
-    font-size: 80px;
-    text-align: center;
-    padding-top: 20%;
-}
 
 
 /*----------styles de main_window---------*/
