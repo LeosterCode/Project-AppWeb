@@ -51,42 +51,42 @@ require 'db_conexion.php';
                     <li><a href="mis_pedidos.php"><i class="fa-solid fa-clock-rotate-left"></i> Historial De Compras</a></li>
                     <li>
                       <label class="close" for="btn-modal-editar" class="dropdown-item"><i class="fa-regular fa-pen-to-square"></i> Editar Perfil </label>
-                   
-                        <?php
-                        if (isset($_POST['edit'])) {
-                            $name = $_POST['new_name'];
-                            $password = $_POST['new_password'];
-                            $pic_profile = null;
 
-                            if (isset($_FILES['new_pic']) && $_FILES['new_pic']["error"] == UPLOAD_ERR_OK) {
-                                $size = getimagesize($_FILES["new_pic"]["tmp_name"]);
-                                if ($size !== false) {
-                                    $pic_profile = file_get_contents($_FILES['new_pic']["tmp_name"]);
-                                    
-                                }
-                            }
+                      <?php
+                      if (isset($_POST['edit'])) {
 
-                            $sql = $cnnPDO->prepare("UPDATE user SET name = ?,
+
+                        $name = $_POST['new_name'];
+                        $password = $_POST['new_password'];
+                        $pic_profile = null;
+
+                        if (isset($_FILES['new_pic']) && $_FILES['new_pic']["error"] == UPLOAD_ERR_OK) {
+                          $size = getimagesize($_FILES["new_pic"]["tmp_name"]);
+                          if ($size !== false) {
+                            $pic_profile = file_get_contents($_FILES['new_pic']["tmp_name"]);
+                          }
+                        }
+
+                        $sql = $cnnPDO->prepare("UPDATE user SET name = ?,
                                 pic_profile = COALESCE(NULLIF(?, ''), pic_profile) 
                                 WHERE student_id = ?");
-                            $sql->execute([$name, $password, $_SESSION['student_id']]);
-
-                            
-
-                            if ($pic_profile !== null) {
-                                $_SESSION['pic_profile'] = $pic_profile;
-                            }
-                            $_SESSION['name'] = $name;
-                            $_SESSION['password']=$password;
-                            $alertMessage = '<div class="alert alert-success  alert-dismissible fade show" role="alert">
+                        $sql->execute([$name, $password, $_SESSION['student_id']]);
+                        $alertMessage = '<div class="alert alert-success  alert-dismissible fade show" role="alert">
                                                 <strong>Datos Actualizados!</strong> Tus datos fueron editados con exito.
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                              </div>';
-                            header('location:main_window.php');
 
-                            
+
+                        if ($pic_profile !== null) {
+                          $_SESSION['pic_profile'] = $pic_profile;
                         }
-                        ?>
+                        $_SESSION['name'] = $name;
+                        $_SESSION['password'] = $password;
+
+
+                        header('location:main_window.php');
+                      }
+                      ?>
 
                       <input type="checkbox" id="btn-modal-editar">
                       <div class="container-modal-editar">
@@ -128,7 +128,7 @@ require 'db_conexion.php';
             <label for="btn-modal-perfil" class="cerrar-modal-perfil"></label>
           </div>
         </ul>
-        
+
         <form class="d-flex position" role="search" action="buscar.php" method="GET">
           <input class="form-control me-2" type="search" name="query" placeholder="Buscar" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Buscar</button>
@@ -142,112 +142,129 @@ require 'db_conexion.php';
               <label for="btn-modal-notificaciones"><i class="fa-sharp-duotone fa-solid fa-xmark"></i></label>
             </div>
             <h2><i class="fa-sharp-duotone fa-solid fa-bell"></i> Notificaciones</h2>
+            <?php 
+              $sel_not=$cnnPDO->prepare('SELECT * FROM notification WHERE id_vendedor =? BY ORDER DESC Date');
+              $sel_not->execute([$_SESSION['student_id']]);
+              $row = $sel_not->fetchAll();
+              $count =$sel_not->rowCount();
+              if ($count){
+                foreach($row as $noti){
             
-             <div class="informacion-notificacion">
-              <p>Nombre Compro:</p>
-              <p>Fecha:</p>
-             </div>
-
-          </div>
+                  echo '<div class="informacion-notificacion">
+                  <p>'.htmlentities($noti['name_cus']).'Compro '.htmlentities($noti['name_product']).'</p>
+                  <p> '.htmlentities($noti['date']).'</p>
+                  </div>';
+                }
+              }else{
+              echo 'No tienes notificaciones';
+              }
+            ?>
+              
           </div>
         </div>
+      </div>
 
-          
-        <label class="close" for="btn-modal" class="dropdown-item"><i class="fa-solid fa-cart-shopping"></i> Carrito de compras </label>
-        <input type="checkbox" id="btn-modal">
-        <div class="container-modal">
-          <div class="content-modal">
-            <div class="btn-cerrar">
-              <label for="btn-modal"><i class="fa-sharp-duotone fa-solid fa-xmark"></i></label>
-            </div>
-            <h2><i class="fa-sharp-duotone fa-solid fa-cart-shopping"></i> Carrito De Compras</h2>
-            
-            <div class="modal-products">
-              <div class="add-products">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Producto</th>
-                      <th>Cantidad</th>
-                      <th>Precio Unitario</th>
-                      <th>Total</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <?php
-                  if (isset($_POST['buy'])) {
-                    try {
-                        $cnnPDO->beginTransaction();
-                
-                        $select = $cnnPDO->prepare('SELECT date, id_product, amount, student_id, total FROM shopping_cart WHERE student_id= ?');
-                        $select->execute([$_SESSION['student_id']]);
-                        $count = $select->rowCount();
-                        $fetch_select = $select->fetchAll();
-                
-                        if ($count) {
-                            foreach ($fetch_select as $purch) {
-                                $date_purchase = date('Y-m-d');
-                                $up_product = $purch['id_product'];
-                                $up_stock = $purch['amount'];
-                                $ins_total = $purch['total'];
-                
-                                $update = $cnnPDO->prepare('UPDATE product SET stock = stock - ? WHERE id_product = ?');
-                                $update->execute([$up_stock, $up_product]);
-                
-                                $insert = $cnnPDO->prepare('INSERT INTO purchase (total, date, student_id) VALUES (?,?,?)');
-                                $insert->execute([$ins_total, $date_purchase, $_SESSION['student_id']]);
-                            }
-                
-                            $delete = $cnnPDO->prepare('DELETE FROM shopping_cart WHERE student_id = ?');
-                            $delete->execute([$_SESSION['student_id']]);
-                
-                            $cnnPDO->commit();
-                
-                            $alertMessage = '<div class="alert alert-success  alert-dismissible fade show" role="alert">
+
+      <label class="close" for="btn-modal" class="dropdown-item"><i class="fa-solid fa-cart-shopping"></i> Carrito de compras </label>
+      <input type="checkbox" id="btn-modal">
+      <div class="container-modal">
+        <div class="content-modal">
+          <div class="btn-cerrar">
+            <label for="btn-modal"><i class="fa-sharp-duotone fa-solid fa-xmark"></i></label>
+          </div>
+          <h2><i class="fa-sharp-duotone fa-solid fa-cart-shopping"></i> Carrito De Compras</h2>
+
+          <div class="modal-products">
+            <div class="add-products">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Total</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <?php
+                if (isset($_POST['buy'])) {
+                  try {
+                    $cnnPDO->beginTransaction();
+
+                    $select = $cnnPDO->prepare('SELECT date, id_product, amount, student_id, total, name_product FROM shopping_cart WHERE student_id= ?');
+                    $select->execute([$_SESSION['student_id']]);
+                    $count = $select->rowCount();
+                    $fetch_select = $select->fetchAll();
+
+                    if ($count) {
+                      foreach ($fetch_select as $purch) {
+                        $date_purchase = date('Y-m-d\TH:i:sP');
+                        $up_product = $purch['id_product'];
+                        $up_stock = $purch['amount'];
+                        $ins_total = $purch['total'];
+
+                        $select3 = $cnnPDO->prepare('SELECT student_id FROM product WHERE id_product = ?');
+                        $select3->execute([$purch['id_product']]);
+                        $id_vendedor = $select3->fetchColumn();
+
+                        $update = $cnnPDO->prepare('UPDATE product SET stock = stock - ? WHERE id_product = ?');
+                        $update->execute([$up_stock, $up_product]);
+
+                        $insert = $cnnPDO->prepare('INSERT INTO purchase (total, date, student_id) VALUES (?,?,?)');
+                        $insert->execute([$ins_total, $date_purchase, $_SESSION['student_id']]);
+
+                        $ins_not = $cnnPDO->prepare('INSERT INTO notification (id_comprador, name_cus, name_product, id_vendedor, date, id_product) VALUES (?,?,?,?,?,?)');
+                        $ins_not->execute([$_SESSION['student_id'], $_SESSION['name'] ,$purch['name_product'], $id_vendedor, $date_purchase, $up_product]);
+                      }
+                      $delete = $cnnPDO->prepare('DELETE FROM shopping_cart WHERE student_id = ?');
+                      $delete->execute([$_SESSION['student_id']]);
+
+                      $cnnPDO->commit();
+
+                      $alertMessage = '<div class="alert alert-success  alert-dismissible fade show" role="alert">
                                                 <strong>Compra Exitosa!</strong> Disfrute de sus productos.
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                              </div>';
-                        } else {
-                            $alertMessage = '<div class="alert alert-danger  alert-dismissible fade show" role="alert">
+                    } else {
+                      $alertMessage = '<div class="alert alert-danger  alert-dismissible fade show" role="alert">
                                                 <strong>Carrito Vacio</strong> No hay productos en el carrito.
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                              </div>';
-                        }
-                    } catch (Exception $error) {
-                        $cnnPDO->rollBack();
-                        $alertMessage = '<div class="alert alert-danger  alert-dismissible fade show" role="alert">
+                    }
+                  } catch (Exception $error) {
+                    $cnnPDO->rollBack();
+                    $alertMessage = '<div class="alert alert-danger  alert-dismissible fade show" role="alert">
                                             <strong>Error en la compra:</strong> ' . $error->getMessage() . '
                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                          </div>';
-                    }
+                  }
                 }
-                
-                  ?>
-                  <?php
-                  if (isset($_POST['delete'])) {
-                    $p = $_POST['delete'];
-                    $delete = $cnnPDO->prepare('DELETE FROM shopping_cart WHERE id_product =? AND student_id=?');
-                    $delete->execute([$p, $_SESSION['student_id']]);
-                    $alertMessage = '<div class="alert alert-danger  alert-dismissible fade show" role="alert">
+
+                ?>
+                <?php
+                if (isset($_POST['delete'])) {
+                  $p = $_POST['delete'];
+                  $delete = $cnnPDO->prepare('DELETE FROM shopping_cart WHERE id_product =? AND student_id=?');
+                  $delete->execute([$p, $_SESSION['student_id']]);
+                  $alertMessage = '<div class="alert alert-danger  alert-dismissible fade show" role="alert">
                                                 <strong>Producto Eliminado</strong> 
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                              </div>';
+                }
 
-                  }
-
-                  $sc = $cnnPDO->prepare('SELECT * FROM shopping_cart WHERE student_id =?');
-                  $sc->execute([$_SESSION['student_id']]);
-                  $count_car = $sc->rowCount();
-                  $col_car = $sc->fetchAll();
-
+                $sc = $cnnPDO->prepare('SELECT * FROM shopping_cart WHERE student_id =?');
+                $sc->execute([$_SESSION['student_id']]);
+                $count_car = $sc->rowCount();
+                $col_car = $sc->fetchAll();
 
 
-                  if ($count_car) {
+
+                if ($count_car) {
 
 
-                    foreach ($col_car as $data) {
+                  foreach ($col_car as $data) {
 
-                      echo '<form method="POST">  
+                    echo '<form method="POST">  
                       <tr>
                       <td>' . $data['name_product'] . '</td>
                       <td>' . $data['amount'] . '</td>
@@ -257,36 +274,36 @@ require 'db_conexion.php';
                       </tr>
                     </form>
                   ';
-                    }
                   }
-                  $sum = $cnnPDO->prepare('SELECT SUM(total) FROM shopping_cart WHERE student_id = ?');
-                  $sum->execute([$_SESSION['student_id']]);
-                  $pay = $sum->fetchColumn();
-                  ?>
-                  <tfoot>
-                    <tr class="total-row">
-                      <td colspan="4">Total General:</td>
-                      <td><?php echo '$' . $pay . '.00 MXN';  ?></td>
-                    </tr>
-                  </tfoot>
+                }
+                $sum = $cnnPDO->prepare('SELECT SUM(total) FROM shopping_cart WHERE student_id = ?');
+                $sum->execute([$_SESSION['student_id']]);
+                $pay = $sum->fetchColumn();
+                ?>
+                <tfoot>
+                  <tr class="total-row">
+                    <td colspan="4">Total General:</td>
+                    <td><?php echo '$' . $pay . '.00 MXN';  ?></td>
+                  </tr>
+                </tfoot>
 
-                </table>
-              </div>
+              </table>
             </div>
-            
-            <form method="post">
-              <button name="buy" class="boton-comprar">comprar</button>
-            </form>
-
           </div>
-          <label for="btn-modal" class="cerrar-modal"></label>
+
+          <form method="post">
+            <button name="buy" class="boton-comprar">comprar</button>
+          </form>
+
         </div>
+        <label for="btn-modal" class="cerrar-modal"></label>
       </div>
     </div>
+    </div>
   </nav>
- 
+
   <div class="imagen-principal">
-  <?php echo isset($alertMessage) ? $alertMessage : ''; ?>
+    <?php echo isset($alertMessage) ? $alertMessage : ''; ?>
     <div class="imagen-principal-text">></div>
   </div>
 
