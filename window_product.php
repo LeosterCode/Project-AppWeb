@@ -49,7 +49,7 @@ if (isset($_POST['save_comm'])) {
     $id_review = rand(1, 999);
     $comment = $_POST['comment'];
     $student_id = $_SESSION['student_id'];
-    $date_review = date("Y,m,d");
+    $date_review = date("Y,m,d\TH:i:sP");
     $id_product = $column['id_product'];
     $name_student = $_SESSION['name']; 
     $pic_profile= $_SESSION['pic_profile'];
@@ -173,7 +173,7 @@ if (isset($_POST['save_comm'])) {
         }
         ?>
         <?php
-        $slct_rev = $cnnPDO->prepare('SELECT * FROM review WHERE id_product = :id_product');
+        $slct_rev = $cnnPDO->prepare('SELECT * FROM review WHERE id_product = :id_product ORDER BY date_review DESC');
         $slct_rev->bindParam(':id_product', $column['id_product']);
         $slct_rev->execute();
         $count = $slct_rev->rowCount();
@@ -187,6 +187,7 @@ if (isset($_POST['save_comm'])) {
                 echo '        <img src="data:image/png;base64,'.base64_encode($data['pic_profile']).'" alt="">';
                 echo '    </div>';
                 echo '    <div>';
+                echo '        <p>' . htmlentities($data['date_review']) . '</p>';
                 echo '        <p><b>' . htmlentities($data['name_student']) . '</b></p>';
                 echo '        <p><b>comentario: </b>' . htmlentities($data['comment']) . ' </p>';
                 echo '    </div>';

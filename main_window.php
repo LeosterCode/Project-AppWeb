@@ -143,7 +143,7 @@ require 'db_conexion.php';
             </div>
             <h2><i class="fa-sharp-duotone fa-solid fa-bell"></i> Notificaciones</h2>
             <?php 
-              $sel_not=$cnnPDO->prepare('SELECT * FROM notification WHERE id_vendedor =?');
+              $sel_not=$cnnPDO->prepare('SELECT * FROM notification WHERE id_vendedor =? ORDER BY date DESC');
               $sel_not->execute([$_SESSION['student_id']]);
               $row = $sel_not->fetchAll();
               $count =$sel_not->rowCount();
@@ -151,7 +151,7 @@ require 'db_conexion.php';
                 foreach($row as $noti){
             
                   echo '<div class="informacion-notificacion">
-                  <p>'.htmlentities($noti['name_cus']).'Compro '.htmlentities($noti['name_product']).'</p>
+                  <p>'.htmlentities($noti['name_cus']).' compro '.htmlentities($noti['name_product']).'</p>
                   <p> '.htmlentities($noti['date']).'</p>
                   </div>';
                 }

@@ -28,7 +28,7 @@ ob_start();
             </a>
             <ul class="dropdown-menu custom-anchor" style="background-color: black;">
               <li><a class="dropdown-item" href="vender.php"><i class="fa-solid fa-calendar-check"></i> Vender </a></li>
-              <li><a class="dropdown-item" href="#footer"><i class="fa-solid fa-user"></i> Acerca de nosotros
+              <li><a class="dropdown-item" href="main_window.php#footer"><i class="fa-solid fa-user"></i> Acerca de nosotros
                 </a></li>
             </ul>
           </li>
@@ -148,7 +148,7 @@ ob_start();
                 foreach($row as $noti){
             
                   echo '<div class="informacion-notificacion">
-                  <p>'.htmlentities($noti['name_cus']).'Compro '.htmlentities($noti['name_product']).'</p>
+                  <p>'.htmlentities($noti['name_cus']).' compro '.htmlentities($noti['name_product']).'</p>
                   <p> '.htmlentities($noti['date']).'</p>
                   </div>';
                 }

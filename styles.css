@@ -877,7 +877,7 @@
 }
 
 .card-body-product{
-    background-color: #003332;
+    background-color: #005b59;
     backdrop-filter: blur(20px);
     height: 23%;
     padding: 10px 20px 10px 20px;
@@ -902,7 +902,7 @@
 
 .card-product:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 16px rgb(68, 68, 68); 
+    box-shadow: 0 8px 16px rgba(68, 68, 68, 0); 
 
 }
 .card-product .card-text {
@@ -1446,7 +1446,7 @@ footer{
     margin: auto;
     background-color: rgb(0, 46, 52);
     width: 80%;
-    height: 80px;
+    height: 20%;
     border-radius: 15px;
     padding: 20px 0px 20px 20px;
     border: 1px solid white;

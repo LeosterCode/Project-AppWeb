@@ -2,7 +2,7 @@
 require 'db_conexion.php';
 session_start();
 require 'navbar.php';
-$select=$cnnPDO->prepare('SELECT * FROM purchase WHERE student_id=?');
+$select=$cnnPDO->prepare('SELECT * FROM purchase WHERE student_id=? ORDER BY date DESC');
 $select->execute([$_SESSION['student_id']]);
 $count =$select->rowCount();
 $col=$select->fetchAll();
