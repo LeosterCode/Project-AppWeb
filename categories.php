@@ -8,12 +8,12 @@ if (isset($_GET['slug'])) {
 
     $select = $cnnPDO->prepare('SELECT * FROM product WHERE slug_category = :slug_category');
     $select->bindParam(':slug_category',$slug_category);
-    $select->execute(); 
+    $select->execute();
+    $count = $select->rowCount(); 
     $column = $select->fetch(PDO::FETCH_ASSOC); 
 } else {
     echo '<p>No se encontrola categoria</p>';
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +26,9 @@ if (isset($_GET['slug'])) {
 </head>
 
 <body class="body-categorias">
-<h1>Categoria</h1>
+    
+
+<h1>Categorias</h1>
     <div class="container-cards">
         
     <?php

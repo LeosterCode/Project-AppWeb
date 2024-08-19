@@ -47,10 +47,10 @@ if (isset($_POST['buy'])) {
                     </div>';
         }
 
-    } catch (Exception $e) {
+    } catch (Exception $error) {
  
         $cnnPDO->rollBack();
-        echo 'Error en la compra: ' . $e->getMessage();
+        echo 'Error en la compra: ' . $error->getMessage();
     }
 } else {
     echo  ' <div class="alert alert-danger  alert-dismissible fade show" role="alert">

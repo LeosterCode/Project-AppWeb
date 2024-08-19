@@ -5,15 +5,15 @@ require 'cdn.html';
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://kit.fontawesome.com/b1473ebfe8.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://kit.fontawesome.com/b1473ebfe8.js" crossorigin="anonymous"></script>
+  <title>Document</title>
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg color-bg" data-bs-theme="dark">
+  <nav class="navbar navbar-expand-lg color-bg" data-bs-theme="dark">
     <div class="container-fluid ">
       <a class="navbar-brand" href="main_window.php" style="color: rgb(255, 255, 255);">Halcon Store</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color: rgba(100, 100, 100, 0.265);">
@@ -40,31 +40,31 @@ require 'cdn.html';
               <div class="mi-perfil">
                 <div class="img-perfil"><?php echo '<img src="data:image/png;base64,' . base64_encode($_SESSION['pic_profile']) . '" alt="">'; ?></div>
                 <div class="container-menu">
-                <h5>Nombre: <?php echo $_SESSION['name']; ?> </h5>
-                <h5>Matricula: <?php echo $_SESSION['student_id']; ?> </h5>
-                <ul class="menu">
-                  <li><a href="my_products.php"><i class="fa-solid fa-arrow-up"></i> Mis Publicaciones</a></li>
-                  <li><a href="mis_pedidos.php"><i class="fa-solid fa-clock-rotate-left"></i> Historial De Compras</a></li>
-                  <li>
-                    <label class="close" for="btn-modal-editar" class="dropdown-item"><i class="fa-regular fa-pen-to-square"></i> Editar Perfil </label>
+                  <h5>Nombre: <?php echo $_SESSION['name']; ?> </h5>
+                  <h5>Matricula: <?php echo $_SESSION['student_id']; ?> </h5>
+                  <ul class="menu">
+                    <li><a href="my_products.php"><i class="fa-solid fa-arrow-up"></i> Mis Publicaciones</a></li>
+                    <li><a href="mis_pedidos.php"><i class="fa-solid fa-clock-rotate-left"></i> Historial De Compras</a></li>
+                    <li>
+                      <label class="close" for="btn-modal-editar" class="dropdown-item"><i class="fa-regular fa-pen-to-square"></i> Editar Perfil </label>
                       <?php
-                      if (isset($_POST['edit'])){
+                      if (isset($_POST['edit'])) {
                         $load_image = $_FILES['new_pic']['tmp_name'];
-                        $pic_profile=null;
+                        $pic_profile = null;
                         $pic_profile = fopen($load_image, 'rb');
-                        $password = $_POST['new_password']; 
+                        $password = $_POST['new_password'];
                         $name = $_POST['new_name'];
 
-                        if(!empty($name) && !empty($password)){
+                        if (!empty($name) && !empty($password)) {
                           $edit = $cnnPDO->prepare('UPDATE user SET pic_profile=:pic_profile, password=:password, name=:name WHERE student_id = :student_id');
-                          $edit->bindParam(':name',$name);
-                          $edit->bindParam(':password',$password);
-                          $edit->bindParam(':pic_profile',$pic_profile,PDO::PARAM_LOB);
-                          $edit->bindParam(':student_id',$_SESSION['student_id']);
+                          $edit->bindParam(':name', $name);
+                          $edit->bindParam(':password', $password);
+                          $edit->bindParam(':pic_profile', $pic_profile, PDO::PARAM_LOB);
+                          $edit->bindParam(':student_id', $_SESSION['student_id']);
                           $edit->execute();
 
                           $_SESSION['name'] = $name;
-                          $_SESSION['password'] =$password;
+                          $_SESSION['password'] = $password;
 
                           $get_image = $cnnPDO->prepare('SELECT pic_profile FROM user WHERE student_id = :student_id');
                           $get_image->bindParam(':student_id', $_SESSION['student_id']);
@@ -74,44 +74,43 @@ require 'cdn.html';
                           $_SESSION['pic_profile'] = $result['pic_profile'];
 
                           header('location:main_window.php');
-
                         }
                       }
                       ?>
-                    <input type="checkbox" id="btn-modal-editar">
-                    <div class="container-modal-editar">
-                      <div class="content-modal-editar">
-                        <form enctype="multipart/form-data" method="post">
-                        <div class="img-perfil-editar">
-                        <h2>Editar Perfil</h2>
-                          <div class="form-floating mb-2">
-                            <input name="new_pic"  type="file" class="custom-file-input-editar">
-                            
-                          </div>
-                          </div>
-                          <div class="container-editar-form">
-                          <div class="form-floating mb-4">
-                            <input name="new_password" value="<?php echo $_SESSION['password']?>" class="input-editar" type="text">
-                            <label class="label-editar">Password</label>
-                          </div>  
-                          <div class="form-floating">
-                            <input name="new_name" value="<?php echo $_SESSION['name']?>" class="input-editar" type="text">
-                            <label class="label-editar">Nombre</label>
-                          </div> 
-                          </div>
+                      <input type="checkbox" id="btn-modal-editar">
+                      <div class="container-modal-editar">
+                        <div class="content-modal-editar">
+                          <form enctype="multipart/form-data" method="post">
+                            <div class="img-perfil-editar">
+                              <h2>Editar Perfil</h2>
+                              <div class="form-floating mb-2">
+                                <input name="new_pic" type="file" class="custom-file-input-editar">
+
+                              </div>
+                            </div>
+                            <div class="container-editar-form">
+                              <div class="form-floating mb-4">
+                                <input name="new_password" value="<?php echo $_SESSION['password'] ?>" class="input-editar" type="text">
+                                <label class="label-editar">Password</label>
+                              </div>
+                              <div class="form-floating">
+                                <input name="new_name" value="<?php echo $_SESSION['name'] ?>" class="input-editar" type="text">
+                                <label class="label-editar">Nombre</label>
+                              </div>
+                            </div>
                             <br>
                             <div class="d-grid gap-3 col-7 mx-auto">
                               <button class="btn btn-light" type="submit" name="edit">Guardar</button>
                             </div>
-                        </form>
-                        <div class="btn-cerrar-editar">
-                          <label for="btn-modal-editar">Cerrar</label>
+                          </form>
+                          <div class="btn-cerrar-editar">
+                            <label for="btn-modal-editar">Cerrar</label>
+                          </div>
                         </div>
-                      </div>
-                      <label for="btn-modal-editar" class="cerrar-modal-perfil"></label>
-                  </li>
-                  <li><a class="close" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesion</a></li>
-                </ul>
+                        <label for="btn-modal-editar" class="cerrar-modal-perfil"></label>
+                    </li>
+                    <li><a class="close" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesion</a></li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -127,10 +126,11 @@ require 'cdn.html';
         <input type="checkbox" id="btn-modal">
         <div class="container-modal">
           <div class="content-modal">
-          <div class="btn-cerrar">
+            <div class="btn-cerrar">
               <label for="btn-modal"><i class="fa-sharp-duotone fa-solid fa-xmark"></i></label>
             </div>
             <h2><i class="fa-sharp-duotone fa-solid fa-cart-shopping"></i> Carrito De Compras</h2>
+            
             <div class="modal-products">
               <div class="add-products">
                 <table>
@@ -144,16 +144,72 @@ require 'cdn.html';
                     </tr>
                   </thead>
                   <?php
+                  if (isset($_POST['buy'])) {
+                    try {
+                        $cnnPDO->beginTransaction();
+                
+                        $select = $cnnPDO->prepare('SELECT date, id_product, amount, student_id, total FROM shopping_cart WHERE student_id= ?');
+                        $select->execute([$_SESSION['student_id']]);
+                        $count = $select->rowCount();
+                        $fetch_select = $select->fetchAll();
+                
+                        if ($count) {
+                            foreach ($fetch_select as $purch) {
+                                $date_purchase = date('Y-m-d');
+                                $up_product = $purch['id_product'];
+                                $up_stock = $purch['amount'];
+                                $ins_total = $purch['total'];
+                
+                                $update = $cnnPDO->prepare('UPDATE product SET stock = stock - ? WHERE id_product = ?');
+                                $update->execute([$up_stock, $up_product]);
+                
+                                $insert = $cnnPDO->prepare('INSERT INTO purchase (total, date, student_id) VALUES (?,?,?)');
+                                $insert->execute([$ins_total, $date_purchase, $_SESSION['student_id']]);
+                            }
+                
+                            $delete = $cnnPDO->prepare('DELETE FROM shopping_cart WHERE student_id = ?');
+                            $delete->execute([$_SESSION['student_id']]);
+                
+                            $cnnPDO->commit();
+                
+                            $alertMessage = '<div class="alert alert-success  alert-dismissible fade show" role="alert">
+                                                <strong>Compra Exitosa!</strong> Disfrute de sus productos.
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                             </div>';
+                        } else {
+                            $alertMessage = '<div class="alert alert-danger  alert-dismissible fade show" role="alert">
+                                                <strong>Carrito Vacio</strong> No hay productos en el carrito.
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                             </div>';
+                        }
+                    } catch (Exception $error) {
+                        $cnnPDO->rollBack();
+                        $alertMessage = '<div class="alert alert-danger  alert-dismissible fade show" role="alert">
+                                            <strong>Error en la compra:</strong> ' . $error->getMessage() . '
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                         </div>';
+                    }
+                }
+                
+                  ?>
+                  <?php
                   if (isset($_POST['delete'])) {
                     $p = $_POST['delete'];
-                    $delete = $cnnPDO->prepare('DELETE FROM shopping_cart WHERE id_product =?');
-                    $delete->execute([$p]);
+                    $delete = $cnnPDO->prepare('DELETE FROM shopping_cart WHERE id_product =? AND student_id=?');
+                    $delete->execute([$p, $_SESSION['student_id']]);
+                    $alertMessage = '<div class="alert alert-danger  alert-dismissible fade show" role="alert">
+                                                <strong>Producto Eliminado</strong> 
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                             </div>';
+
                   }
 
                   $sc = $cnnPDO->prepare('SELECT * FROM shopping_cart WHERE student_id =?');
                   $sc->execute([$_SESSION['student_id']]);
                   $count_car = $sc->rowCount();
                   $col_car = $sc->fetchAll();
+
+
 
                   if ($count_car) {
 
@@ -186,7 +242,8 @@ require 'cdn.html';
                 </table>
               </div>
             </div>
-            <form method="post" action="comprar.php">
+            
+            <form method="post">
               <button name="buy" class="boton-comprar">comprar</button>
             </form>
 
@@ -196,6 +253,8 @@ require 'cdn.html';
       </div>
     </div>
   </nav>
+  <?php echo isset($alertMessage) ? $alertMessage : ''; ?>
+
 
 
 </body>
