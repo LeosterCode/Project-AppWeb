@@ -1,5 +1,6 @@
 <?php
 require 'cdn.html';
+ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,36 +48,42 @@ require 'cdn.html';
                     <li><a href="mis_pedidos.php"><i class="fa-solid fa-clock-rotate-left"></i> Historial De Compras</a></li>
                     <li>
                       <label class="close" for="btn-modal-editar" class="dropdown-item"><i class="fa-regular fa-pen-to-square"></i> Editar Perfil </label>
-                      <?php
-                      if (isset($_POST['edit'])) {
-                        $load_image = $_FILES['new_pic']['tmp_name'];
-                        $pic_profile = null;
-                        $pic_profile = fopen($load_image, 'rb');
-                        $password = $_POST['new_password'];
-                        $name = $_POST['new_name'];
+                   
+                        <?php
+                        if (isset($_POST['edit'])) {
+                            $name = $_POST['new_name'];
+                            $password = $_POST['new_password'];
+                            $pic_profile = null;
 
-                        if (!empty($name) && !empty($password)) {
-                          $edit = $cnnPDO->prepare('UPDATE user SET pic_profile=:pic_profile, password=:password, name=:name WHERE student_id = :student_id');
-                          $edit->bindParam(':name', $name);
-                          $edit->bindParam(':password', $password);
-                          $edit->bindParam(':pic_profile', $pic_profile, PDO::PARAM_LOB);
-                          $edit->bindParam(':student_id', $_SESSION['student_id']);
-                          $edit->execute();
+                            if (isset($_FILES['new_pic']) && $_FILES['new_pic']["error"] == UPLOAD_ERR_OK) {
+                                $size = getimagesize($_FILES["new_pic"]["tmp_name"]);
+                                if ($size !== false) {
+                                    $pic_profile = file_get_contents($_FILES['new_pic']["tmp_name"]);
+                                    
+                                }
+                            }
 
-                          $_SESSION['name'] = $name;
-                          $_SESSION['password'] = $password;
+                            $sql = $cnnPDO->prepare("UPDATE user SET name = ?,
+                                pic_profile = COALESCE(NULLIF(?, ''), pic_profile) 
+                                WHERE student_id = ?");
+                            $sql->execute([$name, $password, $_SESSION['student_id']]);
+                            $alertMessage = '<div class="alert alert-success  alert-dismissible fade show" role="alert">
+                                                <strong>Actualizacion Exitosa!</strong> Tus datos fueron editados con exito.
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                             </div>';
 
-                          $get_image = $cnnPDO->prepare('SELECT pic_profile FROM user WHERE student_id = :student_id');
-                          $get_image->bindParam(':student_id', $_SESSION['student_id']);
-                          $get_image->execute();
+                            if ($pic_profile !== null) {
+                                $_SESSION['pic_profile'] = $pic_profile;
+                            }
+                            $_SESSION['name'] = $name;
+                            $_SESSION['password']=$password;
+                            
+                            header('location:main_window.php');
 
-                          $result = $get_image->fetch(PDO::FETCH_ASSOC);
-                          $_SESSION['pic_profile'] = $result['pic_profile'];
-
-                          header('location:main_window.php');
+                            
                         }
-                      }
-                      ?>
+                        ?>
+
                       <input type="checkbox" id="btn-modal-editar">
                       <div class="container-modal-editar">
                         <div class="content-modal-editar">
@@ -253,10 +260,11 @@ require 'cdn.html';
       </div>
     </div>
   </nav>
-  <?php echo isset($alertMessage) ? $alertMessage : ''; ?>
+  <?php echo isset($alertMessage) ? $alertMessage : ''; 
+          unset($alertMessage)?>
 
 
 
 </body>
-
+<?php ob_end_flush(); ?>
 </html>

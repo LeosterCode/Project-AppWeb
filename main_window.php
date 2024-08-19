@@ -17,7 +17,7 @@ require 'db_conexion.php';
 </head>
 
 <body class="body-main_window">
-  <nav class="navbar navbar-expand-lg color-bg" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg color-bg" data-bs-theme="dark">
     <div class="container-fluid ">
       <a class="navbar-brand" href="main_window.php" style="color: rgb(255, 255, 255);">Halcon Store</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color: rgba(100, 100, 100, 0.265);">
@@ -51,36 +51,43 @@ require 'db_conexion.php';
                     <li><a href="mis_pedidos.php"><i class="fa-solid fa-clock-rotate-left"></i> Historial De Compras</a></li>
                     <li>
                       <label class="close" for="btn-modal-editar" class="dropdown-item"><i class="fa-regular fa-pen-to-square"></i> Editar Perfil </label>
-                      <?php
-                      if (isset($_POST['edit'])) {
-                        $load_image = $_FILES['new_pic']['tmp_name'];
-                        $pic_profile = null;
-                        $pic_profile = fopen($load_image, 'rb');
-                        $password = $_POST['new_password'];
-                        $name = $_POST['new_name'];
+                   
+                        <?php
+                        if (isset($_POST['edit'])) {
+                            $name = $_POST['new_name'];
+                            $password = $_POST['new_password'];
+                            $pic_profile = null;
 
-                        if (!empty($name) && !empty($password)) {
-                          $edit = $cnnPDO->prepare('UPDATE user SET pic_profile=:pic_profile, password=:password, name=:name WHERE student_id = :student_id');
-                          $edit->bindParam(':name', $name);
-                          $edit->bindParam(':password', $password);
-                          $edit->bindParam(':pic_profile', $pic_profile, PDO::PARAM_LOB);
-                          $edit->bindParam(':student_id', $_SESSION['student_id']);
-                          $edit->execute();
+                            if (isset($_FILES['new_pic']) && $_FILES['new_pic']["error"] == UPLOAD_ERR_OK) {
+                                $size = getimagesize($_FILES["new_pic"]["tmp_name"]);
+                                if ($size !== false) {
+                                    $pic_profile = file_get_contents($_FILES['new_pic']["tmp_name"]);
+                                    
+                                }
+                            }
 
-                          $_SESSION['name'] = $name;
-                          $_SESSION['password'] = $password;
+                            $sql = $cnnPDO->prepare("UPDATE user SET name = ?,
+                                pic_profile = COALESCE(NULLIF(?, ''), pic_profile) 
+                                WHERE student_id = ?");
+                            $sql->execute([$name, $password, $_SESSION['student_id']]);
 
-                          $get_image = $cnnPDO->prepare('SELECT pic_profile FROM user WHERE student_id = :student_id');
-                          $get_image->bindParam(':student_id', $_SESSION['student_id']);
-                          $get_image->execute();
+                            
 
-                          $result = $get_image->fetch(PDO::FETCH_ASSOC);
-                          $_SESSION['pic_profile'] = $result['pic_profile'];
+                            if ($pic_profile !== null) {
+                                $_SESSION['pic_profile'] = $pic_profile;
+                            }
+                            $_SESSION['name'] = $name;
+                            $_SESSION['password']=$password;
+                            $alertMessage = '<div class="alert alert-success  alert-dismissible fade show" role="alert">
+                                                <strong>Datos Actualizados!</strong> Tus datos fueron editados con exito.
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                             </div>';
+                            header('location:main_window.php');
 
-                          header('location:main_window.php');
+                            
                         }
-                      }
-                      ?>
+                        ?>
+
                       <input type="checkbox" id="btn-modal-editar">
                       <div class="container-modal-editar">
                         <div class="content-modal-editar">
@@ -134,7 +141,7 @@ require 'db_conexion.php';
               <label for="btn-modal"><i class="fa-sharp-duotone fa-solid fa-xmark"></i></label>
             </div>
             <h2><i class="fa-sharp-duotone fa-solid fa-cart-shopping"></i> Carrito De Compras</h2>
-
+            
             <div class="modal-products">
               <div class="add-products">
                 <table>
@@ -150,51 +157,51 @@ require 'db_conexion.php';
                   <?php
                   if (isset($_POST['buy'])) {
                     try {
-                      $cnnPDO->beginTransaction();
-
-                      $select = $cnnPDO->prepare('SELECT date, id_product, amount, student_id, total FROM shopping_cart WHERE student_id= ?');
-                      $select->execute([$_SESSION['student_id']]);
-                      $count = $select->rowCount();
-                      $fetch_select = $select->fetchAll();
-
-                      if ($count) {
-                        foreach ($fetch_select as $purch) {
-                          $date_purchase = date('Y-m-d');
-                          $up_product = $purch['id_product'];
-                          $up_stock = $purch['amount'];
-                          $ins_total = $purch['total'];
-
-                          $update = $cnnPDO->prepare('UPDATE product SET stock = stock - ? WHERE id_product = ?');
-                          $update->execute([$up_stock, $up_product]);
-
-                          $insert = $cnnPDO->prepare('INSERT INTO purchase (total, date, student_id) VALUES (?,?,?)');
-                          $insert->execute([$ins_total, $date_purchase, $_SESSION['student_id']]);
-                        }
-
-                        $delete = $cnnPDO->prepare('DELETE FROM shopping_cart WHERE student_id = ?');
-                        $delete->execute([$_SESSION['student_id']]);
-
-                        $cnnPDO->commit();
-
-                        $alertMessage = '<div class="alert alert-success  alert-dismissible fade show" role="alert">
+                        $cnnPDO->beginTransaction();
+                
+                        $select = $cnnPDO->prepare('SELECT date, id_product, amount, student_id, total FROM shopping_cart WHERE student_id= ?');
+                        $select->execute([$_SESSION['student_id']]);
+                        $count = $select->rowCount();
+                        $fetch_select = $select->fetchAll();
+                
+                        if ($count) {
+                            foreach ($fetch_select as $purch) {
+                                $date_purchase = date('Y-m-d');
+                                $up_product = $purch['id_product'];
+                                $up_stock = $purch['amount'];
+                                $ins_total = $purch['total'];
+                
+                                $update = $cnnPDO->prepare('UPDATE product SET stock = stock - ? WHERE id_product = ?');
+                                $update->execute([$up_stock, $up_product]);
+                
+                                $insert = $cnnPDO->prepare('INSERT INTO purchase (total, date, student_id) VALUES (?,?,?)');
+                                $insert->execute([$ins_total, $date_purchase, $_SESSION['student_id']]);
+                            }
+                
+                            $delete = $cnnPDO->prepare('DELETE FROM shopping_cart WHERE student_id = ?');
+                            $delete->execute([$_SESSION['student_id']]);
+                
+                            $cnnPDO->commit();
+                
+                            $alertMessage = '<div class="alert alert-success  alert-dismissible fade show" role="alert">
                                                 <strong>Compra Exitosa!</strong> Disfrute de sus productos.
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                              </div>';
-                      } else {
-                        $alertMessage = '<div class="alert alert-danger  alert-dismissible fade show" role="alert">
+                        } else {
+                            $alertMessage = '<div class="alert alert-danger  alert-dismissible fade show" role="alert">
                                                 <strong>Carrito Vacio</strong> No hay productos en el carrito.
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                              </div>';
-                      }
+                        }
                     } catch (Exception $error) {
-                      $cnnPDO->rollBack();
-                      $alertMessage = '<div class="alert alert-danger  alert-dismissible fade show" role="alert">
+                        $cnnPDO->rollBack();
+                        $alertMessage = '<div class="alert alert-danger  alert-dismissible fade show" role="alert">
                                             <strong>Error en la compra:</strong> ' . $error->getMessage() . '
                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                          </div>';
                     }
-                  }
-
+                }
+                
                   ?>
                   <?php
                   if (isset($_POST['delete'])) {
@@ -205,6 +212,7 @@ require 'db_conexion.php';
                                                 <strong>Producto Eliminado</strong> 
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                              </div>';
+
                   }
 
                   $sc = $cnnPDO->prepare('SELECT * FROM shopping_cart WHERE student_id =?');
@@ -245,7 +253,7 @@ require 'db_conexion.php';
                 </table>
               </div>
             </div>
-
+            
             <form method="post">
               <button name="buy" class="boton-comprar">comprar</button>
             </form>
